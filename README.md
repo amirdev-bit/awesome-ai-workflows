@@ -10,7 +10,7 @@ Features
 - Productivity workflows
 - Automation templates
 - Developer utilities
-- Research prompts
+- Research prompts 
 
 Structure
 
