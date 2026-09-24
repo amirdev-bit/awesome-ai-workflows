@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Compiles the engine-independent runtime assemblies (Oathsunder.Core + Oathsunder.Combat) straight from the
+    Unity project sources. The Unity asmdefs for these folders set noEngineReferences=true, so this build is
+    the proof that the simulation has no hidden UnityEngine dependency.
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Oathsunder.Simulation</AssemblyName>
+    <RootNamespace>Oathsunder</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(UnityAssetsRoot)Runtime/Core/**/*.cs" />
+    <Compile Include="$(UnityAssetsRoot)Runtime/Combat/**/*.cs" />
+  </ItemGroup>
+</Project>

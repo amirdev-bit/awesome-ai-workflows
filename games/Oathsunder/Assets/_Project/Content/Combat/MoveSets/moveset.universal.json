@@ -1,0 +1,270 @@
+{
+  "id": "moveset.universal",
+  "name": "Universal Techniques",
+  "moves": [
+    {
+      "id": "universal.dash",
+      "name": "Ember Step",
+      "tags": ["Movement"],
+      "frames": 20,
+      "animation": "A_Universal_Dash",
+      "triggers": [
+        { "motion": "66", "priority": 10 },
+        { "buttons": ["Dodge"], "direction": "6", "priority": 10 }
+      ],
+      "motion": [
+        { "frames": [1, 12], "velocityX": 13 },
+        { "frames": [13, 16], "velocityX": 4 }
+      ],
+      "cancels": [
+        { "frames": [10, 20], "on": "always", "tags": ["Normal", "Command", "Special", "Ultimate", "Throw"] }
+      ],
+      "cues": [
+        { "frame": 1, "name": "sfx.movement.dash" },
+        { "frame": 1, "name": "vfx.movement.dust.dash" }
+      ]
+    },
+    {
+      "id": "universal.backstep",
+      "name": "Fading Step",
+      "tags": ["Movement", "Evasive"],
+      "frames": 24,
+      "animation": "A_Universal_Backstep",
+      "triggers": [
+        { "motion": "44", "priority": 10 },
+        { "buttons": ["Dodge"], "direction": "4", "priority": 10 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 7], "against": ["Strike"] }
+      ],
+      "motion": [
+        { "frames": [1, 10], "velocityX": -11 },
+        { "frames": [11, 14], "velocityX": -3 }
+      ],
+      "cues": [
+        { "frame": 1, "name": "sfx.movement.backstep" }
+      ]
+    },
+    {
+      "id": "universal.rollforward",
+      "name": "Crossing Roll",
+      "tags": ["Movement", "Evasive"],
+      "flags": ["PassThrough"],
+      "frames": 28,
+      "animation": "A_Universal_Roll_Forward",
+      "triggers": [
+        { "buttons": ["Dodge"], "direction": "3", "priority": 12 }
+      ],
+      "invulnerable": [
+        { "frames": [3, 16], "against": ["Strike", "Projectile"] }
+      ],
+      "motion": [
+        { "frames": [1, 22], "velocityX": 8 }
+      ],
+      "cues": [
+        { "frame": 2, "name": "sfx.movement.roll" }
+      ]
+    },
+    {
+      "id": "universal.rollback",
+      "name": "Retreating Roll",
+      "tags": ["Movement", "Evasive"],
+      "frames": 26,
+      "animation": "A_Universal_Roll_Back",
+      "triggers": [
+        { "buttons": ["Dodge"], "direction": "1", "priority": 12 }
+      ],
+      "invulnerable": [
+        { "frames": [3, 14], "against": ["Strike", "Projectile"] }
+      ],
+      "motion": [
+        { "frames": [1, 18], "velocityX": -7 }
+      ],
+      "cues": [
+        { "frame": 2, "name": "sfx.movement.roll" }
+      ]
+    },
+    {
+      "id": "universal.dodge",
+      "name": "Umbral Sway",
+      "tags": ["Movement", "Evasive"],
+      "frames": 22,
+      "animation": "A_Universal_Dodge",
+      "triggers": [
+        { "buttons": ["Dodge"], "direction": "25789", "priority": 8 }
+      ],
+      "invulnerable": [
+        { "frames": [2, 11], "against": ["Strike", "Projectile"] }
+      ],
+      "perfectEvade": [2, 7],
+      "motion": [
+        { "frames": [1, 6], "velocityX": -1.5 }
+      ],
+      "cancels": [
+        { "frames": [8, 16], "on": "evade", "tags": ["Normal", "Command", "Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 1, "name": "sfx.movement.sway" }
+      ]
+    },
+    {
+      "id": "universal.throwforward",
+      "name": "Hilt Toss",
+      "tags": ["Throw"],
+      "frames": 30,
+      "animation": "A_Universal_Throw_Attempt",
+      "triggers": [
+        { "buttons": ["Grab"], "direction": "235689", "priority": 15 }
+      ],
+      "attacks": {
+        "grab": { "flags": ["Grab"], "onHit": "universal.throwforward.hit" }
+      },
+      "hitboxes": [
+        { "frames": [5, 6], "box": { "x": 0.15, "y": 0.2, "w": 0.85, "h": 1.3 }, "attack": "grab" }
+      ],
+      "cues": [
+        { "frame": 3, "name": "sfx.throw.reach" }
+      ]
+    },
+    {
+      "id": "universal.throwforward.hit",
+      "name": "Hilt Toss",
+      "tags": ["Throw"],
+      "flags": ["ChainOnly"],
+      "frames": 50,
+      "animation": "A_Universal_Throw_Forward",
+      "attacks": {
+        "release": { "flags": ["Knockdown"], "launch": [5.5, 5.0], "hitstun": 0 }
+      },
+      "paired": {
+        "victimOffset": [0.75, 0],
+        "techWindow": 8,
+        "hits": [
+          { "frame": 22, "damage": 100, "posture": 50 }
+        ],
+        "releaseFrame": 26,
+        "releaseAttack": "release",
+        "victimAnimation": "A_Victim_Throw_Forward"
+      },
+      "cues": [
+        { "frame": 22, "name": "sfx.throw.impact" },
+        { "frame": 22, "name": "cam.shake.medium" }
+      ]
+    },
+    {
+      "id": "universal.throwback",
+      "name": "Reversing Wheel",
+      "tags": ["Throw"],
+      "frames": 30,
+      "animation": "A_Universal_Throw_Attempt",
+      "triggers": [
+        { "buttons": ["Grab"], "direction": "147", "priority": 15 }
+      ],
+      "attacks": {
+        "grab": { "flags": ["Grab"], "onHit": "universal.throwback.hit" }
+      },
+      "hitboxes": [
+        { "frames": [5, 6], "box": { "x": 0.15, "y": 0.2, "w": 0.85, "h": 1.3 }, "attack": "grab" }
+      ],
+      "cues": [
+        { "frame": 3, "name": "sfx.throw.reach" }
+      ]
+    },
+    {
+      "id": "universal.throwback.hit",
+      "name": "Reversing Wheel",
+      "tags": ["Throw"],
+      "flags": ["ChainOnly"],
+      "frames": 52,
+      "animation": "A_Universal_Throw_Back",
+      "attacks": {
+        "release": { "flags": ["Knockdown"], "launch": [5.5, 5.0], "hitstun": 0 }
+      },
+      "paired": {
+        "victimOffset": [0.75, 0],
+        "techWindow": 8,
+        "hits": [
+          { "frame": 24, "damage": 110, "posture": 50 }
+        ],
+        "releaseFrame": 28,
+        "releaseAttack": "release",
+        "turnAround": true,
+        "releaseOffset": [0.9, 0],
+        "victimAnimation": "A_Victim_Throw_Back"
+      },
+      "cues": [
+        { "frame": 24, "name": "sfx.throw.impact" },
+        { "frame": 24, "name": "cam.shake.medium" }
+      ]
+    },
+    {
+      "id": "universal.rage",
+      "name": "Ember Rage",
+      "tags": ["ModeActivation"],
+      "flags": ["LandCancel"],
+      "frames": 30,
+      "animation": "A_Universal_Rage",
+      "cost": { "rage": 1000 },
+      "triggers": [
+        { "buttons": ["Rage"], "stance": ["Grounded", "Airborne", "Stunned"], "conditions": ["RageInactive", "ShadowInactive"], "priority": 90 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 20], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "effects": [
+        { "frame": 1, "effect": "ActivateRage" }
+      ],
+      "attacks": {
+        "burst": { "damage": 0, "height": "Unblockable", "flags": ["Knockdown", "Unparryable"], "launch": [8.0, 6.0], "hitstop": 10 }
+      },
+      "hitboxes": [
+        { "frames": [4, 6], "box": { "x": -1.2, "y": 0, "w": 2.4, "h": 2.0 }, "attack": "burst" }
+      ],
+      "cues": [
+        { "frame": 1, "name": "vfx.mode.rage.ignite" },
+        { "frame": 1, "name": "sfx.mode.rage" },
+        { "frame": 1, "name": "cam.zoom.mode" }
+      ]
+    },
+    {
+      "id": "universal.shadow",
+      "name": "Umbral Shadow",
+      "tags": ["ModeActivation"],
+      "flags": ["LandCancel"],
+      "frames": 24,
+      "animation": "A_Universal_Shadow",
+      "cost": { "shadow": 1000 },
+      "triggers": [
+        { "buttons": ["Shadow"], "stance": ["Grounded", "Airborne"], "conditions": ["ShadowInactive", "RageInactive"], "priority": 90 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 16], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "effects": [
+        { "frame": 1, "effect": "ActivateShadow" }
+      ],
+      "cues": [
+        { "frame": 1, "name": "vfx.mode.shadow.sever" },
+        { "frame": 1, "name": "sfx.mode.shadow" },
+        { "frame": 1, "name": "cam.zoom.mode" }
+      ]
+    },
+    {
+      "id": "universal.techroll",
+      "name": "Recovery Roll",
+      "tags": ["Movement", "Evasive"],
+      "flags": ["NoAutoFace"],
+      "frames": 24,
+      "animation": "A_Universal_TechRoll",
+      "invulnerable": [
+        { "frames": [1, 16], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "motion": [
+        { "frames": [1, 16], "velocityX": -6 }
+      ],
+      "cues": [
+        { "frame": 1, "name": "sfx.movement.techroll" }
+      ]
+    }
+  ]
+}

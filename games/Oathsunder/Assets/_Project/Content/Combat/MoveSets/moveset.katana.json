@@ -1,0 +1,742 @@
+{
+  "id": "weapon.katana",
+  "name": "Katana — Oathblade Style",
+  "projectiles": [
+    {
+      "id": "katana.severingwind",
+      "lifetime": 60,
+      "velocity": [9.0, 0],
+      "box": { "x": -0.35, "y": -0.45, "w": 0.7, "h": 0.9 },
+      "hits": 1,
+      "visual": "VFX_Katana_SeveringWind",
+      "attack": {
+        "damage": 55, "chip": 8, "posture": 80,
+        "hitstun": 18, "blockstun": 16, "hitstop": 8,
+        "element": "Storm", "knockback": 2.5, "pushback": 3.0, "proration": 900
+      }
+    }
+  ],
+  "moves": [
+    {
+      "id": "katana.l1",
+      "name": "Rising Petal",
+      "tags": ["Normal", "Light"],
+      "frames": 19,
+      "animation": "A_Katana_L1",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "notdown", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 4], "velocityX": 1.5 }
+      ],
+      "attacks": {
+        "hit": { "damage": 40, "posture": 60, "hitstun": 17, "blockstun": 13, "hitstop": 8, "knockback": 2.4, "pushback": 3.0, "proration": 800 }
+      },
+      "hitboxes": [
+        { "frames": [6, 8], "box": { "x": 0.25, "y": 0.85, "w": 1.2, "h": 0.55 }, "attack": "hit" }
+      ],
+      "hurtboxes": [
+        { "frames": [6, 11], "boxes": [ { "x": 0.3, "y": 0.9, "w": 0.6, "h": 0.4 } ] }
+      ],
+      "cancels": [
+        { "frames": [9, 16], "on": "contact", "to": ["katana.l2"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 4, "name": "sfx.katana.swing.light" },
+        { "frame": 6, "name": "vfx.trail.katana.light" }
+      ]
+    },
+    {
+      "id": "katana.l2",
+      "name": "Falling Petal",
+      "tags": ["Normal", "Light"],
+      "flags": ["ChainOnly"],
+      "frames": 21,
+      "animation": "A_Katana_L2",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "any", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 5], "velocityX": 1.2 }
+      ],
+      "attacks": {
+        "hit": { "damage": 45, "posture": 65, "hitstun": 18, "blockstun": 14, "hitstop": 8, "knockback": 2.6, "pushback": 3.2, "proration": 800 }
+      },
+      "hitboxes": [
+        { "frames": [7, 9], "box": { "x": 0.2, "y": 0.6, "w": 1.25, "h": 0.7 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [10, 17], "on": "contact", "to": ["katana.l3", "katana.l2h"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 5, "name": "sfx.katana.swing.light" },
+        { "frame": 7, "name": "vfx.trail.katana.light" }
+      ]
+    },
+    {
+      "id": "katana.l3",
+      "name": "Crescent Cut",
+      "tags": ["Normal", "Light"],
+      "flags": ["ChainOnly"],
+      "frames": 24,
+      "animation": "A_Katana_L3",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "any", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 6], "velocityX": 1.4 }
+      ],
+      "attacks": {
+        "hit": { "damage": 55, "posture": 80, "hitstun": 19, "blockstun": 15, "hitstop": 9, "knockback": 3.0, "pushback": 3.6, "proration": 800 }
+      },
+      "hitboxes": [
+        { "frames": [8, 10], "box": { "x": 0.2, "y": 0.5, "w": 1.35, "h": 1.0 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [11, 18], "on": "contact", "to": ["katana.l4"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 6, "name": "sfx.katana.swing.medium" },
+        { "frame": 8, "name": "vfx.trail.katana.medium" }
+      ]
+    },
+    {
+      "id": "katana.l4",
+      "name": "Oathseal",
+      "tags": ["Normal", "Light", "Heavy"],
+      "flags": ["ChainOnly"],
+      "frames": 34,
+      "animation": "A_Katana_L4",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "any", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 10], "velocityX": 1.8 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 90, "posture": 140, "blockstun": 16, "hitstop": 12,
+          "flags": ["Knockdown", "WallBounce", "Finisher"], "launch": [6.5, 5.0], "pushback": 5.0, "proration": 800
+        }
+      },
+      "hitboxes": [
+        { "frames": [12, 15], "box": { "x": 0.2, "y": 0.4, "w": 1.5, "h": 1.1 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [16, 26], "on": "hit", "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 10, "name": "sfx.katana.swing.heavy" },
+        { "frame": 12, "name": "vfx.trail.katana.heavy" },
+        { "frame": 12, "name": "cam.shake.heavy" }
+      ]
+    },
+    {
+      "id": "katana.l2h",
+      "name": "Heaven's Draw",
+      "tags": ["Normal", "Heavy", "Launcher"],
+      "flags": ["ChainOnly"],
+      "frames": 30,
+      "animation": "A_Katana_L2H",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "any", "priority": 0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 70, "posture": 100, "blockstun": 14, "hitstop": 11,
+          "flags": ["Launch"], "launch": [1.2, 13.0], "pushback": 3.5, "proration": 800
+        }
+      },
+      "hitboxes": [
+        { "frames": [10, 13], "box": { "x": 0.15, "y": 0.3, "w": 1.3, "h": 1.6 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [14, 22], "on": "hit", "jump": true, "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 8, "name": "sfx.katana.swing.rising" },
+        { "frame": 10, "name": "vfx.trail.katana.launcher" }
+      ]
+    },
+    {
+      "id": "katana.h1",
+      "name": "Iron Draw",
+      "tags": ["Normal", "Heavy"],
+      "frames": 30,
+      "animation": "A_Katana_H1",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "56789", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 8], "velocityX": 1.0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 90, "posture": 150, "hitstun": 22, "blockstun": 18, "hitstop": 12,
+          "flags": ["LaunchOnCounter"], "launch": [2.0, 10.0], "knockback": 3.8, "pushback": 4.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [12, 14], "box": { "x": 0.2, "y": 0.6, "w": 1.55, "h": 0.9 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [9, 9], "input": "Held", "button": "Heavy", "to": ["katana.hcharge"] },
+        { "frames": [15, 22], "on": "contact", "to": ["katana.h2"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 10, "name": "sfx.katana.swing.heavy" },
+        { "frame": 12, "name": "vfx.trail.katana.heavy" }
+      ]
+    },
+    {
+      "id": "katana.h2",
+      "name": "Twin Moon",
+      "tags": ["Normal", "Heavy"],
+      "flags": ["ChainOnly"],
+      "frames": 32,
+      "animation": "A_Katana_H2",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "any", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 8], "velocityX": 1.2 }
+      ],
+      "attacks": {
+        "first": { "damage": 50, "posture": 60, "hitstun": 24, "blockstun": 18, "hitstop": 8, "knockback": 1.5, "pushback": 1.5 },
+        "second": { "damage": 60, "posture": 90, "hitstun": 22, "blockstun": 16, "hitstop": 10, "knockback": 3.5, "pushback": 4.0 }
+      },
+      "hitboxes": [
+        { "frames": [10, 11], "box": { "x": 0.2, "y": 0.5, "w": 1.45, "h": 0.9 }, "attack": "first", "group": 0 },
+        { "frames": [16, 17], "box": { "x": 0.2, "y": 0.7, "w": 1.45, "h": 0.9 }, "attack": "second", "group": 1 }
+      ],
+      "cancels": [
+        { "frames": [18, 26], "on": "contact", "to": ["katana.h3"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 9, "name": "sfx.katana.swing.medium" },
+        { "frame": 15, "name": "sfx.katana.swing.heavy" }
+      ]
+    },
+    {
+      "id": "katana.h3",
+      "name": "Sundering Arc",
+      "tags": ["Normal", "Heavy", "Overhead"],
+      "flags": ["ChainOnly"],
+      "frames": 40,
+      "animation": "A_Katana_H3",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "any", "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 12], "velocityX": 1.5 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 110, "posture": 160, "blockstun": 20, "hitstop": 13,
+          "flags": ["Knockdown", "GroundBounce", "Finisher"], "launch": [2.5, -3.0], "pushback": 4.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [14, 17], "box": { "x": 0.1, "y": 0.0, "w": 1.6, "h": 1.8 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [20, 30], "on": "hit", "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 12, "name": "sfx.katana.swing.heavy" },
+        { "frame": 14, "name": "vfx.impact.ground.slam" },
+        { "frame": 14, "name": "cam.shake.heavy" }
+      ]
+    },
+    {
+      "id": "katana.hcharge",
+      "name": "Moonsplitter Stance",
+      "tags": ["Heavy", "Charged"],
+      "flags": ["ChainOnly"],
+      "frames": 60,
+      "animation": "A_Katana_HCharge",
+      "cancels": [
+        { "frames": [1, 29], "input": "Released", "button": "Heavy", "to": ["katana.hcharged"] },
+        { "frames": [30, 59], "input": "Released", "button": "Heavy", "to": ["katana.hchargedfull"] },
+        { "frames": [60, 60], "input": "Auto", "to": ["katana.hchargedfull"] },
+        { "frames": [1, 59], "tags": ["Movement"] }
+      ],
+      "cues": [
+        { "frame": 1, "name": "vfx.charge.katana.start" },
+        { "frame": 30, "name": "vfx.charge.katana.full" },
+        { "frame": 30, "name": "sfx.charge.full" }
+      ]
+    },
+    {
+      "id": "katana.hcharged",
+      "name": "Moonsplitter",
+      "tags": ["Heavy", "Charged"],
+      "flags": ["ChainOnly"],
+      "frames": 32,
+      "animation": "A_Katana_HCharged",
+      "motion": [
+        { "frames": [1, 9], "velocityX": 3.0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 120, "posture": 220, "blockstun": 20, "hitstop": 14,
+          "flags": ["Knockdown"], "launch": [4.0, 6.0], "pushback": 5.0
+        }
+      },
+      "hitboxes": [
+        { "frames": [10, 13], "box": { "x": 0.1, "y": 0.3, "w": 1.7, "h": 1.4 }, "attack": "hit" }
+      ],
+      "cues": [
+        { "frame": 8, "name": "sfx.katana.swing.charged" },
+        { "frame": 10, "name": "cam.shake.heavy" }
+      ]
+    },
+    {
+      "id": "katana.hchargedfull",
+      "name": "Moonsplitter — Full Moon",
+      "tags": ["Heavy", "Charged"],
+      "flags": ["ChainOnly"],
+      "frames": 36,
+      "animation": "A_Katana_HChargedFull",
+      "motion": [
+        { "frames": [1, 11], "velocityX": 3.5 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 160, "posture": 400, "blockstun": 24, "hitstop": 16,
+          "flags": ["GuardCrush", "Knockdown", "WallBounce", "StaggerOnParry", "Finisher"],
+          "launch": [7.0, 6.0], "pushback": 6.0
+        }
+      },
+      "hitboxes": [
+        { "frames": [12, 15], "box": { "x": 0.1, "y": 0.2, "w": 1.9, "h": 1.6 }, "attack": "hit" }
+      ],
+      "cues": [
+        { "frame": 10, "name": "sfx.katana.swing.fullmoon" },
+        { "frame": 12, "name": "vfx.slash.fullmoon" },
+        { "frame": 12, "name": "cam.shake.ultra" }
+      ]
+    },
+    {
+      "id": "katana.fl",
+      "name": "Stepping Thrust",
+      "tags": ["Command", "Light"],
+      "frames": 28,
+      "animation": "A_Katana_FL",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "6", "priority": 5 }
+      ],
+      "motion": [
+        { "frames": [1, 12], "velocityX": 5.0 }
+      ],
+      "attacks": {
+        "hit": { "damage": 60, "posture": 80, "hitstun": 20, "blockstun": 15, "hitstop": 9, "knockback": 3.5, "pushback": 4.0, "proration": 900 }
+      },
+      "hitboxes": [
+        { "frames": [12, 14], "box": { "x": 0.2, "y": 0.8, "w": 1.9, "h": 0.35 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [15, 22], "on": "contact", "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 10, "name": "sfx.katana.thrust" },
+        { "frame": 12, "name": "vfx.trail.katana.thrust" }
+      ]
+    },
+    {
+      "id": "katana.bh",
+      "name": "Mountain Descent",
+      "tags": ["Command", "Heavy", "Overhead"],
+      "frames": 38,
+      "animation": "A_Katana_BH",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "4", "priority": 5 }
+      ],
+      "motion": [
+        { "frames": [8, 18], "velocityX": 2.0 }
+      ],
+      "attacks": {
+        "hit": { "damage": 80, "posture": 120, "hitstun": 24, "blockstun": 16, "hitstop": 11, "height": "Overhead", "knockback": 3.0, "pushback": 4.0 }
+      },
+      "hitboxes": [
+        { "frames": [20, 22], "box": { "x": 0.1, "y": 0.0, "w": 1.4, "h": 2.0 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [23, 30], "on": "hit", "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 18, "name": "sfx.katana.swing.overhead" },
+        { "frame": 20, "name": "vfx.trail.katana.overhead" }
+      ]
+    },
+    {
+      "id": "katana.dl",
+      "name": "Grass Cutter",
+      "tags": ["Normal", "Light", "Low"],
+      "flags": ["CrouchingHurtbox", "EndsCrouched"],
+      "frames": 17,
+      "animation": "A_Katana_DL",
+      "triggers": [
+        { "buttons": ["Light"], "direction": "down", "priority": 3 }
+      ],
+      "attacks": {
+        "hit": { "damage": 30, "posture": 40, "hitstun": 15, "blockstun": 11, "hitstop": 7, "height": "Low", "knockback": 2.0, "pushback": 2.6, "proration": 700 }
+      },
+      "hitboxes": [
+        { "frames": [5, 7], "box": { "x": 0.2, "y": 0.0, "w": 1.25, "h": 0.45 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [8, 14], "on": "contact", "to": ["katana.dl", "katana.dh"], "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 3, "name": "sfx.katana.swing.low" }
+      ]
+    },
+    {
+      "id": "katana.dh",
+      "name": "Reaping Sweep",
+      "tags": ["Normal", "Heavy", "Low"],
+      "flags": ["CrouchingHurtbox", "EndsCrouched"],
+      "frames": 36,
+      "animation": "A_Katana_DH",
+      "triggers": [
+        { "buttons": ["Heavy"], "direction": "down", "priority": 3 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 75, "posture": 100, "blockstun": 14, "hitstop": 11, "height": "Low",
+          "flags": ["Knockdown"], "launch": [1.5, 3.5], "pushback": 3.0
+        }
+      },
+      "hitboxes": [
+        { "frames": [11, 14], "box": { "x": 0.1, "y": 0.0, "w": 1.7, "h": 0.4 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [15, 24], "on": "hit", "tags": ["Special", "Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 9, "name": "sfx.katana.swing.sweep" },
+        { "frame": 11, "name": "vfx.trail.katana.sweep" }
+      ]
+    },
+    {
+      "id": "katana.jl",
+      "name": "Swallow Cut",
+      "tags": ["Normal", "Light", "Air"],
+      "flags": ["LandCancel", "KeepMomentum"],
+      "frames": 22,
+      "landingRecovery": 3,
+      "animation": "A_Katana_JL",
+      "triggers": [
+        { "buttons": ["Light"], "stance": ["Airborne"], "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 10], "gravity": 0.4 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 40, "posture": 50, "hitstun": 16, "blockstun": 12, "hitstop": 8, "height": "Overhead",
+          "knockback": 2.0, "airKnockback": [1.5, 4.0], "pushback": 2.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [6, 10], "box": { "x": 0.1, "y": 0.2, "w": 1.25, "h": 1.3 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [9, 16], "on": "contact", "to": ["katana.jl2"] }
+      ],
+      "cues": [
+        { "frame": 4, "name": "sfx.katana.swing.light" }
+      ]
+    },
+    {
+      "id": "katana.jl2",
+      "name": "Swallow Return",
+      "tags": ["Normal", "Light", "Air"],
+      "flags": ["ChainOnly", "LandCancel", "KeepMomentum"],
+      "frames": 22,
+      "landingRecovery": 3,
+      "animation": "A_Katana_JL2",
+      "triggers": [
+        { "buttons": ["Light"], "stance": ["Airborne"], "priority": 0 }
+      ],
+      "motion": [
+        { "frames": [1, 8], "gravity": 0.4 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 45, "posture": 55, "hitstun": 16, "blockstun": 12, "hitstop": 8, "height": "Overhead",
+          "knockback": 2.0, "airKnockback": [1.5, 4.5], "pushback": 2.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [5, 8], "box": { "x": 0.1, "y": 0.1, "w": 1.25, "h": 1.4 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [8, 16], "on": "hit", "to": ["katana.jh"] }
+      ],
+      "cues": [
+        { "frame": 3, "name": "sfx.katana.swing.light" }
+      ]
+    },
+    {
+      "id": "katana.jh",
+      "name": "Falling Heaven",
+      "tags": ["Normal", "Heavy", "Air"],
+      "flags": ["LandCancel", "KeepMomentum"],
+      "frames": 30,
+      "landingRecovery": 6,
+      "animation": "A_Katana_JH",
+      "triggers": [
+        { "buttons": ["Heavy"], "stance": ["Airborne"], "priority": 0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 70, "posture": 100, "hitstun": 22, "blockstun": 16, "hitstop": 11, "height": "Overhead",
+          "flags": ["Spike", "GroundBounce"], "airKnockback": [1.5, -9.0], "knockback": 3.0, "pushback": 3.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [8, 12], "box": { "x": 0.0, "y": -0.2, "w": 1.35, "h": 1.3 }, "attack": "hit" }
+      ],
+      "cues": [
+        { "frame": 6, "name": "sfx.katana.swing.heavy" },
+        { "frame": 8, "name": "vfx.trail.katana.spike" }
+      ]
+    },
+    {
+      "id": "katana.s",
+      "name": "Stillwater",
+      "tags": ["Special", "Counter"],
+      "frames": 40,
+      "animation": "A_Katana_S_Stance",
+      "triggers": [
+        { "buttons": ["Special"], "direction": "any", "priority": 0 }
+      ],
+      "counter": { "frames": [4, 24], "catches": ["Strike", "Projectile"], "move": "katana.sreprisal" },
+      "cues": [
+        { "frame": 1, "name": "sfx.katana.sheathe" },
+        { "frame": 4, "name": "vfx.stance.stillwater" }
+      ]
+    },
+    {
+      "id": "katana.sreprisal",
+      "name": "Stillwater Reprisal",
+      "tags": ["Special", "Counter"],
+      "flags": ["ChainOnly"],
+      "frames": 34,
+      "animation": "A_Katana_S_Reprisal",
+      "invulnerable": [
+        { "frames": [1, 10], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 110, "posture": 150, "blockstun": 18, "hitstop": 14,
+          "flags": ["Launch"], "launch": [3.0, 9.0], "pushback": 4.5
+        }
+      },
+      "hitboxes": [
+        { "frames": [3, 6], "box": { "x": 0.1, "y": 0.3, "w": 1.8, "h": 1.4 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [12, 20], "on": "hit", "jump": true, "tags": ["Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 1, "name": "sfx.katana.iai" },
+        { "frame": 3, "name": "vfx.slash.iai" },
+        { "frame": 3, "name": "cam.shake.heavy" }
+      ]
+    },
+    {
+      "id": "katana.qcfs",
+      "name": "Crescent Rush",
+      "tags": ["Special"],
+      "frames": 36,
+      "animation": "A_Katana_CrescentRush",
+      "triggers": [
+        { "buttons": ["Special"], "motion": "236", "schemes": ["Classic"], "priority": 20 },
+        { "buttons": ["Special"], "direction": "6", "schemes": ["Simplified"], "priority": 20 }
+      ],
+      "motion": [
+        { "frames": [6, 16], "velocityX": 9.0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 85, "posture": 110, "blockstun": 16, "hitstop": 11,
+          "flags": ["Knockdown"], "launch": [5.0, 4.0], "pushback": 4.0
+        }
+      },
+      "hitboxes": [
+        { "frames": [14, 17], "box": { "x": 0.1, "y": 0.5, "w": 1.4, "h": 1.0 }, "attack": "hit" }
+      ],
+      "cancels": [
+        { "frames": [18, 26], "on": "hit", "tags": ["Ultimate"] }
+      ],
+      "cues": [
+        { "frame": 6, "name": "sfx.katana.rush" },
+        { "frame": 14, "name": "vfx.slash.crescent" }
+      ]
+    },
+    {
+      "id": "katana.dps",
+      "name": "Ascending Dragon",
+      "tags": ["Special", "Launcher", "Evasive"],
+      "frames": 50,
+      "animation": "A_Katana_AscendingDragon",
+      "triggers": [
+        { "buttons": ["Special"], "motion": "623", "schemes": ["Classic"], "priority": 30 },
+        { "buttons": ["Special"], "direction": "8", "schemes": ["Simplified"], "priority": 30 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 8], "against": ["Strike"] }
+      ],
+      "motion": [
+        { "frames": [5, 6], "velocity": [1.5, 10.0] }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 100, "posture": 120, "blockstun": 16, "hitstop": 12,
+          "flags": ["Launch"], "launch": [2.0, 12.0], "pushback": 3.0
+        }
+      },
+      "hitboxes": [
+        { "frames": [5, 12], "box": { "x": -0.1, "y": 0.4, "w": 1.25, "h": 2.0 }, "attack": "hit" }
+      ],
+      "cues": [
+        { "frame": 4, "name": "sfx.katana.dragon" },
+        { "frame": 5, "name": "vfx.slash.dragon" }
+      ]
+    },
+    {
+      "id": "katana.qcbs",
+      "name": "Severing Wind",
+      "tags": ["Special", "Projectile"],
+      "frames": 40,
+      "animation": "A_Katana_SeveringWind",
+      "triggers": [
+        { "buttons": ["Special"], "motion": "214", "schemes": ["Classic"], "priority": 20 },
+        { "buttons": ["Special"], "direction": "4", "schemes": ["Simplified"], "priority": 20 }
+      ],
+      "spawn": [
+        { "frame": 14, "projectile": "katana.severingwind", "offset": [0.8, 0.9] }
+      ],
+      "cues": [
+        { "frame": 12, "name": "sfx.katana.wind" },
+        { "frame": 14, "name": "vfx.slash.wind.launch" }
+      ]
+    },
+    {
+      "id": "katana.ultimate",
+      "name": "Thousand Oaths",
+      "tags": ["Ultimate"],
+      "frames": 60,
+      "animation": "A_Katana_Ultimate_Start",
+      "cost": { "ultimate": 1000 },
+      "triggers": [
+        { "buttons": ["Ultimate"], "priority": 60 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 14], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "motion": [
+        { "frames": [8, 14], "velocityX": 10.0 }
+      ],
+      "attacks": {
+        "hit": {
+          "damage": 60, "chip": 30, "posture": 200, "hitstun": 30, "blockstun": 22, "hitstop": 16,
+          "flags": ["ChipKills"], "knockback": 1.0, "pushback": 4.0, "onHit": "katana.ultimate.hit"
+        }
+      },
+      "hitboxes": [
+        { "frames": [12, 16], "box": { "x": 0.1, "y": 0.2, "w": 2.0, "h": 1.6 }, "attack": "hit" }
+      ],
+      "cues": [
+        { "frame": 1, "name": "cam.ultimate.flash" },
+        { "frame": 1, "name": "sfx.ultimate.katana.start" }
+      ]
+    },
+    {
+      "id": "katana.ultimate.hit",
+      "name": "Thousand Oaths",
+      "tags": ["Ultimate", "Cinematic"],
+      "flags": ["ChainOnly"],
+      "frames": 150,
+      "animation": "A_Katana_Ultimate_Cinematic",
+      "attacks": {
+        "release": { "flags": ["Knockdown", "HardKnockdown"], "launch": [4.0, 6.0] }
+      },
+      "paired": {
+        "victimOffset": [1.1, 0],
+        "techWindow": 0,
+        "cinematic": true,
+        "hits": [
+          { "frame": 20, "damage": 25, "unscaled": true },
+          { "frame": 35, "damage": 25, "unscaled": true },
+          { "frame": 50, "damage": 25, "unscaled": true },
+          { "frame": 65, "damage": 25, "unscaled": true },
+          { "frame": 80, "damage": 35, "unscaled": true },
+          { "frame": 95, "damage": 35, "unscaled": true },
+          { "frame": 120, "damage": 110, "posture": 200, "unscaled": true }
+        ],
+        "releaseFrame": 125,
+        "releaseAttack": "release",
+        "victimAnimation": "A_Victim_Ultimate_Katana"
+      },
+      "cues": [
+        { "frame": 1, "name": "cam.ultimate.katana" },
+        { "frame": 120, "name": "sfx.ultimate.katana.final" },
+        { "frame": 120, "name": "cam.shake.ultra" }
+      ]
+    },
+    {
+      "id": "katana.execution",
+      "name": "Oathbreaker's Mercy",
+      "tags": ["Execution"],
+      "frames": 30,
+      "animation": "A_Katana_Execution_Start",
+      "triggers": [
+        { "buttons": ["Execute"], "conditions": ["TargetExecutable"], "priority": 100 }
+      ],
+      "invulnerable": [
+        { "frames": [1, 6], "against": ["Strike", "Throw", "Projectile"] }
+      ],
+      "attacks": {
+        "grab": { "flags": ["Grab", "Execution"], "onHit": "katana.execution.hit" }
+      },
+      "hitboxes": [
+        { "frames": [3, 6], "box": { "x": 0.0, "y": 0.0, "w": 1.9, "h": 1.8 }, "attack": "grab" }
+      ],
+      "cues": [
+        { "frame": 1, "name": "cam.execution.prompt" }
+      ]
+    },
+    {
+      "id": "katana.execution.hit",
+      "name": "Oathbreaker's Mercy",
+      "tags": ["Execution", "Cinematic"],
+      "flags": ["ChainOnly"],
+      "frames": 120,
+      "animation": "A_Katana_Execution",
+      "attacks": {
+        "release": { "flags": ["Knockdown", "HardKnockdown"], "launch": [3.0, 4.0] }
+      },
+      "paired": {
+        "victimOffset": [0.9, 0],
+        "techWindow": 0,
+        "cinematic": true,
+        "hits": [
+          { "frame": 40, "damage": 120, "unscaled": true },
+          { "frame": 80, "damage": 180, "unscaled": true }
+        ],
+        "releaseFrame": 95,
+        "releaseAttack": "release",
+        "victimAnimation": "A_Victim_Execution_Katana"
+      },
+      "cues": [
+        { "frame": 1, "name": "cam.execution.katana" },
+        { "frame": 80, "name": "sfx.execution.katana.final" },
+        { "frame": 80, "name": "cam.slowmo.finisher" }
+      ]
+    }
+  ]
+}

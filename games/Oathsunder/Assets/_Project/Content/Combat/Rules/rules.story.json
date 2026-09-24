@@ -1,0 +1,14 @@
+{
+  "id": "rules.story",
+  "roundsToWin": 1,
+  "roundTimerSeconds": 0,
+  "preRoundFrames": 60,
+  "knockoutHoldFrames": 180,
+  "perfectDodgeTimeScale": 0.35,
+  "perfectDodgeSlowFrames": 90,
+  "executions": true,
+  "rageBurst": true,
+  "rpgStats": true,
+  "carryUltimateMeter": true,
+  "friendlyFire": false
+}

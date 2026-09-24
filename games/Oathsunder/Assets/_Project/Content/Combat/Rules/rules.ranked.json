@@ -1,0 +1,14 @@
+{
+  "id": "rules.ranked",
+  "roundsToWin": 2,
+  "roundTimerSeconds": 99,
+  "preRoundFrames": 90,
+  "knockoutHoldFrames": 150,
+  "perfectDodgeTimeScale": 0.5,
+  "perfectDodgeSlowFrames": 24,
+  "executions": true,
+  "rageBurst": true,
+  "rpgStats": false,
+  "carryUltimateMeter": true,
+  "friendlyFire": false
+}

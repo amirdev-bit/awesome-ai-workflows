@@ -1,0 +1,9 @@
+{
+  "id": "stage.emberfall.belltower",
+  "name": "Emberfall — The Ash Belltower",
+  "leftWall": -9,
+  "rightWall": 9,
+  "maxSeparation": 8,
+  "spawnOffset": 1.6,
+  "wallBounce": true
+}

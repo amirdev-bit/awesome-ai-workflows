@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# OATHSUNDER — Unity 6 project ignores (paths are relative to this folder)
+# ---------------------------------------------------------------------------
+
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# IDE / Unity-generated solution files at the project root (the .NET tooling solution lives in Tools/DotNet)
+/*.csproj
+/*.unityproj
+/*.sln
+/*.suo
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+/*.svd
+/*.pdb
+/*.mdb
+/*.opendb
+/*.VC.db
+.vs/
+.idea/
+.vscode/
+
+# Debug symbol metas
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Build artefacts
+*.apk
+*.aab
+*.ipa
+*.unitypackage
+*.app
+sysinfo.txt
+crashlytics-build.properties
+
+# Addressables build output
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# .NET tooling output
+Tools/DotNet/**/bin/
+Tools/DotNet/**/obj/
+Tools/DotNet/**/TestResults/
+Tools/DotNet/**/BenchmarkResults/

@@ -1,0 +1,9 @@
+{
+  "id": "stage.training.dojo",
+  "name": "Adekan's Dojo",
+  "leftWall": -12,
+  "rightWall": 12,
+  "maxSeparation": 8,
+  "spawnOffset": 1.6,
+  "wallBounce": true
+}

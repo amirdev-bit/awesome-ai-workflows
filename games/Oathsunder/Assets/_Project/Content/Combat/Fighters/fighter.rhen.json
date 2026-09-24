@@ -1,0 +1,47 @@
+{
+  "id": "fighter.rhen",
+  "name": "Rhen",
+  "maxHealth": 1000,
+  "maxPosture": 1000,
+  "walkForwardSpeed": 3.2,
+  "walkBackwardSpeed": 2.6,
+  "preJumpFrames": 4,
+  "jumpVelocity": 11.4,
+  "jumpForwardSpeed": 3.9,
+  "jumpBackwardSpeed": 3.3,
+  "gravity": 37.8,
+  "maxFallSpeed": 18,
+  "groundFriction": 20,
+  "landingFrames": 3,
+  "softKnockdownFrames": 32,
+  "hardKnockdownFrames": 55,
+  "wakeUpFrames": 22,
+  "knockbackPermille": 1000,
+  "stances": {
+    "standing": {
+      "hurtboxes": [
+        { "x": -0.3, "y": 0, "w": 0.6, "h": 1.45 },
+        { "x": -0.2, "y": 1.45, "w": 0.4, "h": 0.35 }
+      ],
+      "pushbox": { "x": -0.28, "y": 0, "w": 0.56, "h": 1.6 }
+    },
+    "crouching": {
+      "hurtboxes": [
+        { "x": -0.34, "y": 0, "w": 0.68, "h": 1.05 }
+      ],
+      "pushbox": { "x": -0.3, "y": 0, "w": 0.6, "h": 1.0 }
+    },
+    "airborne": {
+      "hurtboxes": [
+        { "x": -0.3, "y": 0.2, "w": 0.6, "h": 1.35 }
+      ],
+      "pushbox": { "x": -0.25, "y": 0.35, "w": 0.5, "h": 1.05 }
+    },
+    "knockdown": {
+      "hurtboxes": [
+        { "x": -0.9, "y": 0, "w": 1.8, "h": 0.45 }
+      ],
+      "pushbox": { "x": -0.5, "y": 0, "w": 1.0, "h": 0.4 }
+    }
+  }
+}

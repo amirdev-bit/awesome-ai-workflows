@@ -1,0 +1,14 @@
+{
+  "id": "rules.training",
+  "roundsToWin": 1,
+  "roundTimerSeconds": 0,
+  "preRoundFrames": 0,
+  "knockoutHoldFrames": 60,
+  "perfectDodgeTimeScale": 0.35,
+  "perfectDodgeSlowFrames": 90,
+  "executions": true,
+  "rageBurst": true,
+  "rpgStats": false,
+  "carryUltimateMeter": true,
+  "friendlyFire": false
+}

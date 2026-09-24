@@ -1,0 +1,18 @@
+<Project>
+  <!--
+    Shared settings for the out-of-engine build of the deterministic simulation.
+    LangVersion and the netstandard2.1 target deliberately match Unity 6 so that anything that compiles
+    here also compiles inside the Unity editor and IL2CPP player builds.
+  -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <UnityAssetsRoot>$(MSBuildThisFileDirectory)../../Assets/_Project/</UnityAssetsRoot>
+    <UseArtifactsOutput>false</UseArtifactsOutput>
+  </PropertyGroup>
+</Project>
