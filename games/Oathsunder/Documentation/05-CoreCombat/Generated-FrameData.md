@@ -16,7 +16,7 @@
 | katana.l2h | Heaven's Draw | 70 | 10 | 4 | 17 | 30 | KD/Launch | -6 | Launch |
 | katana.h1 | Iron Draw | 90 | 12 | 3 | 16 | 30 | +4 | 0 | Launch on CH |
 | katana.h2 | Twin Moon | 110 | 10 | 8 | 15 | 32 | +6 | 0 |  |
-| katana.h3 | Sundering Arc | 110 | 14 | 4 | 23 | 40 | KD/Launch | -6 | KD, Ground Bounce |
+| katana.h3 | Sundering Arc | 110 | 14 | 4 | 23 | 40 | KD/Launch | -6 | Overhead, KD, Ground Bounce |
 | katana.hcharged | Moonsplitter | 120 | 10 | 4 | 19 | 32 | KD/Launch | -2 | KD |
 | katana.hchargedfull | Moonsplitter — Full Moon | 160 | 12 | 4 | 21 | 36 | KD/Launch | — | KD, Wall Bounce, Guard Crush |
 | katana.fl | Stepping Thrust | 60 | 12 | 3 | 14 | 28 | +4 | -1 |  |

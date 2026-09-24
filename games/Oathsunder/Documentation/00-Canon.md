@@ -132,6 +132,11 @@ personality profile, exclusive theme, custom arena, legendary rewards, exclusive
 Every class ships with: Light combo tree, Heavy combo tree, Air combo, Charged attack, Special skill,
 Ultimate ability, Mastery progression.
 
+Arcane Weapons have three sub-form move sets sharing one mastery track (`mastery.arcane`):
+`weapon.arcane.grimoire` (moves `grimoire.*`), `weapon.arcane.warfan` (`warfan.*`) and
+`weapon.arcane.soullantern` (`soullantern.*`). Sequence moves triggered by a hit use a `.hit` suffix
+(e.g. `katana.ultimate.hit`, `universal.throwforward.hit`).
+
 ---
 
 ## 7. Combat canon (summary — the code is authoritative for frame-level numbers)
@@ -150,13 +155,13 @@ Directions use **numpad notation** relative to facing (`6` = forward, `4` = back
 | Guard | Dedicated `Guard` button. Standing guard blocks high/mid/overhead; crouch guard (`Guard`+`2`) blocks high/mid/low |
 | Perfect Parry | Pressing `Guard` ≤ **6** frames before contact. Mashing shortens the window to **2** frames |
 | Perfect Dodge | Dodge whose *perfect window* overlaps an attack → **Shadow Time** (attacker slowed) + Shadow meter |
-| Posture | Blocking and being parried fill posture. Full posture → **Guard Break** (stagger) → Execution opportunity |
+| Posture | Blocking (full value), being hit (half value, can never break guard by itself) and being parried (1.5×) fill posture. Full posture → **Guard Break** (stagger) → Execution opportunity |
 | Hitstop | Both fighters freeze on contact (light 8, heavy 12, ultimate 16 frames typical) |
 | Juggles | Juggle points cap air combos; gravity scales with combo length; wall and ground bounce once per combo |
-| Ember Rage | Rage meter full → `Rage`: 8 s, +20% damage, heavy attacks gain 1-hit armor |
+| Ember Rage | Rage meter full → `Rage`: 8 s, +20% damage, heavy attacks gain 1-hit armor. Activation is invulnerable, blasts nearby foes, and can be used from hitstun as a combo-breaking **Ember Burst** (rule-controlled). Rage and Shadow are mutually exclusive. |
 | Umbral Shadow | Shadow meter full → `Shadow`: 6 s, every hit spawns a delayed **shadow echo** (Sable strikes again) |
 | Ultimate | Ultimate meter full → weapon's Ultimate, a cinematic paired attack |
-| Execution | Target guard-broken, or ≤ 15% health and staggered → `Execute` in range → paired execution |
+| Execution | Target guard-broken, or ≤ 15% health while staggered or in hitstun → `Execute` within 1.8 m → paired execution |
 | Finisher | Round-ending Execution or Ultimate triggers the slow-motion cinematic finisher |
 
 ---
@@ -165,10 +170,28 @@ Directions use **numpad notation** relative to facing (`6` = forward, `4` = back
 
 | Ending ID | Name | Condition |
 |---|---|---|
-| `ending.solemndawn` | **The Solemn Dawn** | Restore ≥ 9 Oathstones. Rhen takes the Throne; the cycle continues. |
-| `ending.unboundnight` | **The Unbound Night** | Sunder ≥ 9 Oathstones. All oaths break; the dead walk free. |
-| `ending.rewovenoath` | **The Rewoven Oath** (true) | Balanced choices + Liss's questline + all 12 Oath Fragments → defeat The First Shadow |
+| `ending.solemndawn` | **The Solemn Dawn** | Restore ≥ 9 Oathstones, **or** a balanced Rhen swears the *Final Vow of Restoration* at the Sealed Gate. Rhen takes the Throne; the cycle continues. |
+| `ending.unboundnight` | **The Unbound Night** | Sunder ≥ 9 Oathstones, **or** a balanced Rhen swears the *Final Vow of Sundering* at the Sealed Gate. All oaths break; the dead walk free. |
+| `ending.rewovenoath` | **The Rewoven Oath** (true) | Balanced choices (4–8 Oathstones restored) + Liss's questline + all 12 Oath Fragments → defeat The First Shadow |
 | `ending.sableascendant` | **Sable Ascendant** (secret) | Yield to Sable in the mirror duel |
+
+A balanced player is never blocked from finishing the story: at the Sealed Gate they either complete the
+true-ending requirements or swear a Final Vow that commits them to the Dawn or the Night.
+
+### 8.1 Canon clarifications (resolved in Phase 2)
+
+| Topic | Ruling |
+|---|---|
+| Emperor Aurem | The first emperor and the present-day boss are the same man: deathless for 500 years because he cut away his own shadow when he swore the Oath. |
+| The First Shadow | Aurem's severed shadow: the keystone of the seal, grown vast on five centuries of tithe. |
+| Balanced route | 4–8 Oathstones restored (Oath Balance −4…+4). |
+| Mirror duel | Every route fights Sable at `finale.gate`; yielding (taking Sable's hand with `Grab` during the Offer) is the secret ending. |
+| Finale content | Lives in a `finale.*` namespace outside the 120 story missions (10 per region stays exact). |
+| Raids | The Drowned Choir lies beneath the Weeping Reeds; the Ferrous Maw beneath Ironroot; the Hundred-Handed Warden opens after the campaign on the Undermourn side of the Gate. |
+| Tamsin | Withdraws from one encounter in each of regions 2–6; full boss duel at `mission.lanternhold.08`. |
+| Collectible echoes | Lore recordings use `echo.*` ids to avoid confusion with the Umbral Shadow combat "shadow echo". |
+| Sovereignty Oathstone | If restored, Rhen swears it himself. |
+| Additional id namespaces | `quest.*`, `flag.*`, `fragment.*`, `side.*`, `raid.*`, `finale.*`, `echo.*`, `mission.<region>.<nn>`. |
 
 ---
 

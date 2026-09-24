@@ -207,7 +207,7 @@ Boxes are `{ "x", "y", "w", "h" }` with the minimum corner relative to the fight
 | Posture | Block adds full posture damage, hit adds half (never breaks by hits), parry adds 1.5× to the attacker. At max: Guard Break → Staggered 80 frames, executable. Regenerates 3/frame after 90 frames without posture damage. |
 | Counter hit / punish | Hit during an attack's startup or active frames: ×1.2 damage, +4 hitstun, +2 hitstop, `LaunchOnCounter` launches. Hit during recovery or landing: ×1.1 damage, +2 hitstun. |
 | Combo scaling | Starter hit deals 100 %. Hit *n* ≥ 2 deals `max(30 %, perHit(n) × starterProration)` where `perHit` is 100 % for hits 1–2, then −10 % per hit. Example: L1→L2→L3→L4 = 40 + 36 + 39 + 57 = **172**. |
-| Hitstun decay | From the 7th hit, −1 frame of hitstun every 2 hits (minimum 6). |
+| Hitstun decay | After the 6th hit, one frame of hitstun is removed per two further hits: hit 8 loses 1, hit 10 loses 2, … (minimum 6). |
 | Juggles | Juggle points (budget 8) plus +4 % gravity per combo hit (cap 180 %). Hits that would exceed the budget whiff. |
 | Bounces | `WallBounce` / `GroundBounce` set a pending bounce consumed on contact, once per combo each. `Spike` knocks down airborne victims only. |
 | Throws | 5-frame grab boxes; cannot grab victims in hit/blockstun, launched, knocked down, waking up, staggered, or within 4 frames after stun. Tech: press Grab within 8 frames of the connect → both pushed apart. Simultaneous throws tech automatically. Back throws turn the thrower around. |

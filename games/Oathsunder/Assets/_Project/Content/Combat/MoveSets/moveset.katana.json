@@ -232,7 +232,7 @@
       ],
       "attacks": {
         "hit": {
-          "damage": 110, "posture": 160, "blockstun": 20, "hitstop": 13,
+          "damage": 110, "posture": 160, "blockstun": 20, "hitstop": 13, "height": "Overhead",
           "flags": ["Knockdown", "GroundBounce", "Finisher"], "launch": [2.5, -3.0], "pushback": 4.5
         }
       },
