@@ -9,8 +9,9 @@ namespace Oathsunder.Combat.Content
     public readonly struct FrameDataRow
     {
         /// <summary>Creates a row.</summary>
-        public FrameDataRow(string moveId, string name, int startup, int active, int recovery, int total, int? onHit, int? onBlock, int damage, string notes)
+        public FrameDataRow(string moveId, string name, int startup, int active, int recovery, int total, int? onHit, int? onBlock, int damage, string notes, bool isGrab = false)
         {
+            IsGrab = isGrab;
             MoveId = moveId;
             Name = name;
             Startup = startup;
@@ -52,6 +53,9 @@ namespace Oathsunder.Combat.Content
 
         /// <summary>Notes (KD, Launch, Low, Overhead, Wall Bounce…).</summary>
         public string Notes { get; }
+
+        /// <summary>True for throws and executions (their result is a paired action, not hitstun).</summary>
+        public bool IsGrab { get; }
     }
 
     /// <summary>
@@ -114,10 +118,12 @@ namespace Oathsunder.Combat.Content
             int recovery = move.TotalFrames - move.LastActiveFrame;
             int? onHit = null;
             int? onBlock = null;
+            bool isGrab = false;
             var notes = new List<string>();
             if (last != null)
             {
                 var attack = move.Attacks[last.AttackIndex];
+                isGrab = attack.Has(AttackFlags.Grab);
                 int remaining = move.TotalFrames - last.Window.Start;
                 bool reaction = attack.Has(AttackFlags.Launch | AttackFlags.Knockdown | AttackFlags.HardKnockdown);
                 if (!reaction && !attack.Has(AttackFlags.Grab))
@@ -148,7 +154,7 @@ namespace Oathsunder.Combat.Content
                 notes.Add($"Armor x{armor.Hits} {armor.Window}");
             }
 
-            return new FrameDataRow(move.Id, move.Name, startup, active, recovery, move.TotalFrames, onHit, onBlock, totalDamage, string.Join(", ", notes));
+            return new FrameDataRow(move.Id, move.Name, startup, active, recovery, move.TotalFrames, onHit, onBlock, totalDamage, string.Join(", ", notes), isGrab);
         }
 
         /// <summary>Formats rows as a Markdown table.</summary>
@@ -166,7 +172,7 @@ namespace Oathsunder.Combat.Content
                     .Append(" | ").Append(row.Active.ToString(CultureInfo.InvariantCulture))
                     .Append(" | ").Append(row.Recovery.ToString(CultureInfo.InvariantCulture))
                     .Append(" | ").Append(row.Total.ToString(CultureInfo.InvariantCulture))
-                    .Append(" | ").Append(FormatAdvantage(row.OnHit, "KD/Launch"))
+                    .Append(" | ").Append(FormatAdvantage(row.OnHit, row.IsGrab ? "Grab" : "KD/Launch"))
                     .Append(" | ").Append(FormatAdvantage(row.OnBlock, "—"))
                     .Append(" | ").Append(row.Notes)
                     .AppendLine(" |");

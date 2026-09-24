@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Release-mode micro benchmarks for the deterministic simulation. Run: dotnet run -c Release -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <TieredPGO>true</TieredPGO>
+    <ServerGarbageCollector>false</ServerGarbageCollector>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="*.cs" />
+    <Compile Include="../Shared/*.cs" />
+    <Compile Include="$(UnityAssetsRoot)Tests/EditMode/Support/RandomInputGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Oathsunder.Simulation/Oathsunder.Simulation.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+{
+    "name": "Oathsunder.Editor",
+    "rootNamespace": "Oathsunder.Editor",
+    "references": [
+        "Oathsunder.Core",
+        "Oathsunder.Combat",
+        "Oathsunder.Gameplay"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

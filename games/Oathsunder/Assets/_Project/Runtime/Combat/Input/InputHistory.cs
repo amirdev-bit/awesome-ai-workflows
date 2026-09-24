@@ -167,6 +167,36 @@ namespace Oathsunder.Combat.Input
             return IsChordCompletedOn(frame, chord, chordWindow, earliestAllowed);
         }
 
+        /// <summary>
+        /// Every button with at least one unconsumed press inside the buffer window. One pass over the window; the
+        /// move selector uses it to skip triggers whose buttons were not pressed, which is the common case.
+        /// </summary>
+        public InputButtons BufferedPresses(int currentLocalFrame, int bufferWindow)
+        {
+            int start = EarliestBufferedFrame(currentLocalFrame, bufferWindow);
+            if (start == int.MaxValue)
+            {
+                return InputButtons.None;
+            }
+
+            int earliestAllowed = Math.Max(ConsumedThroughFrame + 1, EarliestEdgeFrame);
+            if (start < earliestAllowed)
+            {
+                start = earliestAllowed;
+            }
+
+            ushort previous = start - 1 >= 1 && Contains(start - 1) ? _packed[(start - 1) & IndexMask] : (ushort)0;
+            ushort pressed = 0;
+            for (int frame = start; frame <= LatestFrame; frame++)
+            {
+                ushort current = _packed[frame & IndexMask];
+                pressed |= (ushort)(current & ~previous);
+                previous = current;
+            }
+
+            return (InputButtons)(pressed & (ushort)InputButtons.All);
+        }
+
         /// <summary>Marks all presses up to and including <paramref name="worldFrame"/> as consumed.</summary>
         public void ConsumeThrough(int worldFrame)
         {

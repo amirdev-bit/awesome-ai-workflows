@@ -17,6 +17,7 @@ Structure
 - "/prompts" → reusable AI prompts
 - "/tools" → lightweight utilities
 - "/guides" → tutorials and workflows
+- "/games/Oathsunder" → OATHSUNDER, a Unity 6 action fighting RPG built with AI-assisted production workflows ([docs](games/Oathsunder/Documentation/README.md))
 
 Contributing
 

@@ -9,7 +9,6 @@
     <AssemblyName>Oathsunder.Simulation</AssemblyName>
     <RootNamespace>Oathsunder</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(UnityAssetsRoot)Runtime/Core/**/*.cs" />

@@ -1,0 +1,23 @@
+{
+    "name": "Oathsunder.Tests.PlayMode",
+    "rootNamespace": "Oathsunder.Tests.PlayMode",
+    "references": [
+        "UnityEngine.TestRunner",
+        "Oathsunder.Core",
+        "Oathsunder.Combat",
+        "Oathsunder.Gameplay"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

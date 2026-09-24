@@ -407,6 +407,7 @@ namespace Oathsunder.Combat.Simulation
             var stance = f.Grounded ? TriggerStance.Grounded : TriggerStance.Airborne;
             var best = Selection.None;
             int jumpPress = -1;
+            var pressed = input.BufferedPresses(f.LocalFrame, _ctx.Tuning.InputBufferFrames);
 
             foreach (var window in move.Cancels)
             {
@@ -440,7 +441,7 @@ namespace Oathsunder.Combat.Simulation
 
                 foreach (int candidate in window.Candidates)
                 {
-                    EvaluateMove(index, ref f, candidate, stance, ref best);
+                    EvaluateMove(index, ref f, candidate, stance, pressed, ref best);
                 }
 
                 if (window.AllowJump && f.Grounded && jumpPress < 0)
@@ -491,9 +492,10 @@ namespace Oathsunder.Combat.Simulation
         private bool TryStartFromNeutral(int index, ref FighterState f, TriggerStance stance)
         {
             var best = Selection.None;
+            var pressed = _ctx.State.Inputs[index].BufferedPresses(f.LocalFrame, _ctx.Tuning.InputBufferFrames);
             foreach (int candidate in _ctx.Blueprints[index].NeutralCandidates)
             {
-                EvaluateMove(index, ref f, candidate, stance, ref best);
+                EvaluateMove(index, ref f, candidate, stance, pressed, ref best);
             }
 
             if (best.Move < 0)
@@ -514,7 +516,7 @@ namespace Oathsunder.Combat.Simulation
             }
         }
 
-        private void EvaluateMove(int index, ref FighterState f, int moveIndex, TriggerStance stance, ref Selection best)
+        private void EvaluateMove(int index, ref FighterState f, int moveIndex, TriggerStance stance, InputButtons pressed, ref Selection best)
         {
             var move = _ctx.Blueprints[index].Moves[moveIndex];
             if (f.Rage < move.Cost.Rage || f.Shadow < move.Cost.Shadow || f.Ultimate < move.Cost.Ultimate)
@@ -525,6 +527,12 @@ namespace Oathsunder.Combat.Simulation
             foreach (var trigger in move.Triggers)
             {
                 if ((trigger.Stance & stance) == 0 || (trigger.Schemes & _ctx.Schemes[index]) == 0)
+                {
+                    continue;
+                }
+
+                // Fast reject: a button trigger needs every one of its buttons freshly pressed inside the buffer.
+                if (trigger.Buttons != InputButtons.None && (trigger.Buttons & ~pressed) != 0)
                 {
                     continue;
                 }

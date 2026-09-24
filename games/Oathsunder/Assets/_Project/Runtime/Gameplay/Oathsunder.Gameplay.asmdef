@@ -1,0 +1,17 @@
+{
+    "name": "Oathsunder.Gameplay",
+    "rootNamespace": "Oathsunder.Gameplay",
+    "references": [
+        "Oathsunder.Core",
+        "Oathsunder.Combat"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
