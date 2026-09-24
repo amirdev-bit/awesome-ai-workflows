@@ -13,5 +13,6 @@
   <ItemGroup>
     <Compile Include="$(UnityAssetsRoot)Runtime/Core/**/*.cs" />
     <Compile Include="$(UnityAssetsRoot)Runtime/Combat/**/*.cs" />
+    <Compile Include="$(UnityAssetsRoot)Runtime/Input/**/*.cs" />
   </ItemGroup>
 </Project>

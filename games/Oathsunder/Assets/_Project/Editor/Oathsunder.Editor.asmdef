@@ -4,7 +4,8 @@
     "references": [
         "Oathsunder.Core",
         "Oathsunder.Combat",
-        "Oathsunder.Gameplay"
+        "Oathsunder.Gameplay",
+        "Oathsunder.Controls"
     ],
     "includePlatforms": [
         "Editor"

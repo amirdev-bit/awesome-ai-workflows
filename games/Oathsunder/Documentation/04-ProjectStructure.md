@@ -21,9 +21,11 @@ games/Oathsunder/
 │       │   │   ├── Content/             JSON parser, blueprint builder, content set, frame data
 │       │   │   ├── Simulation/          world, state, controller, physics, hits, projectiles, rounds
 │       │   │   └── Events/              combat events and buffer
-│       │   ├── Gameplay/                Oathsunder.Gameplay    (Unity bridge)  ✅ Phase 5
-│       │   │   └── Combat/              runner, presenter, feedback, cues, debug drawer, configs
-│       │   ├── Input/                   Oathsunder.Input                        Phase 6
+│       │   ├── Gameplay/                Oathsunder.Gameplay    (Unity bridge)  ✅ Phases 5–6
+│       │   │   ├── Combat/              runner, presenter, feedback, cues, debug drawer, configs
+│       │   │   ├── Controls/            player input source, profile store, rebinder, touch overlay
+│       │   │   └── Cameras/             combat camera rig
+│       │   ├── Input/                   Oathsunder.Controls    (engine-free)   ✅ Phase 6
 │       │   ├── Animation/               Oathsunder.Animation                    Phase 7
 │       │   ├── AI/                      Oathsunder.AI          (engine-free)    Phase 8
 │       │   ├── RPG/                     Oathsunder.RPG         (engine-free)    Phase 10
@@ -46,7 +48,7 @@ games/Oathsunder/
 │       ├── Settings/                    URP tiers, Input actions, quality
 │       ├── Prefabs/
 │       └── Tests/
-│           ├── EditMode/                Oathsunder.Tests.EditMode               ✅ 144 tests
+│           ├── EditMode/                Oathsunder.Tests.EditMode               ✅ 176 tests
 │           ├── PlayMode/                Oathsunder.Tests.PlayMode               ✅ runner smoke tests
 │           └── Performance/                                                     Phase 15
 ├── Packages/manifest.json               ✅ pinned Unity 6 packages
@@ -74,7 +76,8 @@ budgets and owning phase.
 |---|---|---|---|---|
 | `Oathsunder.Core` | `Runtime/Core/Oathsunder.Core.asmdef` | all | **true** | — |
 | `Oathsunder.Combat` | `Runtime/Combat/Oathsunder.Combat.asmdef` | all | **true** | Core |
-| `Oathsunder.Gameplay` | `Runtime/Gameplay/Oathsunder.Gameplay.asmdef` | all | false | Core, Combat |
+| `Oathsunder.Controls` | `Runtime/Input/Oathsunder.Controls.asmdef` | all | **true** | Core, Combat |
+| `Oathsunder.Gameplay` | `Runtime/Gameplay/Oathsunder.Gameplay.asmdef` | all | false | Core, Combat, Controls, Unity.InputSystem |
 | `Oathsunder.Editor` | `Editor/Oathsunder.Editor.asmdef` | Editor | false | Core, Combat, Gameplay |
 | `Oathsunder.Tests.EditMode` | `Tests/EditMode/Oathsunder.Tests.EditMode.asmdef` | Editor | false | Core, Combat, TestRunner, NUnit |
 | `Oathsunder.Tests.PlayMode` | `Tests/PlayMode/Oathsunder.Tests.PlayMode.asmdef` | all | false | Core, Combat, Gameplay, TestRunner, NUnit |

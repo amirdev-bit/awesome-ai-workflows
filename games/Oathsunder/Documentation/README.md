@@ -10,8 +10,8 @@ Production documentation, one document per phase. Everything here must agree wit
 | 3 | [03 · Technical Architecture](03-TechnicalArchitecture.md) | ✅ |
 | 4 | [04 · Project Structure](04-ProjectStructure.md) | ✅ |
 | 5 | [05 · Core Combat Framework](05-CoreCombat.md) + [generated frame data, animation spec, cue list](05-CoreCombat/Generated-FrameData.md) | ✅ implemented, 144 tests |
-| 6 | Player Controller — input devices, touch layout, remapping, camera | next |
-| 7 | Animation System | planned |
+| 6 | [06 · Player Controller](06-PlayerController.md) — devices, touch, remapping, camera | ✅ implemented, 32 tests |
+| 7 | Animation System | next |
 | 8 | Enemy AI | planned |
 | 9 | Weapons (12 remaining classes) | planned |
 | 10 | RPG Systems | planned |

@@ -47,6 +47,7 @@ namespace UnityEngine
     public class Transform : Component
     {
         public Vector3 position { get; set; }
+        public Transform parent { get; set; }
         public Vector3 localPosition { get; set; }
         public Quaternion rotation { get; set; }
         public void SetPositionAndRotation(Vector3 position, Quaternion rotation) { }
@@ -55,6 +56,7 @@ namespace UnityEngine
     public struct Vector2
     {
         public float x, y;
+        public float sqrMagnitude => x * x + y * y;
         public Vector2(float x, float y) { this.x = x; this.y = y; }
         public static Vector2 operator *(Vector2 a, float d) => a;
         public static implicit operator Vector3(Vector2 v) => new Vector3(v.x, v.y, 0f);
@@ -68,12 +70,15 @@ namespace UnityEngine
         public static Vector3 operator +(Vector3 a, Vector3 b) => a;
         public static Vector3 operator -(Vector3 a, Vector3 b) => a;
         public static Vector3 zero => default;
+        public static Vector3 up => default;
+        public static Vector3 Lerp(Vector3 a, Vector3 b, float t) => a;
     }
 
     public struct Quaternion
     {
         public static Quaternion identity => default;
         public static Quaternion Euler(float x, float y, float z) => default;
+        public static Quaternion LookRotation(Vector3 forward, Vector3 upwards) => default;
     }
 
     public struct Color
@@ -103,6 +108,14 @@ namespace UnityEngine
 
     public static class Mathf
     {
+        public const float Deg2Rad = 0.0174532924f;
+        public static float Min(float a, float b) => a;
+        public static float Lerp(float a, float b, float t) => a;
+        public static float Exp(float power) => power;
+        public static float Tan(float f) => f;
+        public static float Sqrt(float f) => f;
+        public static bool Approximately(float a, float b) => true;
+        public static float Clamp(float v, float min, float max) => v;
         public static float Max(float a, float b) => a;
         public static int Max(int a, int b) => a;
         public static float Clamp01(float v) => v;
@@ -138,7 +151,27 @@ namespace UnityEngine
     public static class Application
     {
         public static string dataPath => "";
+        public static string persistentDataPath => "";
+        public static bool isMobilePlatform => false;
     }
+
+    public static class Screen
+    {
+        public static int width => 0;
+        public static int height => 0;
+        public static float dpi => 0f;
+    }
+
+    public class Camera : Behaviour
+    {
+        public float fieldOfView { get; set; }
+        public float aspect { get; set; }
+    }
+
+    public enum TextAnchor { UpperLeft, UpperCenter, UpperRight, MiddleLeft, MiddleCenter, MiddleRight, LowerLeft, LowerCenter, LowerRight }
+
+    [AttributeUsage(AttributeTargets.Class)] public sealed class RequireComponent : Attribute { public RequireComponent(Type type) { } }
+    [AttributeUsage(AttributeTargets.Field)] public sealed class HeaderAttribute : PropertyAttribute { public HeaderAttribute(string header) { } }
 
     public class Animator : Behaviour
     {
@@ -279,5 +312,150 @@ namespace UnityEditor
         public static void HelpBox(string message, MessageType type) { }
         public static Vector2 BeginScrollView(Vector2 scrollPosition, params GUILayoutOption[] options) => scrollPosition;
         public static void EndScrollView() { }
+    }
+}
+
+namespace UnityEngine.InputSystem.Utilities
+{
+    public struct ReadOnlyArray<T> : System.Collections.Generic.IEnumerable<T>
+    {
+        public int Count => 0;
+        public T this[int index] => default;
+        public System.Collections.Generic.IEnumerator<T> GetEnumerator() { yield break; }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+}
+
+namespace UnityEngine.InputSystem
+{
+    using System;
+    using UnityEngine.InputSystem.Utilities;
+
+    public enum InputActionType { Value, Button, PassThrough }
+
+    public enum TouchPhase { None, Began, Moved, Ended, Canceled, Stationary }
+
+    public struct InputBinding
+    {
+        public string effectivePath => "";
+        public string path { get; set; }
+    }
+
+    public struct BindingSyntax { }
+
+    public sealed class InputAction : IDisposable
+    {
+        public InputAction(string name = null, InputActionType type = InputActionType.Value, string binding = null) { }
+        public ReadOnlyArray<InputBinding> bindings => default;
+        public BindingSyntax AddBinding(string path) => default;
+        public void Enable() { }
+        public void Disable() { }
+        public void Dispose() { }
+        public bool IsPressed() => false;
+        public TValue ReadValue<TValue>() where TValue : struct => default;
+    }
+
+    public static class InputActionRebindingExtensions
+    {
+        public sealed class RebindingOperation : IDisposable
+        {
+            public RebindingOperation WithControlsExcluding(string path) => this;
+            public RebindingOperation WithCancelingThrough(string path) => this;
+            public RebindingOperation OnMatchWaitForAnother(float seconds) => this;
+            public RebindingOperation OnComplete(Action<RebindingOperation> callback) => this;
+            public RebindingOperation OnCancel(Action<RebindingOperation> callback) => this;
+            public RebindingOperation Start() => this;
+            public void Cancel() { }
+            public void Dispose() { }
+        }
+
+        public static RebindingOperation PerformInteractiveRebinding(this InputAction action, int bindingIndex = -1) => new RebindingOperation();
+    }
+}
+
+namespace UnityEngine.InputSystem.EnhancedTouch
+{
+    using UnityEngine.InputSystem.Utilities;
+
+    public static class EnhancedTouchSupport
+    {
+        public static void Enable() { }
+    }
+
+    public struct Touch
+    {
+        public static ReadOnlyArray<Touch> activeTouches => default;
+        public int touchId => 0;
+        public UnityEngine.InputSystem.TouchPhase phase => default;
+        public Vector2 screenPosition => default;
+    }
+}
+
+namespace UnityEngine.UIElements
+{
+    public enum DisplayStyle { Flex, None }
+    public enum Position { Relative, Absolute }
+    public enum PickingMode { Position, Ignore }
+    public enum LengthUnit { Pixel, Percent }
+
+    public struct Length
+    {
+        public Length(float value, LengthUnit unit) { }
+    }
+
+    public struct StyleLength
+    {
+        public static implicit operator StyleLength(float v) => default;
+        public static implicit operator StyleLength(Length v) => default;
+    }
+
+    public struct StyleFloat { public static implicit operator StyleFloat(float v) => default; }
+    public struct StyleColor { public static implicit operator StyleColor(Color v) => default; }
+    public struct StyleEnum<T> where T : struct { public static implicit operator StyleEnum<T>(T v) => default; }
+
+    public interface IStyle
+    {
+        StyleEnum<Position> position { get; set; }
+        StyleLength left { get; set; }
+        StyleLength top { get; set; }
+        StyleLength width { get; set; }
+        StyleLength height { get; set; }
+        StyleLength borderTopLeftRadius { get; set; }
+        StyleLength borderTopRightRadius { get; set; }
+        StyleLength borderBottomLeftRadius { get; set; }
+        StyleLength borderBottomRightRadius { get; set; }
+        StyleColor backgroundColor { get; set; }
+        StyleEnum<DisplayStyle> display { get; set; }
+        StyleFloat opacity { get; set; }
+        StyleFloat flexGrow { get; set; }
+        StyleEnum<TextAnchor> unityTextAlign { get; set; }
+    }
+
+    public interface IResolvedStyle
+    {
+        float width { get; }
+        float height { get; }
+    }
+
+    public class VisualElement
+    {
+        public string name { get; set; }
+        public PickingMode pickingMode { get; set; }
+        public IStyle style => null;
+        public IResolvedStyle resolvedStyle => null;
+        public void Add(VisualElement child) { }
+        public void Clear() { }
+        public void AddToClassList(string className) { }
+        public void EnableInClassList(string className, bool enable) { }
+    }
+
+    public class Label : VisualElement
+    {
+        public Label(string text) { }
+    }
+
+    public sealed class UIDocument : MonoBehaviour
+    {
+        public VisualElement rootVisualElement => null;
     }
 }

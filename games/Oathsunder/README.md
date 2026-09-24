@@ -20,5 +20,6 @@ built on Unity 6 LTS (URP).
 
 ## Status
 
-Phases 1–5 are delivered: vision, game design document, technical architecture, project structure, and the
-core combat framework (implemented and tested). Phases 6–16 follow the plan in the documentation index.
+Phases 1–6 are delivered: vision, game design document, technical architecture, project structure, the core
+combat framework and the player controller (implemented and tested: 176 automated tests). Phases 7–16 follow
+the plan in the documentation index.

@@ -1,11 +1,9 @@
 {
-    "name": "Oathsunder.Gameplay",
-    "rootNamespace": "Oathsunder.Gameplay",
+    "name": "Oathsunder.Controls",
+    "rootNamespace": "Oathsunder.Controls",
     "references": [
         "Oathsunder.Core",
-        "Oathsunder.Combat",
-        "Oathsunder.Controls",
-        "Unity.InputSystem"
+        "Oathsunder.Combat"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -15,5 +13,5 @@
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
-    "noEngineReferences": false
+    "noEngineReferences": true
 }

@@ -29,6 +29,8 @@ namespace Oathsunder.Tools
             Console.WriteLine();
             Console.WriteLine($"Frames per scenario: {MeasuredFrames:N0} measured after {WarmupFrames:N0} warm-up; fuzzed inputs; match kept live.");
             Console.WriteLine();
+            MeasureInputPipeline();
+            Console.WriteLine();
             Console.WriteLine($"Runtime: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}, " +
                               $"{System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}, {Environment.ProcessorCount} logical cores");
             return 0;
@@ -125,6 +127,47 @@ namespace Oathsunder.Tools
             }
 
             return new Result(sum / samples.Length, samples[samples.Length / 2], samples[(int)(samples.Length * 0.99)], samples[samples.Length - 1], (double)allocated / MeasuredFrames);
+        }
+
+        /// <summary>Cost of the device → logical input path (composer + latch) per rendered frame at 240 FPS.</summary>
+        private static void MeasureInputPipeline()
+        {
+            var profile = Oathsunder.Controls.ControlProfile.CreateDefault(ControlScheme.Classic);
+            var composer = new Oathsunder.Controls.InputComposer(profile);
+            var latch = new Oathsunder.Controls.InputLatch();
+            var touch = new Oathsunder.Controls.TouchControlResolver(Oathsunder.Controls.TouchLayout.Phone());
+            const int samples = 4_000_000;
+            var random = new System.Random(7);
+            var snapshots = new Oathsunder.Controls.DeviceSnapshot[1024];
+            for (int i = 0; i < snapshots.Length; i++)
+            {
+                snapshots[i] = new Oathsunder.Controls.DeviceSnapshot
+                {
+                    Held = (InputButtons)random.Next(0, 2048),
+                    StickX = (float)(random.NextDouble() * 2 - 1),
+                    StickY = (float)(random.NextDouble() * 2 - 1),
+                    Left = random.Next(8) == 0,
+                    Right = random.Next(8) == 0,
+                };
+            }
+
+            long before = GC.GetAllocatedBytesForCurrentThread();
+            var stopwatch = Stopwatch.StartNew();
+            for (int i = 0; i < samples; i++)
+            {
+                touch.Update(i & 3, (i & 7) == 0 ? Oathsunder.Controls.TouchPhaseKind.Began : Oathsunder.Controls.TouchPhaseKind.Moved, 300f + (i & 63), 300f, 2400f, 1080f);
+                composer.Compose(snapshots[i & 1023], out var buttons, out int x, out int y);
+                latch.Sample(buttons | touch.Held, x, y);
+                if ((i & 3) == 3)
+                {
+                    latch.ConsumeTick();
+                }
+            }
+
+            stopwatch.Stop();
+            long allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+            double ns = stopwatch.Elapsed.TotalMilliseconds * 1_000_000.0 / samples;
+            Console.WriteLine($"Input pipeline (touch resolve + compose + latch) per rendered frame: {ns.ToString("0.0", CultureInfo.InvariantCulture)} ns, allocation {allocated / (double)samples:0.00} B");
         }
 
         private static void Report(string name, Result r)

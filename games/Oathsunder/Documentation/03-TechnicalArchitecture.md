@@ -29,6 +29,7 @@ flowchart TB
     end
     subgraph Pure["Engine-free (noEngineReferences)"]
         Combat["Oathsunder.Combat<br/>Input · Definitions · Content · Simulation · Events"]
+        Controls["Oathsunder.Controls<br/>latch · filters · composer · profiles · touch"]
         Core["Oathsunder.Core<br/>Fixed · FixedVector2 · FixedAabb · Pcg32 · StateHasher · JsonReader"]
     end
     subgraph Tools["Tools/DotNet (.NET 8)"]
@@ -40,6 +41,8 @@ flowchart TB
     end
     Presentation --> Gameplay
     Gameplay --> Combat
+    Gameplay --> Controls
+    Controls --> Combat
     Editor --> Gameplay
     PlayTests --> Gameplay
     Combat --> Core
@@ -55,7 +58,8 @@ flowchart TB
 |---|---|---|---|---|
 | `Oathsunder.Core` | `Runtime/Core` | none | — | Deterministic math, RNG, hashing, JSON |
 | `Oathsunder.Combat` | `Runtime/Combat` | none | Core | Fighting simulation and content model |
-| `Oathsunder.Gameplay` | `Runtime/Gameplay` | Unity | Core, Combat | Unity bridge: tick loop, presentation, cues |
+| `Oathsunder.Controls` | `Runtime/Input` | none | Core, Combat | Input latch, stick/SOCD filters, composer, control profiles, touch layouts (Phase 6) |
+| `Oathsunder.Gameplay` | `Runtime/Gameplay` | Unity | Core, Combat, Controls, Input System | Unity bridge: tick loop, presentation, cues, player input, camera |
 | `Oathsunder.Editor` | `Editor` | Unity Editor | Core, Combat, Gameplay | Validation, designer windows |
 | `Oathsunder.Tests.EditMode` | `Tests/EditMode` | Test runner | Core, Combat | Unit, integration, gameplay, determinism tests |
 | `Oathsunder.Tests.PlayMode` | `Tests/PlayMode` | Test runner | Core, Combat, Gameplay | Runtime integration tests |
@@ -238,7 +242,7 @@ Simulation share of the main-thread budget: ≤ 0.2 ms (≤ 0.6 ms during an 8-f
 | Content | Every JSON and fighter × weapon combination | `CombatContentValidator` (editor + batch mode), `ContentTests` |
 
 CI (`.github/workflows/oathsunder-simulation.yml`) builds the solution with warnings as errors, runs the
-144-test suite, and publishes the generated frame-data report and benchmark table as artifacts on every push
+full test suite (176 tests as of Phase 6), and publishes the generated frame-data report and benchmark table as artifacts on every push
 touching `games/Oathsunder/**`. The Unity job (EditMode + PlayMode + content validation in batch mode) is
 added in Phase 16, once the build machine has a Unity licence secret.
 

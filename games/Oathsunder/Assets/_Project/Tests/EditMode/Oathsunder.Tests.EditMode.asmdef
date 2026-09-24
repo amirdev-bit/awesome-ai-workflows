@@ -5,7 +5,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Oathsunder.Core",
-        "Oathsunder.Combat"
+        "Oathsunder.Combat",
+        "Oathsunder.Controls"
     ],
     "includePlatforms": [
         "Editor"

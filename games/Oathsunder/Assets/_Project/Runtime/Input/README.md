@@ -1,8 +1,12 @@
-# Runtime/Input — `Oathsunder.Input`
+# Runtime/Input — `Oathsunder.Controls`
 
-> Owner phase: Phase 6.
+> Owner phase: 6. Engine-free (`noEngineReferences: true`); Unity device reading lives in
+> `Runtime/Gameplay/Controls`.
 
-Device mapping (touch, gamepad, keyboard/mouse) onto logical `InputButtons`, sub-tick press latching, full remapping, Simplified/Classic schemes. Implements `ICombatInputSource`.
-
-The assembly definition is added together with the first code in its phase, following the dependency rules in
-`Documentation/03-TechnicalArchitecture.md` §2 (engine-free wherever the logic affects gameplay outcomes).
+| File | Responsibility |
+|---|---|
+| `InputLatch.cs` | Render-rate samples → one `InputFrame` per 60 Hz tick without losing taps |
+| `DirectionFilters.cs` | Analog → 8-way quantiser with cardinal bias; SOCD cleaning for digital devices |
+| `InputComposer.cs` | Merges keyboard, gamepad and touch into logical buttons + direction per the profile |
+| `ControlProfile.cs` | Scheme, direction settings and remappable bindings; JSON persistence; conflict detection |
+| `TouchLayout.cs` | Phone and tablet layouts; touch resolver (floating stick, slide-press buttons) |
