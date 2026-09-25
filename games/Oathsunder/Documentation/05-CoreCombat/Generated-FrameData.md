@@ -35,71 +35,92 @@
 ## Animation clip specification
 
 Every clip is authored at 60 fps and must contain exactly the listed frame count. Key frames are 1-based move frames.
-Root motion is extracted by the simulation from the move data, so clips are authored **in place**; the listed
-distance is what the character travels and is provided so animators can match foot contacts.
+The simulation owns root motion, so clips are authored **in place**; the travel column is captured from the running
+simulation and is what the character actually moves. Full per-frame curves, key poses, box timelines and cue
+triggers are in [Production/03-Animation/Generated-AnimationLibrary.md](../Production/03-Animation/Generated-AnimationLibrary.md).
 
-| Clip | Move | Frames | Seconds | First active | Last active | Root motion X (m) | Notes |
-|---|---|---:|---:|---:|---:|---:|---|
-| `A_Universal_Dash` | universal.dash | 20 | 0.333 | — | — | 2.87 |  |
-| `A_Universal_Backstep` | universal.backstep | 24 | 0.400 | — | — | -2.03 |  |
-| `A_Universal_Roll_Forward` | universal.rollforward | 28 | 0.467 | — | — | 2.93 |  |
-| `A_Universal_Roll_Back` | universal.rollback | 26 | 0.433 | — | — | -2.10 |  |
-| `A_Universal_Dodge` | universal.dodge | 22 | 0.367 | — | — | -0.15 |  |
-| `A_Universal_Throw_Attempt` | universal.throwforward | 30 | 0.500 | 5 | 6 | 0.00 |  |
-| `A_Universal_Throw_Forward` | universal.throwforward.hit | 50 | 0.833 | — | — | 0.00 | Paired; victim clip `A_Victim_Throw_Forward`, release on frame 26 |
-| `A_Universal_Throw_Back` | universal.throwback.hit | 52 | 0.867 | — | — | 0.00 | Paired; victim clip `A_Victim_Throw_Back`, release on frame 28 |
-| `A_Universal_Rage` | universal.rage | 30 | 0.500 | 4 | 6 | 0.00 |  |
-| `A_Universal_Shadow` | universal.shadow | 24 | 0.400 | — | — | 0.00 |  |
-| `A_Universal_TechRoll` | universal.techroll | 24 | 0.400 | — | — | -1.60 |  |
-| `A_Katana_L1` | katana.l1 | 19 | 0.317 | 6 | 8 | 0.10 |  |
-| `A_Katana_L2` | katana.l2 | 21 | 0.350 | 7 | 9 | 0.10 |  |
-| `A_Katana_L3` | katana.l3 | 24 | 0.400 | 8 | 10 | 0.14 |  |
-| `A_Katana_L4` | katana.l4 | 34 | 0.567 | 12 | 15 | 0.30 |  |
-| `A_Katana_L2H` | katana.l2h | 30 | 0.500 | 10 | 13 | 0.00 |  |
-| `A_Katana_H1` | katana.h1 | 30 | 0.500 | 12 | 14 | 0.13 |  |
-| `A_Katana_H2` | katana.h2 | 32 | 0.533 | 10 | 17 | 0.16 |  |
-| `A_Katana_H3` | katana.h3 | 40 | 0.667 | 14 | 17 | 0.30 |  |
-| `A_Katana_HCharge` | katana.hcharge | 60 | 1.000 | — | — | 0.00 |  |
-| `A_Katana_HCharged` | katana.hcharged | 32 | 0.533 | 10 | 13 | 0.45 |  |
-| `A_Katana_HChargedFull` | katana.hchargedfull | 36 | 0.600 | 12 | 15 | 0.64 |  |
-| `A_Katana_FL` | katana.fl | 28 | 0.467 | 12 | 14 | 1.00 |  |
-| `A_Katana_BH` | katana.bh | 38 | 0.633 | 20 | 22 | 0.37 |  |
-| `A_Katana_DL` | katana.dl | 17 | 0.283 | 5 | 7 | 0.00 |  |
-| `A_Katana_DH` | katana.dh | 36 | 0.600 | 11 | 14 | 0.00 |  |
-| `A_Katana_JL` | katana.jl | 22 | 0.367 | 6 | 10 | 0.00 | Air; land-cancel |
-| `A_Katana_JL2` | katana.jl2 | 22 | 0.367 | 5 | 8 | 0.00 | Air; land-cancel |
-| `A_Katana_JH` | katana.jh | 30 | 0.500 | 8 | 12 | 0.00 | Air; land-cancel |
-| `A_Katana_S_Stance` | katana.s | 40 | 0.667 | — | — | 0.00 |  |
-| `A_Katana_S_Reprisal` | katana.sreprisal | 34 | 0.567 | 3 | 6 | 0.00 |  |
-| `A_Katana_CrescentRush` | katana.qcfs | 36 | 0.600 | 14 | 17 | 1.65 |  |
-| `A_Katana_AscendingDragon` | katana.dps | 50 | 0.833 | 5 | 12 | 0.05 |  |
-| `A_Katana_SeveringWind` | katana.qcbs | 40 | 0.667 | — | — | 0.00 |  |
-| `A_Katana_Ultimate_Start` | katana.ultimate | 60 | 1.000 | 12 | 16 | 1.17 |  |
-| `A_Katana_Ultimate_Cinematic` | katana.ultimate.hit | 150 | 2.500 | — | — | 0.00 | Paired; victim clip `A_Victim_Ultimate_Katana`, release on frame 125 |
-| `A_Katana_Execution_Start` | katana.execution | 30 | 0.500 | 3 | 6 | 0.00 |  |
-| `A_Katana_Execution` | katana.execution.hit | 120 | 2.000 | — | — | 0.00 | Paired; victim clip `A_Victim_Execution_Katana`, release on frame 95 |
+| Clip | Move | Frames | Seconds | First active | Last active | Root motion | Travel X (m) | Notes |
+|---|---|---:|---:|---:|---:|---|---:|---|
+| `A_Universal_Dash` | universal.dash | 20 | 0.333 | — | — | Scripted | 2.87 |  |
+| `A_Universal_Backstep` | universal.backstep | 24 | 0.400 | — | — | Scripted | -2.03 |  |
+| `A_Universal_Roll_Forward` | universal.rollforward | 28 | 0.467 | — | — | Scripted | 2.93 |  |
+| `A_Universal_Roll_Back` | universal.rollback | 26 | 0.433 | — | — | Scripted | -2.10 |  |
+| `A_Universal_Dodge` | universal.dodge | 22 | 0.367 | — | — | Scripted | -0.15 |  |
+| `A_Universal_Throw_Attempt` | universal.throwforward | 30 | 0.500 | 5 | 6 | InPlace | 0.00 |  |
+| `A_Universal_Throw_Forward` | universal.throwforward.hit | 50 | 0.833 | — | — | Paired | 0.00 | Paired; victim clip `A_Victim_Throw_Forward`, release on frame 26 |
+| `A_Universal_Throw_Back` | universal.throwback.hit | 52 | 0.867 | — | — | Paired | 0.00 | Paired; victim clip `A_Victim_Throw_Back`, release on frame 28 |
+| `A_Universal_Rage` | universal.rage | 30 | 0.500 | 4 | 6 | InPlace | 0.00 | Air; land-cancel |
+| `A_Universal_Shadow` | universal.shadow | 24 | 0.400 | — | — | InPlace | 0.00 | Air; land-cancel |
+| `A_Universal_TechRoll` | universal.techroll | 24 | 0.400 | — | — | Scripted | -1.60 |  |
+| `A_Katana_L1` | katana.l1 | 19 | 0.317 | 6 | 8 | Scripted | 0.10 |  |
+| `A_Katana_L2` | katana.l2 | 21 | 0.350 | 7 | 9 | Scripted | 0.10 |  |
+| `A_Katana_L3` | katana.l3 | 24 | 0.400 | 8 | 10 | Scripted | 0.14 |  |
+| `A_Katana_L4` | katana.l4 | 34 | 0.567 | 12 | 15 | Scripted | 0.30 |  |
+| `A_Katana_L2H` | katana.l2h | 30 | 0.500 | 10 | 13 | InPlace | 0.00 |  |
+| `A_Katana_H1` | katana.h1 | 30 | 0.500 | 12 | 14 | Scripted | 0.13 |  |
+| `A_Katana_H2` | katana.h2 | 32 | 0.533 | 10 | 17 | Scripted | 0.16 |  |
+| `A_Katana_H3` | katana.h3 | 40 | 0.667 | 14 | 17 | Scripted | 0.30 |  |
+| `A_Katana_HCharge` | katana.hcharge | 60 | 1.000 | — | — | InPlace | 0.00 |  |
+| `A_Katana_HCharged` | katana.hcharged | 32 | 0.533 | 10 | 13 | Scripted | 0.45 |  |
+| `A_Katana_HChargedFull` | katana.hchargedfull | 36 | 0.600 | 12 | 15 | Scripted | 0.64 |  |
+| `A_Katana_FL` | katana.fl | 28 | 0.467 | 12 | 14 | Scripted | 1.00 |  |
+| `A_Katana_BH` | katana.bh | 38 | 0.633 | 20 | 22 | Scripted | 0.37 |  |
+| `A_Katana_DL` | katana.dl | 17 | 0.283 | 5 | 7 | InPlace | 0.00 |  |
+| `A_Katana_DH` | katana.dh | 36 | 0.600 | 11 | 14 | InPlace | 0.00 |  |
+| `A_Katana_JL` | katana.jl | 22 | 0.367 | 6 | 10 | Ballistic | 0.00 | Air; land-cancel |
+| `A_Katana_JL2` | katana.jl2 | 22 | 0.367 | 5 | 8 | Ballistic | 0.00 | Air; land-cancel |
+| `A_Katana_JH` | katana.jh | 30 | 0.500 | 8 | 12 | Ballistic | 0.00 | Air; land-cancel |
+| `A_Katana_S_Stance` | katana.s | 40 | 0.667 | — | — | InPlace | 0.00 |  |
+| `A_Katana_S_Reprisal` | katana.sreprisal | 34 | 0.567 | 3 | 6 | InPlace | 0.00 |  |
+| `A_Katana_CrescentRush` | katana.qcfs | 36 | 0.600 | 14 | 17 | Scripted | 1.65 |  |
+| `A_Katana_AscendingDragon` | katana.dps | 50 | 0.833 | 5 | 12 | Scripted | 0.82 |  |
+| `A_Katana_SeveringWind` | katana.qcbs | 40 | 0.667 | — | — | InPlace | 0.00 |  |
+| `A_Katana_Ultimate_Start` | katana.ultimate | 60 | 1.000 | 12 | 16 | Scripted | 1.17 |  |
+| `A_Katana_Ultimate_Cinematic` | katana.ultimate.hit | 150 | 2.500 | — | — | Paired | 0.00 | Paired; victim clip `A_Victim_Ultimate_Katana`, release on frame 125 |
+| `A_Katana_Execution_Start` | katana.execution | 30 | 0.500 | 3 | 6 | InPlace | 0.00 |  |
+| `A_Katana_Execution` | katana.execution.hit | 120 | 2.000 | — | — | Paired | 0.00 | Paired; victim clip `A_Victim_Execution_Katana`, release on frame 95 |
 
 ## Presentation cues
 
-Cue names referenced by move data. Each needs an entry in the `CombatCueLibrary` asset (VFX prefab, sound, camera shake, haptics).
+Cue names referenced by move data. Every cue is specified in the cue catalog
+([Production/Generated-CueCatalog.md](../Production/Generated-CueCatalog.md)) and bound to assets in the `CombatCueLibrary`.
 
-| Cue | Category | Used by |
+| Cue | Channel | Used by |
 |---|---|---|
 | `cam.execution.katana` | cam | katana.execution.hit |
 | `cam.execution.prompt` | cam | katana.execution |
-| `cam.shake.heavy` | cam | katana.h3, katana.hcharged, katana.l4, katana.sreprisal |
+| `cam.push.charge` | cam | katana.hcharge |
+| `cam.push.heavy` | cam | katana.bh, katana.dh, katana.h1, katana.h2, katana.h3, katana.jh, katana.l2h, katana.l4 |
+| `cam.push.rush` | cam | katana.qcfs |
+| `cam.push.special` | cam | katana.qcbs |
+| `cam.push.stance` | cam | katana.s |
+| `cam.push.throw` | cam | universal.throwback.hit, universal.throwforward.hit |
+| `cam.shake.heavy` | cam | katana.h3, katana.sreprisal |
+| `cam.shake.light` | cam | katana.hcharged |
 | `cam.shake.medium` | cam | universal.throwback.hit, universal.throwforward.hit |
 | `cam.shake.ultra` | cam | katana.hchargedfull, katana.ultimate.hit |
 | `cam.slowmo.finisher` | cam | katana.execution.hit |
+| `cam.tilt.rise` | cam | katana.dps |
 | `cam.ultimate.flash` | cam | katana.ultimate |
 | `cam.ultimate.katana` | cam | katana.ultimate.hit |
 | `cam.zoom.mode` | cam | universal.rage, universal.shadow |
+| `foley.cloth.heavy` | foley | katana.hcharge |
+| `foley.cloth.roll` | foley | universal.rollback, universal.rollforward, universal.techroll |
+| `foley.grab` | foley | katana.execution.hit, universal.throwback.hit, universal.throwforward.hit |
+| `foley.step.plant` | foley | katana.bh, katana.h3, katana.l4, universal.backstep |
+| `foley.step.slide` | foley | katana.fl, katana.qcfs, universal.dash |
+| `haptic.charge.full` | haptic | katana.hcharge |
+| `haptic.heavy` | haptic | katana.execution.hit, katana.hchargedfull |
+| `haptic.mode` | haptic | universal.rage, universal.shadow |
+| `haptic.ultimate` | haptic | katana.ultimate, katana.ultimate.hit |
 | `sfx.charge.full` | sfx | katana.hcharge |
 | `sfx.execution.katana.final` | sfx | katana.execution.hit |
+| `sfx.katana.charge.start` | sfx | katana.hcharge |
 | `sfx.katana.dragon` | sfx | katana.dps |
 | `sfx.katana.iai` | sfx | katana.sreprisal |
-| `sfx.katana.rush` | sfx | katana.qcfs |
+| `sfx.katana.rush` | sfx | katana.qcfs, katana.ultimate |
 | `sfx.katana.sheathe` | sfx | katana.s |
+| `sfx.katana.slash.cinematic` | sfx | katana.execution.hit, katana.ultimate.hit |
 | `sfx.katana.swing.charged` | sfx | katana.hcharged |
 | `sfx.katana.swing.fullmoon` | sfx | katana.hchargedfull |
 | `sfx.katana.swing.heavy` | sfx | katana.h1, katana.h2, katana.h3, katana.jh, katana.l4 |
@@ -119,26 +140,58 @@ Cue names referenced by move data. Each needs an entry in the `CombatCueLibrary`
 | `sfx.movement.sway` | sfx | universal.dodge |
 | `sfx.movement.techroll` | sfx | universal.techroll |
 | `sfx.throw.impact` | sfx | universal.throwback.hit, universal.throwforward.hit |
-| `sfx.throw.reach` | sfx | universal.throwback, universal.throwforward |
+| `sfx.throw.reach` | sfx | katana.execution, universal.throwback, universal.throwforward |
 | `sfx.ultimate.katana.final` | sfx | katana.ultimate.hit |
 | `sfx.ultimate.katana.start` | sfx | katana.ultimate |
 | `vfx.charge.katana.full` | vfx | katana.hcharge |
 | `vfx.charge.katana.start` | vfx | katana.hcharge |
+| `vfx.execution.katana.final` | vfx | katana.execution.hit |
+| `vfx.execution.reach` | vfx | katana.execution |
 | `vfx.impact.ground.slam` | vfx | katana.h3 |
+| `vfx.impact.ground.throw` | vfx | universal.throwback.hit, universal.throwforward.hit |
+| `vfx.mode.rage.burst` | vfx | universal.rage |
 | `vfx.mode.rage.ignite` | vfx | universal.rage |
 | `vfx.mode.shadow.sever` | vfx | universal.shadow |
+| `vfx.movement.afterimage` | vfx | universal.dodge |
+| `vfx.movement.dust.backstep` | vfx | universal.backstep |
 | `vfx.movement.dust.dash` | vfx | universal.dash |
+| `vfx.movement.dust.jump` | vfx | katana.dps |
+| `vfx.movement.dust.roll` | vfx | universal.rollback, universal.rollforward |
+| `vfx.movement.dust.rush` | vfx | katana.qcfs |
+| `vfx.movement.dust.sweep` | vfx | katana.dh |
+| `vfx.movement.dust.techroll` | vfx | universal.techroll |
 | `vfx.slash.crescent` | vfx | katana.qcfs |
 | `vfx.slash.dragon` | vfx | katana.dps |
+| `vfx.slash.execution.katana` | vfx | katana.execution.hit |
 | `vfx.slash.fullmoon` | vfx | katana.hchargedfull |
 | `vfx.slash.iai` | vfx | katana.sreprisal |
+| `vfx.slash.ultimate.katana` | vfx | katana.ultimate.hit |
 | `vfx.slash.wind.launch` | vfx | katana.qcbs |
 | `vfx.stance.stillwater` | vfx | katana.s |
-| `vfx.trail.katana.heavy` | vfx | katana.h1, katana.l4 |
+| `vfx.throw.reach` | vfx | universal.throwback, universal.throwforward |
+| `vfx.trail.katana.air` | vfx | katana.jl, katana.jl2 |
+| `vfx.trail.katana.charged` | vfx | katana.hcharged, katana.hchargedfull |
+| `vfx.trail.katana.heavy` | vfx | katana.h1, katana.h2, katana.l4 |
 | `vfx.trail.katana.launcher` | vfx | katana.l2h |
 | `vfx.trail.katana.light` | vfx | katana.l1, katana.l2 |
-| `vfx.trail.katana.medium` | vfx | katana.l3 |
-| `vfx.trail.katana.overhead` | vfx | katana.bh |
+| `vfx.trail.katana.low` | vfx | katana.dl |
+| `vfx.trail.katana.medium` | vfx | katana.h2, katana.l3 |
+| `vfx.trail.katana.overhead` | vfx | katana.bh, katana.h3 |
 | `vfx.trail.katana.spike` | vfx | katana.jh |
 | `vfx.trail.katana.sweep` | vfx | katana.dh |
 | `vfx.trail.katana.thrust` | vfx | katana.fl |
+| `vfx.trail.katana.ultimate` | vfx | katana.ultimate |
+| `vfx.ultimate.katana.aura` | vfx | katana.ultimate |
+| `vfx.ultimate.katana.final` | vfx | katana.ultimate.hit |
+| `vo.effort.charge` | vo | katana.hcharge |
+| `vo.effort.heavy` | vo | katana.bh, katana.dh, katana.h1, katana.h2, katana.h3, katana.hcharged, katana.jh, katana.l2h, katana.l4, universal.throwback.hit, universal.throwforward.hit |
+| `vo.effort.light` | vo | katana.dl, katana.jl, katana.jl2, katana.l1, katana.l2 |
+| `vo.effort.medium` | vo | katana.fl, katana.l3 |
+| `vo.effort.special` | vo | katana.dps, katana.execution.hit, katana.hchargedfull, katana.qcbs, katana.qcfs, katana.sreprisal |
+| `vo.effort.stance` | vo | katana.s |
+| `vo.effort.throw` | vo | katana.execution, universal.throwback, universal.throwforward |
+| `vo.execution.line` | vo | katana.execution.hit |
+| `vo.mode.rage` | vo | universal.rage |
+| `vo.mode.shadow` | vo | universal.shadow |
+| `vo.ultimate.call` | vo | katana.ultimate |
+| `vo.ultimate.final` | vo | katana.ultimate.hit |

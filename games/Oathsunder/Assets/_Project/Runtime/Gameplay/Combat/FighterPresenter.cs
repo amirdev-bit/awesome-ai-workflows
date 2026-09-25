@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Oathsunder.Combat.Definitions;
 using Oathsunder.Combat.Simulation;
+using Oathsunder.Presentation.Animation;
+using Oathsunder.Presentation.Cues;
 using UnityEngine;
 
 namespace Oathsunder.Gameplay.Combat
@@ -11,10 +13,11 @@ namespace Oathsunder.Gameplay.Combat
     /// and replays look exact: the pose is a pure function of the simulation state.
     /// </summary>
     /// <remarks>
-    /// Animator state names follow the canon: a move plays the state named by its <c>animation</c> key
-    /// (e.g. <c>A_Katana_L1</c>); non-move actions play <c>A_Fighter_{Action}</c> (e.g. <c>A_Fighter_Idle</c>).
-    /// Phase 7 replaces the Animator path with the Playables-based animation graph; this component keeps the
-    /// same public contract.
+    /// Which state plays and where is decided by <see cref="FighterPoseSampler"/> (engine-free and unit-tested):
+    /// a move plays the state named by its <c>animation</c> key over its frame count, stuns play over the stun the
+    /// hit applied, jumps are sampled by vertical velocity, and a paired victim plays the holder's victim clip on
+    /// the holder's frame. Animator state names therefore equal clip names (<c>A_Katana_L1</c>,
+    /// <c>A_Fighter_Hitstun</c>…); see Documentation/Production/03-Animation.
     /// </remarks>
     public sealed class FighterPresenter : MonoBehaviour
     {
@@ -29,8 +32,13 @@ namespace Oathsunder.Gameplay.Combat
         [SerializeField] private float _rightFacingYaw = 90f;
         [Tooltip("Frames used to turn around visually (0 = instant).")]
         [SerializeField, Range(0f, 8f)] private float _turnFrames = 3f;
-        [Tooltip("Frame length of looping locomotion states (idle, walk).")]
-        [SerializeField, Min(1)] private int _loopFrames = 60;
+
+        [Header("VFX sockets (rig bones or child transforms; see Production/02-Characters/00-CharacterStandards.md)")]
+        [SerializeField] private Transform _weaponSocket;
+        [SerializeField] private Transform _weaponTipSocket;
+        [SerializeField] private Transform _handLeftSocket;
+        [SerializeField] private Transform _handRightSocket;
+        [SerializeField] private Transform _chestSocket;
 
         private readonly Dictionary<string, int> _stateHashes = new Dictionary<string, int>();
         private float _yaw;
@@ -41,10 +49,52 @@ namespace Oathsunder.Gameplay.Combat
         /// <summary>Binds the presenter at runtime (spawned fighters).</summary>
         public void Bind(CombatSimulationRunner runner, int fighterIndex, Animator animator)
         {
+            if (_runner != null)
+            {
+                _runner.UnregisterPresenter(this);
+            }
+
             _runner = runner;
             _fighterIndex = fighterIndex;
             _animator = animator;
             PrepareAnimator();
+            if (isActiveAndEnabled && _runner != null)
+            {
+                _runner.RegisterPresenter(this);
+            }
+        }
+
+        /// <summary>Where a VFX cue with the given attach point spawns (falls back to the fighter root).</summary>
+        public Transform GetSocket(VfxAttach attach)
+        {
+            Transform socket;
+            switch (attach)
+            {
+                case VfxAttach.Weapon: socket = _weaponSocket; break;
+                case VfxAttach.WeaponTip: socket = _weaponTipSocket != null ? _weaponTipSocket : _weaponSocket; break;
+                case VfxAttach.HandL: socket = _handLeftSocket; break;
+                case VfxAttach.HandR: socket = _handRightSocket; break;
+                case VfxAttach.Chest: socket = _chestSocket; break;
+                default: socket = null; break;
+            }
+
+            return socket != null ? socket : transform;
+        }
+
+        private void OnEnable()
+        {
+            if (_runner != null)
+            {
+                _runner.RegisterPresenter(this);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_runner != null)
+            {
+                _runner.UnregisterPresenter(this);
+            }
         }
 
         private void Awake()
@@ -79,28 +129,14 @@ namespace Oathsunder.Gameplay.Combat
 
             if (_animator != null && _animator.isActiveAndEnabled)
             {
-                ApplyPose(ref fighter);
+                ApplyPose();
             }
         }
 
-        private void ApplyPose(ref FighterState fighter)
+        private void ApplyPose()
         {
-            string state;
-            float normalizedTime;
-            if (fighter.Action == FighterAction.Move && fighter.MoveIndex >= 0)
-            {
-                MoveDefinition move = _runner.World.BlueprintOf(_fighterIndex).Moves[fighter.MoveIndex];
-                state = string.IsNullOrEmpty(move.Animation) ? move.Id : move.Animation;
-                float frame = Mathf.Max(0, fighter.ActionFrame - 1) + (fighter.HitstopRemaining > 0 ? 0f : _runner.Alpha);
-                normalizedTime = Mathf.Clamp01(frame / Mathf.Max(1, move.TotalFrames));
-            }
-            else
-            {
-                state = ActionStateNames.Get(fighter.Action);
-                normalizedTime = (fighter.ActionFrame % _loopFrames) / (float)_loopFrames;
-            }
-
-            _animator.Play(Hash(state), BaseLayer, normalizedTime);
+            var sample = FighterPoseSampler.Sample(_runner.World, _fighterIndex, _runner.Alpha);
+            _animator.Play(Hash(sample.Clip), BaseLayer, sample.NormalizedTime);
             _animator.Update(0f);
         }
 
@@ -113,26 +149,6 @@ namespace Oathsunder.Gameplay.Combat
             }
 
             return hash;
-        }
-
-        /// <summary>Animator state names for non-move actions (precomputed; no per-frame allocation).</summary>
-        private static class ActionStateNames
-        {
-            private static readonly string[] Names = Build();
-
-            public static string Get(FighterAction action) => Names[(int)action];
-
-            private static string[] Build()
-            {
-                var values = (FighterAction[])System.Enum.GetValues(typeof(FighterAction));
-                var names = new string[values.Length];
-                foreach (var value in values)
-                {
-                    names[(int)value] = "A_Fighter_" + value;
-                }
-
-                return names;
-            }
         }
     }
 }

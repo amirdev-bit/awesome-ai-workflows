@@ -1,0 +1,1389 @@
+{
+  "version": 1,
+  "fighter": "fighter.rhen",
+  "weapon": "weapon.katana",
+  "fps": 60,
+  "clips": [
+    {
+      "clip": "A_Universal_Dash",
+      "move": "universal.dash",
+      "name": "Ember Step",
+      "frames": 20,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 13, "pose": "Plant / Push-off" },
+        { "frame": 17, "pose": "Plant" },
+        { "frame": 20, "pose": "End" }
+      ],
+      "root": [[0.2167, 0.0000], [0.4333, 0.0000], [0.6500, 0.0000], [0.8666, 0.0000], [1.0833, 0.0000], [1.3000, 0.0000], [1.5166, 0.0000], [1.7333, 0.0000], [1.9499, 0.0000], [2.1666, 0.0000], [2.3833, 0.0000], [2.5999, 0.0000], [2.6666, 0.0000], [2.7332, 0.0000], [2.7999, 0.0000], [2.8666, 0.0000], [2.8666, 0.0000], [2.8666, 0.0000], [2.8666, 0.0000], [2.8666, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 20], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.movement.dash", "asset": "SFX_Movement_Dash" },
+        { "frame": 1, "channel": "vfx", "cue": "vfx.movement.dust.dash", "asset": "VFX_Movement_Dust_Dash" },
+        { "frame": 13, "channel": "foley", "cue": "foley.step.slide", "asset": "SFX_Foley_Step_Slide" }
+      ],
+      "contacts": [],
+      "notes": [
+        "Earliest cancel on frame 10: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Universal_Backstep",
+      "move": "universal.backstep",
+      "name": "Fading Step",
+      "frames": 24,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 11, "pose": "Plant / Push-off" },
+        { "frame": 15, "pose": "Plant" },
+        { "frame": 24, "pose": "End" }
+      ],
+      "root": [[-0.1833, 0.0000], [-0.3667, 0.0000], [-0.5500, 0.0000], [-0.7333, 0.0000], [-0.9167, 0.0000], [-1.1000, 0.0000], [-1.2833, 0.0000], [-1.4667, 0.0000], [-1.6500, 0.0000], [-1.8333, 0.0000], [-1.8833, 0.0000], [-1.9333, 0.0000], [-1.9834, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000], [-2.0334, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 7], "stance": "standing", "invulnerable": "Strike", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [8, 24], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.movement.backstep", "asset": "SFX_Movement_Backstep" },
+        { "frame": 1, "channel": "vfx", "cue": "vfx.movement.dust.backstep", "asset": "VFX_Movement_Dust_Backstep" },
+        { "frame": 11, "channel": "foley", "cue": "foley.step.plant", "asset": "SFX_Foley_Step_Plant" }
+      ],
+      "contacts": [],
+      "notes": []
+    },
+    {
+      "clip": "A_Universal_Roll_Forward",
+      "move": "universal.rollforward",
+      "name": "Crossing Roll",
+      "frames": 28,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 23, "pose": "Plant" },
+        { "frame": 28, "pose": "End" }
+      ],
+      "root": [[0.1333, 0.0000], [0.2667, 0.0000], [0.4000, 0.0000], [0.5333, 0.0000], [0.6667, 0.0000], [0.8000, 0.0000], [0.9333, 0.0000], [1.0667, 0.0000], [1.2000, 0.0000], [1.3333, 0.0000], [1.4666, 0.0000], [1.6000, 0.0000], [1.7333, 0.0000], [1.8666, 0.0000], [2.0000, 0.0000], [2.1333, 0.0000], [2.2666, 0.0000], [2.4000, 0.0000], [2.5333, 0.0000], [2.6666, 0.0000], [2.8000, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000], [2.9333, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 2], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [3, 16], "stance": "standing", "invulnerable": "Strike, Projectile", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [17, 28], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "sfx", "cue": "sfx.movement.roll", "asset": "SFX_Movement_Roll" },
+        { "frame": 2, "channel": "foley", "cue": "foley.cloth.roll", "asset": "SFX_Foley_Cloth_Roll" },
+        { "frame": 2, "channel": "vfx", "cue": "vfx.movement.dust.roll", "asset": "VFX_Movement_Dust_Roll" }
+      ],
+      "contacts": [],
+      "notes": []
+    },
+    {
+      "clip": "A_Universal_Roll_Back",
+      "move": "universal.rollback",
+      "name": "Retreating Roll",
+      "frames": 26,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 19, "pose": "Plant" },
+        { "frame": 26, "pose": "End" }
+      ],
+      "root": [[-0.1167, 0.0000], [-0.2333, 0.0000], [-0.3500, 0.0000], [-0.4667, 0.0000], [-0.5833, 0.0000], [-0.7000, 0.0000], [-0.8167, 0.0000], [-0.9333, 0.0000], [-1.0500, 0.0000], [-1.1667, 0.0000], [-1.2834, 0.0000], [-1.4000, 0.0000], [-1.5167, 0.0000], [-1.6334, 0.0000], [-1.7500, 0.0000], [-1.8667, 0.0000], [-1.9834, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000], [-2.1000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 2], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [3, 14], "stance": "standing", "invulnerable": "Strike, Projectile", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [15, 26], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "sfx", "cue": "sfx.movement.roll", "asset": "SFX_Movement_Roll" },
+        { "frame": 2, "channel": "foley", "cue": "foley.cloth.roll", "asset": "SFX_Foley_Cloth_Roll" },
+        { "frame": 2, "channel": "vfx", "cue": "vfx.movement.dust.roll", "asset": "VFX_Movement_Dust_Roll" }
+      ],
+      "contacts": [],
+      "notes": []
+    },
+    {
+      "clip": "A_Universal_Dodge",
+      "move": "universal.dodge",
+      "name": "Umbral Sway",
+      "frames": 22,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 4, "pose": "Evade extreme" },
+        { "frame": 7, "pose": "Plant" },
+        { "frame": 22, "pose": "End" }
+      ],
+      "root": [[-0.0250, 0.0000], [-0.0500, 0.0000], [-0.0750, 0.0000], [-0.1000, 0.0000], [-0.1250, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000], [-0.1500, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 1], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [2, 7], "stance": "standing", "invulnerable": "Strike, Projectile", "armor": false, "perfectEvade": true, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [8, 11], "stance": "standing", "invulnerable": "Strike, Projectile", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [12, 22], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.movement.sway", "asset": "SFX_Movement_Sway" },
+        { "frame": 2, "channel": "vfx", "cue": "vfx.movement.afterimage", "asset": "VFX_Movement_AfterImage" }
+      ],
+      "contacts": [],
+      "notes": [
+        "Earliest cancel on frame 8: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Universal_Throw_Attempt",
+      "move": "universal.throwforward",
+      "name": "Hilt Toss",
+      "frames": 30,
+      "rootMotion": "InPlace",
+      "startup": 4,
+      "active": [5, 6],
+      "recovery": 24,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Contact" },
+        { "frame": 7, "pose": "Follow-through" },
+        { "frame": 21, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [5, 6], "group": 0, "attack": "grab", "box": [0.1500, 0.2000, 0.8500, 1.3000] }
+      ],
+      "hurt": [
+        { "frames": [1, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 3, "channel": "vo", "cue": "vo.effort.throw", "asset": "VO_{Character}_Effort_Throw" },
+        { "frame": 3, "channel": "sfx", "cue": "sfx.throw.reach", "asset": "SFX_Throw_Reach" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.throw.reach", "asset": "VFX_Throw_Reach" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [5, 6], "attack": "grab", "hitstop": 0, "onHit": "impact.grab", "onCounterHit": "", "onBlock": "" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Universal_Throw_Forward",
+      "move": "universal.throwforward.hit",
+      "name": "Hilt Toss",
+      "frames": 50,
+      "rootMotion": "Paired",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 22, "pose": "Impact" },
+        { "frame": 26, "pose": "Release" },
+        { "frame": 50, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 50], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.throw", "asset": "" },
+        { "frame": 1, "channel": "foley", "cue": "foley.grab", "asset": "SFX_Foley_Grab" },
+        { "frame": 18, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 22, "channel": "sfx", "cue": "sfx.throw.impact", "asset": "SFX_Throw_Impact" },
+        { "frame": 22, "channel": "vfx", "cue": "vfx.impact.ground.throw", "asset": "VFX_Impact_Ground_Throw" },
+        { "frame": 22, "channel": "cam", "cue": "cam.shake.medium", "asset": "" }
+      ],
+      "contacts": [],
+      "paired": { "victimClip": "A_Victim_Throw_Forward", "victimOffset": [0.7500, 0.0000], "hits": [22], "release": 26, "cinematic": false },
+      "notes": [
+        "Paired: victim clip `A_Victim_Throw_Forward` has the same 50 frames and is authored relative to the attacker root at offset (0.75, 0) m; release on frame 26."
+      ]
+    },
+    {
+      "clip": "A_Universal_Throw_Attempt",
+      "move": "universal.throwback",
+      "name": "Reversing Wheel",
+      "frames": 30,
+      "rootMotion": "InPlace",
+      "startup": 4,
+      "active": [5, 6],
+      "recovery": 24,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Contact" },
+        { "frame": 7, "pose": "Follow-through" },
+        { "frame": 21, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [5, 6], "group": 0, "attack": "grab", "box": [0.1500, 0.2000, 0.8500, 1.3000] }
+      ],
+      "hurt": [
+        { "frames": [1, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 3, "channel": "vo", "cue": "vo.effort.throw", "asset": "VO_{Character}_Effort_Throw" },
+        { "frame": 3, "channel": "sfx", "cue": "sfx.throw.reach", "asset": "SFX_Throw_Reach" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.throw.reach", "asset": "VFX_Throw_Reach" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [5, 6], "attack": "grab", "hitstop": 0, "onHit": "impact.grab", "onCounterHit": "", "onBlock": "" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Universal_Throw_Back",
+      "move": "universal.throwback.hit",
+      "name": "Reversing Wheel",
+      "frames": 52,
+      "rootMotion": "Paired",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 24, "pose": "Impact" },
+        { "frame": 28, "pose": "Release" },
+        { "frame": 52, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 52], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.throw", "asset": "" },
+        { "frame": 1, "channel": "foley", "cue": "foley.grab", "asset": "SFX_Foley_Grab" },
+        { "frame": 20, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 24, "channel": "sfx", "cue": "sfx.throw.impact", "asset": "SFX_Throw_Impact" },
+        { "frame": 24, "channel": "vfx", "cue": "vfx.impact.ground.throw", "asset": "VFX_Impact_Ground_Throw" },
+        { "frame": 24, "channel": "cam", "cue": "cam.shake.medium", "asset": "" }
+      ],
+      "contacts": [],
+      "paired": { "victimClip": "A_Victim_Throw_Back", "victimOffset": [0.7500, 0.0000], "hits": [24], "release": 28, "cinematic": false },
+      "notes": [
+        "Paired: victim clip `A_Victim_Throw_Back` has the same 52 frames and is authored relative to the attacker root at offset (0.75, 0) m; release on frame 28."
+      ]
+    },
+    {
+      "clip": "A_Universal_Rage",
+      "move": "universal.rage",
+      "name": "Ember Rage",
+      "frames": 30,
+      "rootMotion": "InPlace",
+      "startup": 3,
+      "active": [4, 6],
+      "recovery": 24,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 4, "pose": "Contact" },
+        { "frame": 7, "pose": "Follow-through" },
+        { "frame": 21, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [4, 6], "group": 0, "attack": "burst", "box": [-1.2000, 0.0000, 2.4000, 2.0000] }
+      ],
+      "hurt": [
+        { "frames": [1, 20], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [21, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "vfx", "cue": "vfx.mode.rage.ignite", "asset": "VFX_Mode_Rage_Ignite" },
+        { "frame": 1, "channel": "sfx", "cue": "sfx.mode.rage", "asset": "SFX_Mode_Rage" },
+        { "frame": 1, "channel": "cam", "cue": "cam.zoom.mode", "asset": "" },
+        { "frame": 1, "channel": "vo", "cue": "vo.mode.rage", "asset": "VO_{Character}_Mode_Rage" },
+        { "frame": 1, "channel": "haptic", "cue": "haptic.mode", "asset": "" },
+        { "frame": 4, "channel": "vfx", "cue": "vfx.mode.rage.burst", "asset": "VFX_Mode_Rage_Burst" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [4, 6], "attack": "burst", "hitstop": 10, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Land-cancel: touching the floor ends the clip early and plays landing recovery (+0 frames)."
+      ]
+    },
+    {
+      "clip": "A_Universal_Shadow",
+      "move": "universal.shadow",
+      "name": "Umbral Shadow",
+      "frames": 24,
+      "rootMotion": "InPlace",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 24, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 16], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [17, 24], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "vfx", "cue": "vfx.mode.shadow.sever", "asset": "VFX_Mode_Shadow_Sever" },
+        { "frame": 1, "channel": "sfx", "cue": "sfx.mode.shadow", "asset": "SFX_Mode_Shadow" },
+        { "frame": 1, "channel": "cam", "cue": "cam.zoom.mode", "asset": "" },
+        { "frame": 1, "channel": "vo", "cue": "vo.mode.shadow", "asset": "VO_{Character}_Mode_Shadow" },
+        { "frame": 1, "channel": "haptic", "cue": "haptic.mode", "asset": "" }
+      ],
+      "contacts": [],
+      "notes": [
+        "Land-cancel: touching the floor ends the clip early and plays landing recovery (+0 frames)."
+      ]
+    },
+    {
+      "clip": "A_Universal_TechRoll",
+      "move": "universal.techroll",
+      "name": "Recovery Roll",
+      "frames": 24,
+      "rootMotion": "Scripted",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 17, "pose": "Plant" },
+        { "frame": 24, "pose": "End" }
+      ],
+      "root": [[-0.1000, 0.0000], [-0.2000, 0.0000], [-0.3000, 0.0000], [-0.4000, 0.0000], [-0.5000, 0.0000], [-0.6000, 0.0000], [-0.7000, 0.0000], [-0.8000, 0.0000], [-0.9001, 0.0000], [-1.0001, 0.0000], [-1.1001, 0.0000], [-1.2001, 0.0000], [-1.3001, 0.0000], [-1.4001, 0.0000], [-1.5001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000], [-1.6001, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 16], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [17, 24], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.movement.techroll", "asset": "SFX_Movement_TechRoll" },
+        { "frame": 1, "channel": "foley", "cue": "foley.cloth.roll", "asset": "SFX_Foley_Cloth_Roll" },
+        { "frame": 1, "channel": "vfx", "cue": "vfx.movement.dust.techroll", "asset": "VFX_Movement_Dust_TechRoll" }
+      ],
+      "contacts": [],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_L1",
+      "move": "katana.l1",
+      "name": "Rising Petal",
+      "frames": 19,
+      "rootMotion": "Scripted",
+      "startup": 5,
+      "active": [6, 8],
+      "recovery": 11,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 4, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Plant" },
+        { "frame": 6, "pose": "Contact" },
+        { "frame": 9, "pose": "Follow-through" },
+        { "frame": 16, "pose": "Recovery hold" },
+        { "frame": 19, "pose": "End" }
+      ],
+      "root": [[0.0250, 0.0000], [0.0500, 0.0000], [0.0750, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000]],
+      "hitboxes": [
+        { "frames": [6, 8], "group": 0, "attack": "hit", "box": [0.2500, 0.8500, 1.2000, 0.5500] }
+      ],
+      "hurt": [
+        { "frames": [1, 5], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [6, 11], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500], [0.3000, 0.9000, 0.6000, 0.4000]] },
+        { "frames": [12, 19], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 3, "channel": "vo", "cue": "vo.effort.light", "asset": "VO_{Character}_Effort_Light" },
+        { "frame": 4, "channel": "sfx", "cue": "sfx.katana.swing.light", "asset": "SFX_Katana_Swing_Light" },
+        { "frame": 6, "channel": "vfx", "cue": "vfx.trail.katana.light", "asset": "VFX_Trail_Katana_Light" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [6, 8], "attack": "hit", "hitstop": 8, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 9: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_L2",
+      "move": "katana.l2",
+      "name": "Falling Petal",
+      "frames": 21,
+      "rootMotion": "Scripted",
+      "startup": 6,
+      "active": [7, 9],
+      "recovery": 12,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 5, "pose": "Anticipation" },
+        { "frame": 6, "pose": "Plant" },
+        { "frame": 7, "pose": "Contact" },
+        { "frame": 10, "pose": "Follow-through" },
+        { "frame": 17, "pose": "Recovery hold" },
+        { "frame": 21, "pose": "End" }
+      ],
+      "root": [[0.0200, 0.0000], [0.0400, 0.0000], [0.0600, 0.0000], [0.0800, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000], [0.1000, 0.0000]],
+      "hitboxes": [
+        { "frames": [7, 9], "group": 0, "attack": "hit", "box": [0.2000, 0.6000, 1.2500, 0.7000] }
+      ],
+      "hurt": [
+        { "frames": [1, 21], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 4, "channel": "vo", "cue": "vo.effort.light", "asset": "VO_{Character}_Effort_Light" },
+        { "frame": 5, "channel": "sfx", "cue": "sfx.katana.swing.light", "asset": "SFX_Katana_Swing_Light" },
+        { "frame": 7, "channel": "vfx", "cue": "vfx.trail.katana.light", "asset": "VFX_Trail_Katana_Light" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [7, 9], "attack": "hit", "hitstop": 8, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 10: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_L3",
+      "move": "katana.l3",
+      "name": "Crescent Cut",
+      "frames": 24,
+      "rootMotion": "Scripted",
+      "startup": 7,
+      "active": [8, 10],
+      "recovery": 14,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 5, "pose": "Anticipation" },
+        { "frame": 7, "pose": "Plant" },
+        { "frame": 8, "pose": "Contact" },
+        { "frame": 11, "pose": "Follow-through" },
+        { "frame": 19, "pose": "Recovery hold" },
+        { "frame": 24, "pose": "End" }
+      ],
+      "root": [[0.0233, 0.0000], [0.0467, 0.0000], [0.0700, 0.0000], [0.0933, 0.0000], [0.1167, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000], [0.1400, 0.0000]],
+      "hitboxes": [
+        { "frames": [8, 10], "group": 0, "attack": "hit", "box": [0.2000, 0.5000, 1.3500, 1.0000] }
+      ],
+      "hurt": [
+        { "frames": [1, 24], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 5, "channel": "vo", "cue": "vo.effort.medium", "asset": "VO_{Character}_Effort_Medium" },
+        { "frame": 6, "channel": "sfx", "cue": "sfx.katana.swing.medium", "asset": "SFX_Katana_Swing_Medium" },
+        { "frame": 8, "channel": "vfx", "cue": "vfx.trail.katana.medium", "asset": "VFX_Trail_Katana_Medium" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [8, 10], "attack": "hit", "hitstop": 9, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 11: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_L4",
+      "move": "katana.l4",
+      "name": "Oathseal",
+      "frames": 34,
+      "rootMotion": "Scripted",
+      "startup": 11,
+      "active": [12, 15],
+      "recovery": 19,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Anticipation" },
+        { "frame": 11, "pose": "Plant" },
+        { "frame": 12, "pose": "Contact" },
+        { "frame": 16, "pose": "Follow-through" },
+        { "frame": 27, "pose": "Recovery hold" },
+        { "frame": 34, "pose": "End" }
+      ],
+      "root": [[0.0300, 0.0000], [0.0600, 0.0000], [0.0900, 0.0000], [0.1200, 0.0000], [0.1500, 0.0000], [0.1800, 0.0000], [0.2100, 0.0000], [0.2400, 0.0000], [0.2700, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000], [0.3000, 0.0000]],
+      "hitboxes": [
+        { "frames": [12, 15], "group": 0, "attack": "hit", "box": [0.2000, 0.4000, 1.5000, 1.1000] }
+      ],
+      "hurt": [
+        { "frames": [1, 34], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 8, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 10, "channel": "sfx", "cue": "sfx.katana.swing.heavy", "asset": "SFX_Katana_Swing_Heavy" },
+        { "frame": 10, "channel": "foley", "cue": "foley.step.plant", "asset": "SFX_Foley_Step_Plant" },
+        { "frame": 12, "channel": "vfx", "cue": "vfx.trail.katana.heavy", "asset": "VFX_Trail_Katana_Heavy" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [12, 15], "attack": "hit", "hitstop": 12, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 16: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_L2H",
+      "move": "katana.l2h",
+      "name": "Heaven's Draw",
+      "frames": 30,
+      "rootMotion": "InPlace",
+      "startup": 9,
+      "active": [10, 13],
+      "recovery": 17,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 6, "pose": "Anticipation" },
+        { "frame": 10, "pose": "Contact" },
+        { "frame": 14, "pose": "Follow-through" },
+        { "frame": 24, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [10, 13], "group": 0, "attack": "hit", "box": [0.1500, 0.3000, 1.3000, 1.6000] }
+      ],
+      "hurt": [
+        { "frames": [1, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 6, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 8, "channel": "sfx", "cue": "sfx.katana.swing.rising", "asset": "SFX_Katana_Swing_Rising" },
+        { "frame": 10, "channel": "vfx", "cue": "vfx.trail.katana.launcher", "asset": "VFX_Trail_Katana_Launcher" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [10, 13], "attack": "hit", "hitstop": 11, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 14: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_H1",
+      "move": "katana.h1",
+      "name": "Iron Draw",
+      "frames": 30,
+      "rootMotion": "Scripted",
+      "startup": 11,
+      "active": [12, 14],
+      "recovery": 16,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Anticipation" },
+        { "frame": 9, "pose": "Plant" },
+        { "frame": 12, "pose": "Contact" },
+        { "frame": 15, "pose": "Follow-through" },
+        { "frame": 25, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0167, 0.0000], [0.0333, 0.0000], [0.0500, 0.0000], [0.0667, 0.0000], [0.0833, 0.0000], [0.1000, 0.0000], [0.1166, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000], [0.1333, 0.0000]],
+      "hitboxes": [
+        { "frames": [12, 14], "group": 0, "attack": "hit", "box": [0.2000, 0.6000, 1.5500, 0.9000] }
+      ],
+      "hurt": [
+        { "frames": [1, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 8, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 10, "channel": "sfx", "cue": "sfx.katana.swing.heavy", "asset": "SFX_Katana_Swing_Heavy" },
+        { "frame": 12, "channel": "vfx", "cue": "vfx.trail.katana.heavy", "asset": "VFX_Trail_Katana_Heavy" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [12, 14], "attack": "hit", "hitstop": 12, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 9: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_H2",
+      "move": "katana.h2",
+      "name": "Twin Moon",
+      "frames": 32,
+      "rootMotion": "Scripted",
+      "startup": 9,
+      "active": [10, 17],
+      "recovery": 15,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 6, "pose": "Anticipation" },
+        { "frame": 9, "pose": "Plant" },
+        { "frame": 10, "pose": "Contact" },
+        { "frame": 12, "pose": "Follow-through" },
+        { "frame": 14, "pose": "Anticipation 2" },
+        { "frame": 16, "pose": "Contact 2" },
+        { "frame": 18, "pose": "Follow-through 2" },
+        { "frame": 27, "pose": "Recovery hold" },
+        { "frame": 32, "pose": "End" }
+      ],
+      "root": [[0.0200, 0.0000], [0.0400, 0.0000], [0.0600, 0.0000], [0.0800, 0.0000], [0.1000, 0.0000], [0.1200, 0.0000], [0.1400, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000], [0.1600, 0.0000]],
+      "hitboxes": [
+        { "frames": [10, 11], "group": 0, "attack": "first", "box": [0.2000, 0.5000, 1.4500, 0.9000] },
+        { "frames": [16, 17], "group": 1, "attack": "second", "box": [0.2000, 0.7000, 1.4500, 0.9000] }
+      ],
+      "hurt": [
+        { "frames": [1, 32], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 7, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 9, "channel": "sfx", "cue": "sfx.katana.swing.medium", "asset": "SFX_Katana_Swing_Medium" },
+        { "frame": 10, "channel": "vfx", "cue": "vfx.trail.katana.medium", "asset": "VFX_Trail_Katana_Medium" },
+        { "frame": 15, "channel": "sfx", "cue": "sfx.katana.swing.heavy", "asset": "SFX_Katana_Swing_Heavy" },
+        { "frame": 16, "channel": "vfx", "cue": "vfx.trail.katana.heavy", "asset": "VFX_Trail_Katana_Heavy" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [10, 11], "attack": "first", "hitstop": 8, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" },
+        { "group": 1, "frames": [16, 17], "attack": "second", "hitstop": 10, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 18: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_H3",
+      "move": "katana.h3",
+      "name": "Sundering Arc",
+      "frames": 40,
+      "rootMotion": "Scripted",
+      "startup": 13,
+      "active": [14, 17],
+      "recovery": 23,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 9, "pose": "Anticipation" },
+        { "frame": 13, "pose": "Plant" },
+        { "frame": 14, "pose": "Contact" },
+        { "frame": 18, "pose": "Follow-through" },
+        { "frame": 32, "pose": "Recovery hold" },
+        { "frame": 40, "pose": "End" }
+      ],
+      "root": [[0.0250, 0.0000], [0.0500, 0.0000], [0.0750, 0.0000], [0.1000, 0.0000], [0.1250, 0.0000], [0.1500, 0.0000], [0.1750, 0.0000], [0.2000, 0.0000], [0.2249, 0.0000], [0.2499, 0.0000], [0.2749, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000], [0.2999, 0.0000]],
+      "hitboxes": [
+        { "frames": [14, 17], "group": 0, "attack": "hit", "box": [0.1000, 0.0000, 1.6000, 1.8000] }
+      ],
+      "hurt": [
+        { "frames": [1, 40], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 10, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 12, "channel": "sfx", "cue": "sfx.katana.swing.heavy", "asset": "SFX_Katana_Swing_Heavy" },
+        { "frame": 12, "channel": "foley", "cue": "foley.step.plant", "asset": "SFX_Foley_Step_Plant" },
+        { "frame": 13, "channel": "vfx", "cue": "vfx.trail.katana.overhead", "asset": "VFX_Trail_Katana_Overhead" },
+        { "frame": 14, "channel": "vfx", "cue": "vfx.impact.ground.slam", "asset": "VFX_Impact_Ground_Slam" },
+        { "frame": 14, "channel": "cam", "cue": "cam.shake.heavy", "asset": "" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [14, 17], "attack": "hit", "hitstop": 13, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 20: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_HCharge",
+      "move": "katana.hcharge",
+      "name": "Moonsplitter Stance",
+      "frames": 60,
+      "rootMotion": "InPlace",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 60, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 59], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "vfx", "cue": "vfx.charge.katana.start", "asset": "VFX_Charge_Katana_Start" },
+        { "frame": 1, "channel": "sfx", "cue": "sfx.katana.charge.start", "asset": "SFX_Katana_Charge_Start" },
+        { "frame": 1, "channel": "foley", "cue": "foley.cloth.heavy", "asset": "SFX_Foley_Cloth_Heavy" },
+        { "frame": 1, "channel": "cam", "cue": "cam.push.charge", "asset": "" },
+        { "frame": 1, "channel": "vo", "cue": "vo.effort.charge", "asset": "VO_{Character}_Effort_Charge" },
+        { "frame": 30, "channel": "vfx", "cue": "vfx.charge.katana.full", "asset": "VFX_Charge_Katana_Full" },
+        { "frame": 30, "channel": "sfx", "cue": "sfx.charge.full", "asset": "SFX_Charge_Full" },
+        { "frame": 30, "channel": "haptic", "cue": "haptic.charge.full", "asset": "" }
+      ],
+      "contacts": [],
+      "notes": [
+        "Capture: on frame 60 the move cancels into katana.hchargedfull (clip still covers all 60 frames).",
+        "Earliest cancel on frame 1: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_HCharged",
+      "move": "katana.hcharged",
+      "name": "Moonsplitter",
+      "frames": 32,
+      "rootMotion": "Scripted",
+      "startup": 9,
+      "active": [10, 13],
+      "recovery": 19,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 6, "pose": "Anticipation" },
+        { "frame": 10, "pose": "Contact / Plant" },
+        { "frame": 14, "pose": "Follow-through" },
+        { "frame": 25, "pose": "Recovery hold" },
+        { "frame": 32, "pose": "End" }
+      ],
+      "root": [[0.0500, 0.0000], [0.1000, 0.0000], [0.1500, 0.0000], [0.2000, 0.0000], [0.2500, 0.0000], [0.3000, 0.0000], [0.3500, 0.0000], [0.4000, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000], [0.4500, 0.0000]],
+      "hitboxes": [
+        { "frames": [10, 13], "group": 0, "attack": "hit", "box": [0.1000, 0.3000, 1.7000, 1.4000] }
+      ],
+      "hurt": [
+        { "frames": [1, 32], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 6, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 8, "channel": "sfx", "cue": "sfx.katana.swing.charged", "asset": "SFX_Katana_Swing_Charged" },
+        { "frame": 10, "channel": "vfx", "cue": "vfx.trail.katana.charged", "asset": "VFX_Trail_Katana_Charged" },
+        { "frame": 10, "channel": "cam", "cue": "cam.shake.light", "asset": "" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [10, 13], "attack": "hit", "hitstop": 14, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_HChargedFull",
+      "move": "katana.hchargedfull",
+      "name": "Moonsplitter — Full Moon",
+      "frames": 36,
+      "rootMotion": "Scripted",
+      "startup": 11,
+      "active": [12, 15],
+      "recovery": 21,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Anticipation" },
+        { "frame": 12, "pose": "Contact / Plant" },
+        { "frame": 16, "pose": "Follow-through" },
+        { "frame": 29, "pose": "Recovery hold" },
+        { "frame": 36, "pose": "End" }
+      ],
+      "root": [[0.0583, 0.0000], [0.1167, 0.0000], [0.1750, 0.0000], [0.2333, 0.0000], [0.2917, 0.0000], [0.3500, 0.0000], [0.4083, 0.0000], [0.4667, 0.0000], [0.5250, 0.0000], [0.5833, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000], [0.6417, 0.0000]],
+      "hitboxes": [
+        { "frames": [12, 15], "group": 0, "attack": "hit", "box": [0.1000, 0.2000, 1.9000, 1.6000] }
+      ],
+      "hurt": [
+        { "frames": [1, 36], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 8, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 10, "channel": "sfx", "cue": "sfx.katana.swing.fullmoon", "asset": "SFX_Katana_Swing_FullMoon" },
+        { "frame": 11, "channel": "vfx", "cue": "vfx.trail.katana.charged", "asset": "VFX_Trail_Katana_Charged" },
+        { "frame": 12, "channel": "vfx", "cue": "vfx.slash.fullmoon", "asset": "VFX_Slash_FullMoon" },
+        { "frame": 12, "channel": "cam", "cue": "cam.shake.ultra", "asset": "" },
+        { "frame": 12, "channel": "haptic", "cue": "haptic.heavy", "asset": "" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [12, 15], "attack": "hit", "hitstop": 16, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_FL",
+      "move": "katana.fl",
+      "name": "Stepping Thrust",
+      "frames": 28,
+      "rootMotion": "Scripted",
+      "startup": 11,
+      "active": [12, 14],
+      "recovery": 14,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Anticipation" },
+        { "frame": 12, "pose": "Contact" },
+        { "frame": 13, "pose": "Plant" },
+        { "frame": 15, "pose": "Follow-through" },
+        { "frame": 23, "pose": "Recovery hold" },
+        { "frame": 28, "pose": "End" }
+      ],
+      "root": [[0.0833, 0.0000], [0.1667, 0.0000], [0.2500, 0.0000], [0.3333, 0.0000], [0.4166, 0.0000], [0.5000, 0.0000], [0.5833, 0.0000], [0.6666, 0.0000], [0.7500, 0.0000], [0.8333, 0.0000], [0.9166, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000], [0.9999, 0.0000]],
+      "hitboxes": [
+        { "frames": [12, 14], "group": 0, "attack": "hit", "box": [0.2000, 0.8000, 1.9000, 0.3500] }
+      ],
+      "hurt": [
+        { "frames": [1, 28], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "foley", "cue": "foley.step.slide", "asset": "SFX_Foley_Step_Slide" },
+        { "frame": 8, "channel": "vo", "cue": "vo.effort.medium", "asset": "VO_{Character}_Effort_Medium" },
+        { "frame": 10, "channel": "sfx", "cue": "sfx.katana.thrust", "asset": "SFX_Katana_Thrust" },
+        { "frame": 12, "channel": "vfx", "cue": "vfx.trail.katana.thrust", "asset": "VFX_Trail_Katana_Thrust" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [12, 14], "attack": "hit", "hitstop": 9, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 15: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_BH",
+      "move": "katana.bh",
+      "name": "Mountain Descent",
+      "frames": 38,
+      "rootMotion": "Scripted",
+      "startup": 19,
+      "active": [20, 22],
+      "recovery": 16,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Push-off" },
+        { "frame": 12, "pose": "Anticipation" },
+        { "frame": 19, "pose": "Plant" },
+        { "frame": 20, "pose": "Contact" },
+        { "frame": 23, "pose": "Follow-through" },
+        { "frame": 33, "pose": "Recovery hold" },
+        { "frame": 38, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0333, 0.0000], [0.0667, 0.0000], [0.1000, 0.0000], [0.1334, 0.0000], [0.1667, 0.0000], [0.2000, 0.0000], [0.2334, 0.0000], [0.2667, 0.0000], [0.3001, 0.0000], [0.3334, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000], [0.3667, 0.0000]],
+      "hitboxes": [
+        { "frames": [20, 22], "group": 0, "attack": "hit", "box": [0.1000, 0.0000, 1.4000, 2.0000] }
+      ],
+      "hurt": [
+        { "frames": [1, 38], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 14, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 18, "channel": "sfx", "cue": "sfx.katana.swing.overhead", "asset": "SFX_Katana_Swing_Overhead" },
+        { "frame": 18, "channel": "foley", "cue": "foley.step.plant", "asset": "SFX_Foley_Step_Plant" },
+        { "frame": 20, "channel": "vfx", "cue": "vfx.trail.katana.overhead", "asset": "VFX_Trail_Katana_Overhead" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [20, 22], "attack": "hit", "hitstop": 11, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 23: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_DL",
+      "move": "katana.dl",
+      "name": "Grass Cutter",
+      "frames": 17,
+      "rootMotion": "InPlace",
+      "startup": 4,
+      "active": [5, 7],
+      "recovery": 10,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Contact" },
+        { "frame": 8, "pose": "Follow-through" },
+        { "frame": 14, "pose": "Recovery hold" },
+        { "frame": 17, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [5, 7], "group": 0, "attack": "hit", "box": [0.2000, 0.0000, 1.2500, 0.4500] }
+      ],
+      "hurt": [
+        { "frames": [1, 17], "stance": "crouching", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3400, 0.0000, 0.6800, 1.0500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "vo", "cue": "vo.effort.light", "asset": "VO_{Character}_Effort_Light" },
+        { "frame": 3, "channel": "sfx", "cue": "sfx.katana.swing.low", "asset": "SFX_Katana_Swing_Low" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.trail.katana.low", "asset": "VFX_Trail_Katana_Low" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [5, 7], "attack": "hit", "hitstop": 7, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Crouching hurtbox: the pose must stay below the crouch box height for the whole move.",
+        "Earliest cancel on frame 8: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_DH",
+      "move": "katana.dh",
+      "name": "Reaping Sweep",
+      "frames": 36,
+      "rootMotion": "InPlace",
+      "startup": 10,
+      "active": [11, 14],
+      "recovery": 22,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 7, "pose": "Anticipation" },
+        { "frame": 11, "pose": "Contact" },
+        { "frame": 15, "pose": "Follow-through" },
+        { "frame": 28, "pose": "Recovery hold" },
+        { "frame": 36, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [11, 14], "group": 0, "attack": "hit", "box": [0.1000, 0.0000, 1.7000, 0.4000] }
+      ],
+      "hurt": [
+        { "frames": [1, 36], "stance": "crouching", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3400, 0.0000, 0.6800, 1.0500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 7, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 9, "channel": "sfx", "cue": "sfx.katana.swing.sweep", "asset": "SFX_Katana_Swing_Sweep" },
+        { "frame": 11, "channel": "vfx", "cue": "vfx.trail.katana.sweep", "asset": "VFX_Trail_Katana_Sweep" },
+        { "frame": 11, "channel": "vfx", "cue": "vfx.movement.dust.sweep", "asset": "VFX_Movement_Dust_Sweep" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [11, 14], "attack": "hit", "hitstop": 11, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Crouching hurtbox: the pose must stay below the crouch box height for the whole move.",
+        "Earliest cancel on frame 15: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_JL",
+      "move": "katana.jl",
+      "name": "Swallow Cut",
+      "frames": 22,
+      "rootMotion": "Ballistic",
+      "startup": 5,
+      "active": [6, 10],
+      "recovery": 12,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 4, "pose": "Anticipation" },
+        { "frame": 6, "pose": "Contact" },
+        { "frame": 11, "pose": "Follow-through" },
+        { "frame": 18, "pose": "Recovery hold" },
+        { "frame": 22, "pose": "End" }
+      ],
+      "root": [[0.0000, -0.0137], [0.0000, -0.0315], [0.0000, -0.0536], [0.0000, -0.0798], [0.0000, -0.1102], [0.0000, -0.1449], [0.0000, -0.1837], [0.0000, -0.2267], [0.0000, -0.2740], [0.0000, -0.3254], [0.0000, -0.3873], [0.0000, -0.4597], [0.0000, -0.5426], [0.0000, -0.6361], [0.0000, -0.7400], [0.0000, -0.8544], [0.0000, -0.9793], [0.0000, -1.1147], [0.0000, -1.2606], [0.0000, -1.4170], [0.0000, -1.5839]],
+      "hitboxes": [
+        { "frames": [6, 10], "group": 0, "attack": "hit", "box": [0.1000, 0.2000, 1.2500, 1.3000] }
+      ],
+      "hurt": [
+        { "frames": [1, 21], "stance": "airborne", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.2000, 0.6000, 1.3500]] }
+      ],
+      "events": [
+        { "frame": 3, "channel": "vo", "cue": "vo.effort.light", "asset": "VO_{Character}_Effort_Light" },
+        { "frame": 4, "channel": "sfx", "cue": "sfx.katana.swing.light", "asset": "SFX_Katana_Swing_Light" },
+        { "frame": 6, "channel": "vfx", "cue": "vfx.trail.katana.air", "asset": "VFX_Trail_Katana_Air" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [6, 10], "attack": "hit", "hitstop": 8, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Capture: on frame 22 the move ends in Landing (clip still covers all 22 frames).",
+        "Air move captured from the apex of a neutral jump; the root follows jump physics, so author in place relative to the root.",
+        "Land-cancel: touching the floor ends the clip early and plays landing recovery (+3 frames).",
+        "Earliest cancel on frame 9: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_JL2",
+      "move": "katana.jl2",
+      "name": "Swallow Return",
+      "frames": 22,
+      "rootMotion": "Ballistic",
+      "startup": 4,
+      "active": [5, 8],
+      "recovery": 14,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Contact" },
+        { "frame": 9, "pose": "Follow-through" },
+        { "frame": 17, "pose": "Recovery hold" },
+        { "frame": 22, "pose": "End" }
+      ],
+      "root": [[0.0000, -0.0137], [0.0000, -0.0315], [0.0000, -0.0536], [0.0000, -0.0798], [0.0000, -0.1102], [0.0000, -0.1449], [0.0000, -0.1837], [0.0000, -0.2267], [0.0000, -0.2803], [0.0000, -0.3443], [0.0000, -0.4188], [0.0000, -0.5038], [0.0000, -0.5994], [0.0000, -0.7054], [0.0000, -0.8219], [0.0000, -0.9489], [0.0000, -1.0864], [0.0000, -1.2344], [0.0000, -1.3929], [0.0000, -1.5620]],
+      "hitboxes": [
+        { "frames": [5, 8], "group": 0, "attack": "hit", "box": [0.1000, 0.1000, 1.2500, 1.4000] }
+      ],
+      "hurt": [
+        { "frames": [1, 20], "stance": "airborne", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.2000, 0.6000, 1.3500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "vo", "cue": "vo.effort.light", "asset": "VO_{Character}_Effort_Light" },
+        { "frame": 3, "channel": "sfx", "cue": "sfx.katana.swing.light", "asset": "SFX_Katana_Swing_Light" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.trail.katana.air", "asset": "VFX_Trail_Katana_Air" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [5, 8], "attack": "hit", "hitstop": 8, "onHit": "impact.hit.light", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block" }
+      ],
+      "notes": [
+        "Capture: on frame 21 the move ends in Landing (clip still covers all 22 frames).",
+        "Air move captured from the apex of a neutral jump; the root follows jump physics, so author in place relative to the root.",
+        "Land-cancel: touching the floor ends the clip early and plays landing recovery (+3 frames).",
+        "Earliest cancel on frame 8: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_JH",
+      "move": "katana.jh",
+      "name": "Falling Heaven",
+      "frames": 30,
+      "rootMotion": "Ballistic",
+      "startup": 7,
+      "active": [8, 12],
+      "recovery": 18,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 5, "pose": "Anticipation" },
+        { "frame": 8, "pose": "Contact" },
+        { "frame": 13, "pose": "Follow-through" },
+        { "frame": 24, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, -0.0200], [0.0000, -0.0504], [0.0000, -0.0914], [0.0000, -0.1428], [0.0000, -0.2048], [0.0000, -0.2772], [0.0000, -0.3602], [0.0000, -0.4536], [0.0000, -0.5576], [0.0000, -0.6720], [0.0000, -0.7969], [0.0000, -0.9324], [0.0000, -1.0783], [0.0000, -1.2347], [0.0000, -1.4017], [0.0000, -1.5791]],
+      "hitboxes": [
+        { "frames": [8, 12], "group": 0, "attack": "hit", "box": [0.0000, -0.2000, 1.3500, 1.3000] }
+      ],
+      "hurt": [
+        { "frames": [1, 16], "stance": "airborne", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.2000, 0.6000, 1.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.push.heavy", "asset": "" },
+        { "frame": 4, "channel": "vo", "cue": "vo.effort.heavy", "asset": "VO_{Character}_Effort_Heavy" },
+        { "frame": 6, "channel": "sfx", "cue": "sfx.katana.swing.heavy", "asset": "SFX_Katana_Swing_Heavy" },
+        { "frame": 8, "channel": "vfx", "cue": "vfx.trail.katana.spike", "asset": "VFX_Trail_Katana_Spike" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [8, 12], "attack": "hit", "hitstop": 11, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Capture: on frame 17 the move ends in Landing (clip still covers all 30 frames).",
+        "Air move captured from the apex of a neutral jump; the root follows jump physics, so author in place relative to the root.",
+        "Land-cancel: touching the floor ends the clip early and plays landing recovery (+6 frames)."
+      ]
+    },
+    {
+      "clip": "A_Katana_S_Stance",
+      "move": "katana.s",
+      "name": "Stillwater",
+      "frames": 40,
+      "rootMotion": "InPlace",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 4, "pose": "Stance set" },
+        { "frame": 24, "pose": "Stance end" },
+        { "frame": 40, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 3], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [4, 24], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": true, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [25, 40], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.katana.sheathe", "asset": "SFX_Katana_Sheathe" },
+        { "frame": 1, "channel": "vo", "cue": "vo.effort.stance", "asset": "VO_{Character}_Effort_Stance" },
+        { "frame": 4, "channel": "vfx", "cue": "vfx.stance.stillwater", "asset": "VFX_Stance_Stillwater" },
+        { "frame": 4, "channel": "cam", "cue": "cam.push.stance", "asset": "" }
+      ],
+      "contacts": [],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_S_Reprisal",
+      "move": "katana.sreprisal",
+      "name": "Stillwater Reprisal",
+      "frames": 34,
+      "rootMotion": "InPlace",
+      "startup": 2,
+      "active": [3, 6],
+      "recovery": 28,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 2, "pose": "Anticipation" },
+        { "frame": 3, "pose": "Contact" },
+        { "frame": 7, "pose": "Follow-through" },
+        { "frame": 24, "pose": "Recovery hold" },
+        { "frame": 34, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [3, 6], "group": 0, "attack": "hit", "box": [0.1000, 0.3000, 1.8000, 1.4000] }
+      ],
+      "hurt": [
+        { "frames": [1, 10], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [11, 34], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "sfx", "cue": "sfx.katana.iai", "asset": "SFX_Katana_Iai" },
+        { "frame": 1, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 3, "channel": "vfx", "cue": "vfx.slash.iai", "asset": "VFX_Slash_Iai" },
+        { "frame": 3, "channel": "cam", "cue": "cam.shake.heavy", "asset": "" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [3, 6], "attack": "hit", "hitstop": 14, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 12: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_CrescentRush",
+      "move": "katana.qcfs",
+      "name": "Crescent Rush",
+      "frames": 36,
+      "rootMotion": "Scripted",
+      "startup": 13,
+      "active": [14, 17],
+      "recovery": 19,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 6, "pose": "Push-off" },
+        { "frame": 9, "pose": "Anticipation" },
+        { "frame": 14, "pose": "Contact" },
+        { "frame": 17, "pose": "Plant" },
+        { "frame": 18, "pose": "Follow-through" },
+        { "frame": 29, "pose": "Recovery hold" },
+        { "frame": 36, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.1500, 0.0000], [0.3000, 0.0000], [0.4500, 0.0000], [0.6000, 0.0000], [0.7500, 0.0000], [0.9000, 0.0000], [1.0500, 0.0000], [1.2000, 0.0000], [1.3499, 0.0000], [1.4999, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000], [1.6499, 0.0000]],
+      "hitboxes": [
+        { "frames": [14, 17], "group": 0, "attack": "hit", "box": [0.1000, 0.5000, 1.4000, 1.0000] }
+      ],
+      "hurt": [
+        { "frames": [1, 36], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 4, "channel": "cam", "cue": "cam.push.rush", "asset": "" },
+        { "frame": 4, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 6, "channel": "sfx", "cue": "sfx.katana.rush", "asset": "SFX_Katana_Rush" },
+        { "frame": 6, "channel": "vfx", "cue": "vfx.movement.dust.rush", "asset": "VFX_Movement_Dust_Rush" },
+        { "frame": 14, "channel": "vfx", "cue": "vfx.slash.crescent", "asset": "VFX_Slash_Crescent" },
+        { "frame": 16, "channel": "foley", "cue": "foley.step.slide", "asset": "SFX_Foley_Step_Slide" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [14, 17], "attack": "hit", "hitstop": 11, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": [
+        "Earliest cancel on frame 18: from here the clip may be cut, so poses must transition cleanly."
+      ]
+    },
+    {
+      "clip": "A_Katana_AscendingDragon",
+      "move": "katana.dps",
+      "name": "Ascending Dragon",
+      "frames": 50,
+      "rootMotion": "Scripted",
+      "startup": 4,
+      "active": [5, 12],
+      "recovery": 38,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 3, "pose": "Anticipation" },
+        { "frame": 5, "pose": "Contact / Push-off" },
+        { "frame": 7, "pose": "Plant" },
+        { "frame": 13, "pose": "Follow-through" },
+        { "frame": 36, "pose": "Recovery hold" },
+        { "frame": 50, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0250, 0.1562], [0.0500, 0.3123], [0.0750, 0.4580], [0.1000, 0.5932], [0.1250, 0.7179], [0.1500, 0.8321], [0.1750, 0.9357], [0.2000, 1.0289], [0.2249, 1.1116], [0.2499, 1.1838], [0.2749, 1.2455], [0.2999, 1.2967], [0.3249, 1.3374], [0.3499, 1.3676], [0.3749, 1.3873], [0.3999, 1.3965], [0.4249, 1.3952], [0.4499, 1.3834], [0.4749, 1.3611], [0.4999, 1.3283], [0.5249, 1.2850], [0.5499, 1.2312], [0.5749, 1.1669], [0.5999, 1.0922], [0.6248, 1.0069], [0.6498, 0.9111], [0.6748, 0.8048], [0.6998, 0.6880], [0.7248, 0.5608], [0.7498, 0.4230], [0.7748, 0.2747], [0.7998, 0.1160], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000], [0.8248, 0.0000]],
+      "hitboxes": [
+        { "frames": [5, 12], "group": 0, "attack": "hit", "box": [-0.1000, 0.4000, 1.2500, 2.0000] }
+      ],
+      "hurt": [
+        { "frames": [1, 4], "stance": "standing", "invulnerable": "Strike", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [5, 8], "stance": "airborne", "invulnerable": "Strike", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.2000, 0.6000, 1.3500]] },
+        { "frames": [9, 36], "stance": "airborne", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.2000, 0.6000, 1.3500]] },
+        { "frames": [37, 50], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 2, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 4, "channel": "sfx", "cue": "sfx.katana.dragon", "asset": "SFX_Katana_Dragon" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.slash.dragon", "asset": "VFX_Slash_Dragon" },
+        { "frame": 5, "channel": "vfx", "cue": "vfx.movement.dust.jump", "asset": "VFX_Movement_Dust_Jump" },
+        { "frame": 5, "channel": "cam", "cue": "cam.tilt.rise", "asset": "" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [5, 12], "attack": "hit", "hitstop": 12, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_SeveringWind",
+      "move": "katana.qcbs",
+      "name": "Severing Wind",
+      "frames": 40,
+      "rootMotion": "InPlace",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 14, "pose": "Release" },
+        { "frame": 40, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 40], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 10, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 10, "channel": "cam", "cue": "cam.push.special", "asset": "" },
+        { "frame": 12, "channel": "sfx", "cue": "sfx.katana.wind", "asset": "SFX_Katana_Wind" },
+        { "frame": 14, "channel": "vfx", "cue": "vfx.slash.wind.launch", "asset": "VFX_Slash_Wind_Launch" }
+      ],
+      "contacts": [],
+      "notes": [
+        "Projectile `katana.severingwind` (VFX_Katana_SeveringWind) spawns on frame 14 at (0.8, 0.89999) m from the root."
+      ]
+    },
+    {
+      "clip": "A_Katana_Ultimate_Start",
+      "move": "katana.ultimate",
+      "name": "Thousand Oaths",
+      "frames": 60,
+      "rootMotion": "Scripted",
+      "startup": 11,
+      "active": [12, 16],
+      "recovery": 44,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 8, "pose": "Anticipation / Push-off" },
+        { "frame": 12, "pose": "Contact" },
+        { "frame": 15, "pose": "Plant" },
+        { "frame": 17, "pose": "Follow-through" },
+        { "frame": 43, "pose": "Recovery hold" },
+        { "frame": 60, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.1667, 0.0000], [0.3333, 0.0000], [0.5000, 0.0000], [0.6667, 0.0000], [0.8334, 0.0000], [1.0000, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000], [1.1667, 0.0000]],
+      "hitboxes": [
+        { "frames": [12, 16], "group": 0, "attack": "hit", "box": [0.1000, 0.2000, 2.0000, 1.6000] }
+      ],
+      "hurt": [
+        { "frames": [1, 14], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [15, 60], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.ultimate.flash", "asset": "" },
+        { "frame": 1, "channel": "sfx", "cue": "sfx.ultimate.katana.start", "asset": "SFX_Ultimate_Katana_Start" },
+        { "frame": 1, "channel": "vo", "cue": "vo.ultimate.call", "asset": "VO_{Character}_Ultimate_Call" },
+        { "frame": 1, "channel": "vfx", "cue": "vfx.ultimate.katana.aura", "asset": "VFX_Ultimate_Katana_Aura" },
+        { "frame": 1, "channel": "haptic", "cue": "haptic.ultimate", "asset": "" },
+        { "frame": 8, "channel": "sfx", "cue": "sfx.katana.rush", "asset": "SFX_Katana_Rush" },
+        { "frame": 12, "channel": "vfx", "cue": "vfx.trail.katana.ultimate", "asset": "VFX_Trail_Katana_Ultimate" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [12, 16], "attack": "hit", "hitstop": 16, "onHit": "impact.hit.heavy", "onCounterHit": "impact.hit.counter", "onBlock": "impact.block.heavy" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_Ultimate_Cinematic",
+      "move": "katana.ultimate.hit",
+      "name": "Thousand Oaths",
+      "frames": 150,
+      "rootMotion": "Paired",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 20, "pose": "Strike 1" },
+        { "frame": 35, "pose": "Strike 2" },
+        { "frame": 50, "pose": "Strike 3" },
+        { "frame": 65, "pose": "Strike 4" },
+        { "frame": 80, "pose": "Strike 5" },
+        { "frame": 95, "pose": "Strike 6" },
+        { "frame": 120, "pose": "Strike 7" },
+        { "frame": 125, "pose": "Release" },
+        { "frame": 150, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 150], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.ultimate.katana", "asset": "" },
+        { "frame": 20, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 20, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 35, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 35, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 50, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 50, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 65, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 65, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 80, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 80, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 95, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 95, "channel": "vfx", "cue": "vfx.slash.ultimate.katana", "asset": "VFX_Slash_Ultimate_Katana" },
+        { "frame": 110, "channel": "vo", "cue": "vo.ultimate.final", "asset": "VO_{Character}_Ultimate_Final" },
+        { "frame": 120, "channel": "cam", "cue": "cam.shake.ultra", "asset": "" },
+        { "frame": 120, "channel": "sfx", "cue": "sfx.ultimate.katana.final", "asset": "SFX_Ultimate_Katana_Final" },
+        { "frame": 120, "channel": "vfx", "cue": "vfx.ultimate.katana.final", "asset": "VFX_Ultimate_Katana_Final" },
+        { "frame": 120, "channel": "haptic", "cue": "haptic.ultimate", "asset": "" }
+      ],
+      "contacts": [],
+      "paired": { "victimClip": "A_Victim_Ultimate_Katana", "victimOffset": [1.1000, 0.0000], "hits": [20, 35, 50, 65, 80, 95, 120], "release": 125, "cinematic": true },
+      "notes": [
+        "Paired: victim clip `A_Victim_Ultimate_Katana` has the same 150 frames and is authored relative to the attacker root at offset (1.10001, 0) m; release on frame 125.",
+        "Cinematic: an authored camera sequence plays; world time is frozen for everyone else."
+      ]
+    },
+    {
+      "clip": "A_Katana_Execution_Start",
+      "move": "katana.execution",
+      "name": "Oathbreaker's Mercy",
+      "frames": 30,
+      "rootMotion": "InPlace",
+      "startup": 2,
+      "active": [3, 6],
+      "recovery": 24,
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 2, "pose": "Anticipation" },
+        { "frame": 3, "pose": "Contact" },
+        { "frame": 7, "pose": "Follow-through" },
+        { "frame": 21, "pose": "Recovery hold" },
+        { "frame": 30, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [
+        { "frames": [3, 6], "group": 0, "attack": "grab", "box": [0.0000, 0.0000, 1.9000, 1.8000] }
+      ],
+      "hurt": [
+        { "frames": [1, 6], "stance": "standing", "invulnerable": "All", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] },
+        { "frames": [7, 30], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.execution.prompt", "asset": "" },
+        { "frame": 1, "channel": "vo", "cue": "vo.effort.throw", "asset": "VO_{Character}_Effort_Throw" },
+        { "frame": 1, "channel": "sfx", "cue": "sfx.throw.reach", "asset": "SFX_Throw_Reach" },
+        { "frame": 3, "channel": "vfx", "cue": "vfx.execution.reach", "asset": "VFX_Execution_Reach" }
+      ],
+      "contacts": [
+        { "group": 0, "frames": [3, 6], "attack": "grab", "hitstop": 0, "onHit": "impact.grab", "onCounterHit": "", "onBlock": "" }
+      ],
+      "notes": []
+    },
+    {
+      "clip": "A_Katana_Execution",
+      "move": "katana.execution.hit",
+      "name": "Oathbreaker's Mercy",
+      "frames": 120,
+      "rootMotion": "Paired",
+      "keyPoses": [
+        { "frame": 1, "pose": "Start" },
+        { "frame": 40, "pose": "Strike 1" },
+        { "frame": 80, "pose": "Strike 2" },
+        { "frame": 95, "pose": "Release" },
+        { "frame": 120, "pose": "End" }
+      ],
+      "root": [[0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000], [0.0000, 0.0000]],
+      "hitboxes": [],
+      "hurt": [
+        { "frames": [1, 120], "stance": "standing", "invulnerable": "None", "armor": false, "perfectEvade": false, "counterStance": false, "boxes": [[-0.3000, 0.0000, 0.6000, 1.4500], [-0.2000, 1.4500, 0.4000, 0.3500]] }
+      ],
+      "events": [
+        { "frame": 1, "channel": "cam", "cue": "cam.execution.katana", "asset": "" },
+        { "frame": 1, "channel": "foley", "cue": "foley.grab", "asset": "SFX_Foley_Grab" },
+        { "frame": 10, "channel": "vo", "cue": "vo.execution.line", "asset": "VO_{Character}_Execution_Line" },
+        { "frame": 40, "channel": "sfx", "cue": "sfx.katana.slash.cinematic", "asset": "SFX_Katana_Slash_Cinematic" },
+        { "frame": 40, "channel": "vfx", "cue": "vfx.slash.execution.katana", "asset": "VFX_Slash_Execution_Katana" },
+        { "frame": 76, "channel": "vo", "cue": "vo.effort.special", "asset": "VO_{Character}_Effort_Special" },
+        { "frame": 80, "channel": "sfx", "cue": "sfx.execution.katana.final", "asset": "SFX_Execution_Katana_Final" },
+        { "frame": 80, "channel": "vfx", "cue": "vfx.execution.katana.final", "asset": "VFX_Execution_Katana_Final" },
+        { "frame": 80, "channel": "cam", "cue": "cam.slowmo.finisher", "asset": "" },
+        { "frame": 80, "channel": "haptic", "cue": "haptic.heavy", "asset": "" }
+      ],
+      "contacts": [],
+      "paired": { "victimClip": "A_Victim_Execution_Katana", "victimOffset": [0.9000, 0.0000], "hits": [40, 80], "release": 95, "cinematic": true },
+      "notes": [
+        "Paired: victim clip `A_Victim_Execution_Katana` has the same 120 frames and is authored relative to the attacker root at offset (0.89999, 0) m; release on frame 95.",
+        "Cinematic: an authored camera sequence plays; world time is frozen for everyone else."
+      ]
+    }
+  ]
+}

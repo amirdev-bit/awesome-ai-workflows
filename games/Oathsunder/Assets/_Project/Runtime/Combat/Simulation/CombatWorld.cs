@@ -28,6 +28,7 @@ namespace Oathsunder.Combat.Simulation
         private readonly ProjectileSystem _projectiles;
         private readonly ResourceSystem _resources;
         private readonly RoundSystem _round;
+        private readonly int[] _forcedMoves = NoForcedMoves();
 
         /// <summary>Creates an encounter.</summary>
         /// <exception cref="InvalidOperationException">The setup is invalid.</exception>
@@ -85,6 +86,39 @@ namespace Oathsunder.Combat.Simulation
         /// <summary>Projectiles not spawned because the pool was full (should always be 0).</summary>
         public int DroppedProjectileSpawns => _projectiles.DroppedSpawns;
 
+        /// <summary>
+        /// Writes the fighter's world-space hurtboxes for the current frame (stance boxes plus the active move's
+        /// added or replacing boxes, exactly as contact detection sees them) and returns how many were written.
+        /// Used by debug drawing and production tooling.
+        /// </summary>
+        public int GetHurtboxes(int fighterIndex, FixedAabb[] buffer) => _ctx.GetHurtboxes(fighterIndex, buffer);
+
+        /// <summary>True when the fighter's current move frame is immune to any of <paramref name="mask"/>.</summary>
+        public bool IsInvulnerable(int fighterIndex, InvulnerabilityMask mask) => _ctx.IsMoveInvulnerable(fighterIndex, mask);
+
+        /// <summary>
+        /// Queues a move to start on the fighter's next simulated frame, bypassing input, meter and cancel rules.
+        /// For tooling and training-mode scenarios (animation capture, dummy playback); match flow never calls it.
+        /// The request is not part of <see cref="CombatWorldState"/>: it is consumed by the next <see cref="Step"/>
+        /// and cleared by <see cref="LoadState"/>, so rollback sessions must not use it.
+        /// </summary>
+        /// <exception cref="ArgumentException">The fighter does not have the move.</exception>
+        public void ForceMove(int fighterIndex, string moveId)
+        {
+            if (fighterIndex < 0 || fighterIndex >= State.FighterCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(fighterIndex));
+            }
+
+            int moveIndex = _ctx.Blueprints[fighterIndex].FindMoveIndex(moveId);
+            if (moveIndex < 0)
+            {
+                throw new ArgumentException($"Fighter {fighterIndex} has no move '{moveId}'.", nameof(moveId));
+            }
+
+            _forcedMoves[fighterIndex] = moveIndex;
+        }
+
         /// <summary>Advances the simulation by one 60 Hz frame.</summary>
         /// <param name="inputs">One input per fighter, indexed like the setup's combatants.</param>
         /// <exception cref="ArgumentException">The number of inputs does not match the number of fighters.</exception>
@@ -117,7 +151,15 @@ namespace Oathsunder.Combat.Simulation
             {
                 if (State.Fighters[i].Active && State.Fighters[i].AdvancedThisFrame)
                 {
-                    _controller.Update(i);
+                    if (_forcedMoves[i] >= 0)
+                    {
+                        _controller.ForceStart(i, _forcedMoves[i]);
+                        _forcedMoves[i] = -1;
+                    }
+                    else
+                    {
+                        _controller.Update(i);
+                    }
                 }
             }
 
@@ -135,10 +177,28 @@ namespace Oathsunder.Combat.Simulation
         public void SaveState(CombatWorldState target) => target.CopyFrom(State);
 
         /// <summary>Restores a previously saved state (no allocation).</summary>
-        public void LoadState(CombatWorldState source) => State.CopyFrom(source);
+        public void LoadState(CombatWorldState source)
+        {
+            State.CopyFrom(source);
+            for (int i = 0; i < _forcedMoves.Length; i++)
+            {
+                _forcedMoves[i] = -1;
+            }
+        }
 
         /// <summary>64-bit checksum of the current state.</summary>
         public ulong Checksum() => State.ComputeChecksum();
+
+        private static int[] NoForcedMoves()
+        {
+            var moves = new int[CombatWorldState.MaxFighters];
+            for (int i = 0; i < moves.Length; i++)
+            {
+                moves[i] = -1;
+            }
+
+            return moves;
+        }
 
         private void AdvanceClocks(InputFrame[] inputs)
         {

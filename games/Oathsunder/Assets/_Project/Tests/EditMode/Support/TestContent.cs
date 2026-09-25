@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Oathsunder.Combat.Content;
 using Oathsunder.Combat.Definitions;
+using Oathsunder.Presentation.Cues;
 using NUnit.Framework;
 
 namespace Oathsunder.Tests.Support
@@ -18,6 +19,7 @@ namespace Oathsunder.Tests.Support
         private static FighterDefinition _rhen;
         private static MoveSetDefinition _universal;
         private static MoveSetDefinition _katana;
+        private static CueCatalog _cues;
 
         /// <summary>Absolute path of the combat content folder.</summary>
         public static string Root => _root ?? (_root = FindRoot());
@@ -33,6 +35,12 @@ namespace Oathsunder.Tests.Support
 
         /// <summary>Katana move set.</summary>
         public static MoveSetDefinition Katana => _katana ?? (_katana = CombatContentParser.ParseMoveSet(Read("MoveSets/moveset.katana.json"), "moveset.katana.json"));
+
+        /// <summary>Shipped combat cue catalog (<c>Content/Presentation/cues.combat.json</c>).</summary>
+        public static CueCatalog Cues => _cues ?? (_cues = CueCatalogParser.Parse(ReadPresentation("cues.combat.json"), "cues.combat.json"));
+
+        /// <summary>Reads a file from the presentation content folder.</summary>
+        public static string ReadPresentation(string relativePath) => File.ReadAllText(Path.Combine(Root, "..", "Presentation", relativePath));
 
         /// <summary>Shipped tuning.</summary>
         public static CombatTuning Tuning() => CombatContentParser.ParseTuning(Read("Tuning/tuning.combat.json"), "tuning.combat.json");

@@ -21,7 +21,8 @@
       ],
       "cues": [
         { "frame": 1, "name": "sfx.movement.dash" },
-        { "frame": 1, "name": "vfx.movement.dust.dash" }
+        { "frame": 1, "name": "vfx.movement.dust.dash" },
+        { "frame": 13, "name": "foley.step.slide" }
       ]
     },
     {
@@ -42,7 +43,9 @@
         { "frames": [11, 14], "velocityX": -3 }
       ],
       "cues": [
-        { "frame": 1, "name": "sfx.movement.backstep" }
+        { "frame": 1, "name": "sfx.movement.backstep" },
+        { "frame": 1, "name": "vfx.movement.dust.backstep" },
+        { "frame": 11, "name": "foley.step.plant" }
       ]
     },
     {
@@ -62,7 +65,9 @@
         { "frames": [1, 22], "velocityX": 8 }
       ],
       "cues": [
-        { "frame": 2, "name": "sfx.movement.roll" }
+        { "frame": 2, "name": "sfx.movement.roll" },
+        { "frame": 2, "name": "foley.cloth.roll" },
+        { "frame": 2, "name": "vfx.movement.dust.roll" }
       ]
     },
     {
@@ -81,7 +86,9 @@
         { "frames": [1, 18], "velocityX": -7 }
       ],
       "cues": [
-        { "frame": 2, "name": "sfx.movement.roll" }
+        { "frame": 2, "name": "sfx.movement.roll" },
+        { "frame": 2, "name": "foley.cloth.roll" },
+        { "frame": 2, "name": "vfx.movement.dust.roll" }
       ]
     },
     {
@@ -104,7 +111,8 @@
         { "frames": [8, 16], "on": "evade", "tags": ["Normal", "Command", "Special", "Ultimate"] }
       ],
       "cues": [
-        { "frame": 1, "name": "sfx.movement.sway" }
+        { "frame": 1, "name": "sfx.movement.sway" },
+        { "frame": 2, "name": "vfx.movement.afterimage" }
       ]
     },
     {
@@ -123,7 +131,9 @@
         { "frames": [5, 6], "box": { "x": 0.15, "y": 0.2, "w": 0.85, "h": 1.3 }, "attack": "grab" }
       ],
       "cues": [
-        { "frame": 3, "name": "sfx.throw.reach" }
+        { "frame": 3, "name": "vo.effort.throw" },
+        { "frame": 3, "name": "sfx.throw.reach" },
+        { "frame": 5, "name": "vfx.throw.reach" }
       ]
     },
     {
@@ -147,7 +157,11 @@
         "victimAnimation": "A_Victim_Throw_Forward"
       },
       "cues": [
+        { "frame": 1, "name": "cam.push.throw" },
+        { "frame": 1, "name": "foley.grab" },
+        { "frame": 18, "name": "vo.effort.heavy" },
         { "frame": 22, "name": "sfx.throw.impact" },
+        { "frame": 22, "name": "vfx.impact.ground.throw" },
         { "frame": 22, "name": "cam.shake.medium" }
       ]
     },
@@ -167,7 +181,9 @@
         { "frames": [5, 6], "box": { "x": 0.15, "y": 0.2, "w": 0.85, "h": 1.3 }, "attack": "grab" }
       ],
       "cues": [
-        { "frame": 3, "name": "sfx.throw.reach" }
+        { "frame": 3, "name": "vo.effort.throw" },
+        { "frame": 3, "name": "sfx.throw.reach" },
+        { "frame": 5, "name": "vfx.throw.reach" }
       ]
     },
     {
@@ -193,7 +209,11 @@
         "victimAnimation": "A_Victim_Throw_Back"
       },
       "cues": [
+        { "frame": 1, "name": "cam.push.throw" },
+        { "frame": 1, "name": "foley.grab" },
+        { "frame": 20, "name": "vo.effort.heavy" },
         { "frame": 24, "name": "sfx.throw.impact" },
+        { "frame": 24, "name": "vfx.impact.ground.throw" },
         { "frame": 24, "name": "cam.shake.medium" }
       ]
     },
@@ -223,7 +243,10 @@
       "cues": [
         { "frame": 1, "name": "vfx.mode.rage.ignite" },
         { "frame": 1, "name": "sfx.mode.rage" },
-        { "frame": 1, "name": "cam.zoom.mode" }
+        { "frame": 1, "name": "cam.zoom.mode" },
+        { "frame": 1, "name": "vo.mode.rage" },
+        { "frame": 1, "name": "haptic.mode" },
+        { "frame": 4, "name": "vfx.mode.rage.burst" }
       ]
     },
     {
@@ -246,7 +269,9 @@
       "cues": [
         { "frame": 1, "name": "vfx.mode.shadow.sever" },
         { "frame": 1, "name": "sfx.mode.shadow" },
-        { "frame": 1, "name": "cam.zoom.mode" }
+        { "frame": 1, "name": "cam.zoom.mode" },
+        { "frame": 1, "name": "vo.mode.shadow" },
+        { "frame": 1, "name": "haptic.mode" }
       ]
     },
     {
@@ -263,7 +288,9 @@
         { "frames": [1, 16], "velocityX": -6 }
       ],
       "cues": [
-        { "frame": 1, "name": "sfx.movement.techroll" }
+        { "frame": 1, "name": "sfx.movement.techroll" },
+        { "frame": 1, "name": "foley.cloth.roll" },
+        { "frame": 1, "name": "vfx.movement.dust.techroll" }
       ]
     }
   ]

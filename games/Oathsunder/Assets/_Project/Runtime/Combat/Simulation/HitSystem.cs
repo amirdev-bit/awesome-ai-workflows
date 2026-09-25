@@ -618,6 +618,11 @@ namespace Oathsunder.Combat.Simulation
             }
 
             var flags = projectile ? CombatEventFlags.Projectile : CombatEventFlags.None;
+            if (IsHeavy(attack, contact.Attacker, contact.SourceMove))
+            {
+                flags |= CombatEventFlags.Heavy;
+            }
+
             _ctx.Emit(CombatEventType.Block, contact.Attacker, contact.Victim, instance, chip > 0 ? chip : 0, 0, contact.Point, flags);
 
             int posture = attack.Has(AttackFlags.GuardCrush)
@@ -856,18 +861,23 @@ namespace Oathsunder.Combat.Simulation
                 flags |= CombatEventFlags.Overhead;
             }
 
-            bool heavy = attack.Has(AttackFlags.Launch | AttackFlags.Knockdown | AttackFlags.HardKnockdown | AttackFlags.WallBounce | AttackFlags.GroundBounce);
-            if (!heavy && sourceMove >= 0)
-            {
-                heavy = _ctx.Blueprints[attackerIndex].Moves[sourceMove].HasTag(MoveTags.Heavy | MoveTags.Ultimate | MoveTags.Charged);
-            }
-
-            if (heavy)
+            if (IsHeavy(attack, attackerIndex, sourceMove))
             {
                 flags |= CombatEventFlags.Heavy;
             }
 
             return flags;
+        }
+
+        /// <summary>Presentation weight of a contact (see <see cref="MoveDefinition.IsHeavyAttack"/>).</summary>
+        private bool IsHeavy(AttackSpec attack, int attackerIndex, int sourceMove)
+        {
+            if (sourceMove >= 0)
+            {
+                return _ctx.Blueprints[attackerIndex].Moves[sourceMove].IsHeavyAttack(attack);
+            }
+
+            return attack.Has(AttackFlags.Launch | AttackFlags.Knockdown | AttackFlags.HardKnockdown | AttackFlags.WallBounce | AttackFlags.GroundBounce);
         }
 
         /// <summary>

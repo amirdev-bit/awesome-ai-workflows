@@ -50,6 +50,7 @@ namespace UnityEngine
         public Transform parent { get; set; }
         public Vector3 localPosition { get; set; }
         public Quaternion rotation { get; set; }
+        public Quaternion localRotation { get; set; }
         public void SetPositionAndRotation(Vector3 position, Quaternion rotation) { }
     }
 
@@ -70,6 +71,7 @@ namespace UnityEngine
         public static Vector3 operator +(Vector3 a, Vector3 b) => a;
         public static Vector3 operator -(Vector3 a, Vector3 b) => a;
         public static Vector3 zero => default;
+        public float magnitude => 0f;
         public static Vector3 up => default;
         public static Vector3 Lerp(Vector3 a, Vector3 b, float t) => a;
     }
@@ -122,6 +124,11 @@ namespace UnityEngine
         public static int Clamp(int v, int min, int max) => v;
         public static float MoveTowards(float current, float target, float maxDelta) => current;
         public static float MoveTowardsAngle(float current, float target, float maxDelta) => current;
+        public static float Pow(float f, float p) => f;
+        public static int RoundToInt(float f) => 0;
+        public static float Abs(float f) => f;
+        public static float PerlinNoise(float x, float y) => x;
+        public static float SmoothStep(float from, float to, float t) => from;
     }
 
     public static class Time
@@ -135,12 +142,14 @@ namespace UnityEngine
     {
         public static void Log(object message) { }
         public static void LogError(object message) { }
+        public static void LogWarning(object message) { }
         public static void LogError(object message, Object context) { }
     }
 
     public static class Random
     {
         public static Vector2 insideUnitCircle => default;
+        public static float value => 0f;
     }
 
     public static class Handheld
@@ -184,8 +193,29 @@ namespace UnityEngine
 
     public class AudioClip : Object { }
 
+    public class Motion : Object
+    {
+        public Vector3 averageSpeed => default;
+        public bool isLooping => false;
+    }
+
+    public sealed class AnimationClip : Motion
+    {
+        public float length => 0f;
+        public float frameRate { get; set; }
+    }
+
     public class AudioSource : Behaviour
     {
+        public AudioClip clip { get; set; }
+        public float volume { get; set; }
+        public float pitch { get; set; }
+        public float spatialBlend { get; set; }
+        public bool playOnAwake { get; set; }
+        public bool isPlaying => false;
+        public Audio.AudioMixerGroup outputAudioMixerGroup { get; set; }
+        public void Play() { }
+        public void Stop() { }
         public void PlayOneShot(AudioClip clip, float volumeScale) { }
     }
 
@@ -235,6 +265,11 @@ namespace UnityEngine
     [AttributeUsage(AttributeTargets.Class)] public sealed class DefaultExecutionOrder : Attribute { public DefaultExecutionOrder(int order) { } }
 }
 
+namespace UnityEngine.Audio
+{
+    public class AudioMixerGroup : Object { }
+}
+
 namespace UnityEngine.TestTools
 {
     [AttributeUsage(AttributeTargets.Method)] public sealed class UnityTestAttribute : Attribute { }
@@ -250,6 +285,7 @@ namespace UnityEditor
         public static string[] FindAssets(string filter, string[] searchInFolders) => new string[0];
         public static string GUIDToAssetPath(string guid) => "";
         public static T LoadAssetAtPath<T>(string path) where T : Object => default;
+        public static Object[] LoadAllAssetsAtPath(string assetPath) => new Object[0];
         public static void SaveAssets() { }
     }
 
@@ -270,7 +306,10 @@ namespace UnityEditor
         public int priority { get; set; }
     }
 
-    public class AssetPostprocessor { }
+    public class AssetPostprocessor
+    {
+        public string assetPath => "";
+    }
 
     public class EditorWindow : ScriptableObject
     {
@@ -370,6 +409,15 @@ namespace UnityEngine.InputSystem
         }
 
         public static RebindingOperation PerformInteractiveRebinding(this InputAction action, int bindingIndex = -1) => new RebindingOperation();
+    }
+
+    public class InputDevice { }
+
+    public class Gamepad : InputDevice
+    {
+        public static Gamepad current => null;
+        public void SetMotorSpeeds(float lowFrequency, float highFrequency) { }
+        public void ResetHaptics() { }
     }
 }
 

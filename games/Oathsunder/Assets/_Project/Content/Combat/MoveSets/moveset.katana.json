@@ -42,6 +42,7 @@
         { "frames": [9, 16], "on": "contact", "to": ["katana.l2"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 3, "name": "vo.effort.light" },
         { "frame": 4, "name": "sfx.katana.swing.light" },
         { "frame": 6, "name": "vfx.trail.katana.light" }
       ]
@@ -69,6 +70,7 @@
         { "frames": [10, 17], "on": "contact", "to": ["katana.l3", "katana.l2h"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 4, "name": "vo.effort.light" },
         { "frame": 5, "name": "sfx.katana.swing.light" },
         { "frame": 7, "name": "vfx.trail.katana.light" }
       ]
@@ -96,6 +98,7 @@
         { "frames": [11, 18], "on": "contact", "to": ["katana.l4"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 5, "name": "vo.effort.medium" },
         { "frame": 6, "name": "sfx.katana.swing.medium" },
         { "frame": 8, "name": "vfx.trail.katana.medium" }
       ]
@@ -126,9 +129,11 @@
         { "frames": [16, 26], "on": "hit", "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 8, "name": "vo.effort.heavy" },
         { "frame": 10, "name": "sfx.katana.swing.heavy" },
-        { "frame": 12, "name": "vfx.trail.katana.heavy" },
-        { "frame": 12, "name": "cam.shake.heavy" }
+        { "frame": 10, "name": "foley.step.plant" },
+        { "frame": 12, "name": "vfx.trail.katana.heavy" }
       ]
     },
     {
@@ -154,6 +159,8 @@
         { "frames": [14, 22], "on": "hit", "jump": true, "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 6, "name": "vo.effort.heavy" },
         { "frame": 8, "name": "sfx.katana.swing.rising" },
         { "frame": 10, "name": "vfx.trail.katana.launcher" }
       ]
@@ -184,6 +191,8 @@
         { "frames": [15, 22], "on": "contact", "to": ["katana.h2"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 8, "name": "vo.effort.heavy" },
         { "frame": 10, "name": "sfx.katana.swing.heavy" },
         { "frame": 12, "name": "vfx.trail.katana.heavy" }
       ]
@@ -213,8 +222,12 @@
         { "frames": [18, 26], "on": "contact", "to": ["katana.h3"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 7, "name": "vo.effort.heavy" },
         { "frame": 9, "name": "sfx.katana.swing.medium" },
-        { "frame": 15, "name": "sfx.katana.swing.heavy" }
+        { "frame": 10, "name": "vfx.trail.katana.medium" },
+        { "frame": 15, "name": "sfx.katana.swing.heavy" },
+        { "frame": 16, "name": "vfx.trail.katana.heavy" }
       ]
     },
     {
@@ -243,7 +256,11 @@
         { "frames": [20, 30], "on": "hit", "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 10, "name": "vo.effort.heavy" },
         { "frame": 12, "name": "sfx.katana.swing.heavy" },
+        { "frame": 12, "name": "foley.step.plant" },
+        { "frame": 13, "name": "vfx.trail.katana.overhead" },
         { "frame": 14, "name": "vfx.impact.ground.slam" },
         { "frame": 14, "name": "cam.shake.heavy" }
       ]
@@ -263,8 +280,13 @@
       ],
       "cues": [
         { "frame": 1, "name": "vfx.charge.katana.start" },
+        { "frame": 1, "name": "sfx.katana.charge.start" },
+        { "frame": 1, "name": "foley.cloth.heavy" },
+        { "frame": 1, "name": "cam.push.charge" },
+        { "frame": 1, "name": "vo.effort.charge" },
         { "frame": 30, "name": "vfx.charge.katana.full" },
-        { "frame": 30, "name": "sfx.charge.full" }
+        { "frame": 30, "name": "sfx.charge.full" },
+        { "frame": 30, "name": "haptic.charge.full" }
       ]
     },
     {
@@ -287,8 +309,10 @@
         { "frames": [10, 13], "box": { "x": 0.1, "y": 0.3, "w": 1.7, "h": 1.4 }, "attack": "hit" }
       ],
       "cues": [
+        { "frame": 6, "name": "vo.effort.heavy" },
         { "frame": 8, "name": "sfx.katana.swing.charged" },
-        { "frame": 10, "name": "cam.shake.heavy" }
+        { "frame": 10, "name": "vfx.trail.katana.charged" },
+        { "frame": 10, "name": "cam.shake.light" }
       ]
     },
     {
@@ -312,9 +336,12 @@
         { "frames": [12, 15], "box": { "x": 0.1, "y": 0.2, "w": 1.9, "h": 1.6 }, "attack": "hit" }
       ],
       "cues": [
+        { "frame": 8, "name": "vo.effort.special" },
         { "frame": 10, "name": "sfx.katana.swing.fullmoon" },
+        { "frame": 11, "name": "vfx.trail.katana.charged" },
         { "frame": 12, "name": "vfx.slash.fullmoon" },
-        { "frame": 12, "name": "cam.shake.ultra" }
+        { "frame": 12, "name": "cam.shake.ultra" },
+        { "frame": 12, "name": "haptic.heavy" }
       ]
     },
     {
@@ -339,6 +366,8 @@
         { "frames": [15, 22], "on": "contact", "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 2, "name": "foley.step.slide" },
+        { "frame": 8, "name": "vo.effort.medium" },
         { "frame": 10, "name": "sfx.katana.thrust" },
         { "frame": 12, "name": "vfx.trail.katana.thrust" }
       ]
@@ -365,7 +394,10 @@
         { "frames": [23, 30], "on": "hit", "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 14, "name": "vo.effort.heavy" },
         { "frame": 18, "name": "sfx.katana.swing.overhead" },
+        { "frame": 18, "name": "foley.step.plant" },
         { "frame": 20, "name": "vfx.trail.katana.overhead" }
       ]
     },
@@ -389,7 +421,9 @@
         { "frames": [8, 14], "on": "contact", "to": ["katana.dl", "katana.dh"], "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
-        { "frame": 3, "name": "sfx.katana.swing.low" }
+        { "frame": 2, "name": "vo.effort.light" },
+        { "frame": 3, "name": "sfx.katana.swing.low" },
+        { "frame": 5, "name": "vfx.trail.katana.low" }
       ]
     },
     {
@@ -415,8 +449,11 @@
         { "frames": [15, 24], "on": "hit", "tags": ["Special", "Ultimate"] }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 7, "name": "vo.effort.heavy" },
         { "frame": 9, "name": "sfx.katana.swing.sweep" },
-        { "frame": 11, "name": "vfx.trail.katana.sweep" }
+        { "frame": 11, "name": "vfx.trail.katana.sweep" },
+        { "frame": 11, "name": "vfx.movement.dust.sweep" }
       ]
     },
     {
@@ -446,7 +483,9 @@
         { "frames": [9, 16], "on": "contact", "to": ["katana.jl2"] }
       ],
       "cues": [
-        { "frame": 4, "name": "sfx.katana.swing.light" }
+        { "frame": 3, "name": "vo.effort.light" },
+        { "frame": 4, "name": "sfx.katana.swing.light" },
+        { "frame": 6, "name": "vfx.trail.katana.air" }
       ]
     },
     {
@@ -476,7 +515,9 @@
         { "frames": [8, 16], "on": "hit", "to": ["katana.jh"] }
       ],
       "cues": [
-        { "frame": 3, "name": "sfx.katana.swing.light" }
+        { "frame": 2, "name": "vo.effort.light" },
+        { "frame": 3, "name": "sfx.katana.swing.light" },
+        { "frame": 5, "name": "vfx.trail.katana.air" }
       ]
     },
     {
@@ -500,6 +541,8 @@
         { "frames": [8, 12], "box": { "x": 0.0, "y": -0.2, "w": 1.35, "h": 1.3 }, "attack": "hit" }
       ],
       "cues": [
+        { "frame": 1, "name": "cam.push.heavy" },
+        { "frame": 4, "name": "vo.effort.heavy" },
         { "frame": 6, "name": "sfx.katana.swing.heavy" },
         { "frame": 8, "name": "vfx.trail.katana.spike" }
       ]
@@ -516,7 +559,9 @@
       "counter": { "frames": [4, 24], "catches": ["Strike", "Projectile"], "move": "katana.sreprisal" },
       "cues": [
         { "frame": 1, "name": "sfx.katana.sheathe" },
-        { "frame": 4, "name": "vfx.stance.stillwater" }
+        { "frame": 1, "name": "vo.effort.stance" },
+        { "frame": 4, "name": "vfx.stance.stillwater" },
+        { "frame": 4, "name": "cam.push.stance" }
       ]
     },
     {
@@ -543,6 +588,7 @@
       ],
       "cues": [
         { "frame": 1, "name": "sfx.katana.iai" },
+        { "frame": 1, "name": "vo.effort.special" },
         { "frame": 3, "name": "vfx.slash.iai" },
         { "frame": 3, "name": "cam.shake.heavy" }
       ]
@@ -573,8 +619,12 @@
         { "frames": [18, 26], "on": "hit", "tags": ["Ultimate"] }
       ],
       "cues": [
+        { "frame": 4, "name": "cam.push.rush" },
+        { "frame": 4, "name": "vo.effort.special" },
         { "frame": 6, "name": "sfx.katana.rush" },
-        { "frame": 14, "name": "vfx.slash.crescent" }
+        { "frame": 6, "name": "vfx.movement.dust.rush" },
+        { "frame": 14, "name": "vfx.slash.crescent" },
+        { "frame": 16, "name": "foley.step.slide" }
       ]
     },
     {
@@ -603,8 +653,11 @@
         { "frames": [5, 12], "box": { "x": -0.1, "y": 0.4, "w": 1.25, "h": 2.0 }, "attack": "hit" }
       ],
       "cues": [
+        { "frame": 2, "name": "vo.effort.special" },
         { "frame": 4, "name": "sfx.katana.dragon" },
-        { "frame": 5, "name": "vfx.slash.dragon" }
+        { "frame": 5, "name": "vfx.slash.dragon" },
+        { "frame": 5, "name": "vfx.movement.dust.jump" },
+        { "frame": 5, "name": "cam.tilt.rise" }
       ]
     },
     {
@@ -621,6 +674,8 @@
         { "frame": 14, "projectile": "katana.severingwind", "offset": [0.8, 0.9] }
       ],
       "cues": [
+        { "frame": 10, "name": "vo.effort.special" },
+        { "frame": 10, "name": "cam.push.special" },
         { "frame": 12, "name": "sfx.katana.wind" },
         { "frame": 14, "name": "vfx.slash.wind.launch" }
       ]
@@ -652,7 +707,12 @@
       ],
       "cues": [
         { "frame": 1, "name": "cam.ultimate.flash" },
-        { "frame": 1, "name": "sfx.ultimate.katana.start" }
+        { "frame": 1, "name": "sfx.ultimate.katana.start" },
+        { "frame": 1, "name": "vo.ultimate.call" },
+        { "frame": 1, "name": "vfx.ultimate.katana.aura" },
+        { "frame": 1, "name": "haptic.ultimate" },
+        { "frame": 8, "name": "sfx.katana.rush" },
+        { "frame": 12, "name": "vfx.trail.katana.ultimate" }
       ]
     },
     {
@@ -684,8 +744,23 @@
       },
       "cues": [
         { "frame": 1, "name": "cam.ultimate.katana" },
+        { "frame": 20, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 20, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 35, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 35, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 50, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 50, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 65, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 65, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 80, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 80, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 95, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 95, "name": "vfx.slash.ultimate.katana" },
+        { "frame": 110, "name": "vo.ultimate.final" },
         { "frame": 120, "name": "sfx.ultimate.katana.final" },
-        { "frame": 120, "name": "cam.shake.ultra" }
+        { "frame": 120, "name": "vfx.ultimate.katana.final" },
+        { "frame": 120, "name": "cam.shake.ultra" },
+        { "frame": 120, "name": "haptic.ultimate" }
       ]
     },
     {
@@ -707,7 +782,10 @@
         { "frames": [3, 6], "box": { "x": 0.0, "y": 0.0, "w": 1.9, "h": 1.8 }, "attack": "grab" }
       ],
       "cues": [
-        { "frame": 1, "name": "cam.execution.prompt" }
+        { "frame": 1, "name": "cam.execution.prompt" },
+        { "frame": 1, "name": "vo.effort.throw" },
+        { "frame": 1, "name": "sfx.throw.reach" },
+        { "frame": 3, "name": "vfx.execution.reach" }
       ]
     },
     {
@@ -734,8 +812,15 @@
       },
       "cues": [
         { "frame": 1, "name": "cam.execution.katana" },
+        { "frame": 1, "name": "foley.grab" },
+        { "frame": 10, "name": "vo.execution.line" },
+        { "frame": 40, "name": "sfx.katana.slash.cinematic" },
+        { "frame": 40, "name": "vfx.slash.execution.katana" },
+        { "frame": 76, "name": "vo.effort.special" },
         { "frame": 80, "name": "sfx.execution.katana.final" },
-        { "frame": 80, "name": "cam.slowmo.finisher" }
+        { "frame": 80, "name": "vfx.execution.katana.final" },
+        { "frame": 80, "name": "cam.slowmo.finisher" },
+        { "frame": 80, "name": "haptic.heavy" }
       ]
     }
   ]

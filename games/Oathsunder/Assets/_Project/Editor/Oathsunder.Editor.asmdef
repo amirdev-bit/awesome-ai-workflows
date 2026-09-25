@@ -5,7 +5,8 @@
         "Oathsunder.Core",
         "Oathsunder.Combat",
         "Oathsunder.Gameplay",
-        "Oathsunder.Controls"
+        "Oathsunder.Controls",
+        "Oathsunder.Presentation"
     ],
     "includePlatforms": [
         "Editor"

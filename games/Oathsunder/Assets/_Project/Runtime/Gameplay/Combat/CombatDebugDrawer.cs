@@ -21,6 +21,8 @@ namespace Oathsunder.Gameplay.Combat
         [SerializeField] private bool _drawPushboxes = true;
         [SerializeField] private float _planeDepth;
 
+        private readonly FixedAabb[] _hurtboxes = new FixedAabb[16];
+
         private void OnDrawGizmos()
         {
             if (_runner == null || _runner.World == null)
@@ -46,9 +48,11 @@ namespace Oathsunder.Gameplay.Combat
 
                 if (_drawHurtboxes)
                 {
-                    foreach (var box in stance.Hurtboxes)
+                    // Exactly what contact detection uses: stance boxes plus the move's extended or replacing boxes.
+                    int count = world.GetHurtboxes(i, _hurtboxes);
+                    for (int b = 0; b < count; b++)
                     {
-                        Draw(box.ToWorld(f.Position, f.Facing), Hurt);
+                        Draw(_hurtboxes[b], Hurt);
                     }
                 }
 

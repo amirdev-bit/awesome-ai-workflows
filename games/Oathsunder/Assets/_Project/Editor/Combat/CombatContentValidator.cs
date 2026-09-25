@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Oathsunder.Combat.Content;
+using Oathsunder.Editor.Animation;
+using Oathsunder.Editor.Presentation;
 using Oathsunder.Gameplay.Combat;
 using UnityEditor;
 using UnityEngine;
@@ -39,12 +41,16 @@ namespace Oathsunder.Editor.Combat
             return set;
         }
 
-        /// <summary>Validates all content; returns every problem found.</summary>
+        /// <summary>
+        /// Validates all combat content, the cue catalog and the presentation Definition of Done; returns every
+        /// problem found.
+        /// </summary>
         public static List<string> Validate()
         {
             var set = LoadAll(out _);
             var errors = new List<string>(set.Errors);
-            var weapons = set.MoveSetIds.Where(id => id != CombatMatchConfig.UniversalMoveSetId).ToList();
+            var weapons = set.MoveSetIds.Where(id => id != CombatMatchConfig.UniversalMoveSetId && id.StartsWith("weapon.", StringComparison.Ordinal)).ToList();
+            var combinations = set.FighterIds.SelectMany(f => weapons.Select(w => (f, w))).ToList();
             foreach (string fighter in set.FighterIds)
             {
                 foreach (string weapon in weapons)
@@ -64,6 +70,7 @@ namespace Oathsunder.Editor.Combat
                 }
             }
 
+            errors.AddRange(CueLibraryTools.Validate(set, combinations));
             return errors;
         }
 
@@ -129,6 +136,8 @@ namespace Oathsunder.Editor.Combat
                 AssetDatabase.LoadAssetAtPath<CombatContentLibrary>(AssetDatabase.GUIDToAssetPath(guid))?.Invalidate();
             }
 
+            AnimationClipSpecValidator.Invalidate();
+
             foreach (string error in CombatContentValidator.Validate())
             {
                 Debug.LogError("[Combat content] " + error);
@@ -136,7 +145,8 @@ namespace Oathsunder.Editor.Combat
         }
 
         private static bool IsCombatContent(string path) =>
-            path.StartsWith(CombatContentValidator.ContentFolder, StringComparison.Ordinal) &&
+            (path.StartsWith(CombatContentValidator.ContentFolder, StringComparison.Ordinal) ||
+             path.StartsWith(CueLibraryTools.PresentationFolder, StringComparison.Ordinal)) &&
             path.EndsWith(".json", StringComparison.OrdinalIgnoreCase);
     }
 }

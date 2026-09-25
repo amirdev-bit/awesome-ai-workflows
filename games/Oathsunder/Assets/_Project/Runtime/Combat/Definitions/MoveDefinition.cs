@@ -91,6 +91,14 @@ namespace Oathsunder.Combat.Definitions
         /// <summary>True when the move has at least one hitbox.</summary>
         public bool IsAttack => Hitboxes.Length > 0;
 
+        /// <summary>
+        /// Presentation weight of one of this move's attacks: launches, knockdowns and bounces, or anything from
+        /// a Heavy, Ultimate or Charged move. Selects the heavy impact and block feedback.
+        /// </summary>
+        public bool IsHeavyAttack(AttackSpec attack) =>
+            (attack != null && attack.Has(AttackFlags.Launch | AttackFlags.Knockdown | AttackFlags.HardKnockdown | AttackFlags.WallBounce | AttackFlags.GroundBounce))
+            || HasTag(MoveTags.Heavy | MoveTags.Ultimate | MoveTags.Charged);
+
         /// <summary>Recomputes derived frame data. Called by the blueprint builder.</summary>
         public void ComputeDerivedData()
         {

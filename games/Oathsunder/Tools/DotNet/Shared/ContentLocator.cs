@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Oathsunder.Combat.Content;
+using Oathsunder.Presentation.Cues;
 
 namespace Oathsunder.Tools
 {
@@ -24,6 +25,17 @@ namespace Oathsunder.Tools
             }
 
             throw new DirectoryNotFoundException($"Could not find {Relative} above {AppContext.BaseDirectory}.");
+        }
+
+        /// <summary>The Oathsunder project root (the folder holding Assets/ and Documentation/).</summary>
+        public static string ProjectRoot() => Path.GetFullPath(Path.Combine(FindRoot(), "..", "..", "..", ".."));
+
+        /// <summary>Loads the shipped combat cue catalog.</summary>
+        public static CueCatalog LoadCueCatalog()
+        {
+            const string file = "cues.combat.json";
+            string path = Path.Combine(FindRoot(), "..", "Presentation", file);
+            return CueCatalogParser.Parse(File.ReadAllText(path), file);
         }
 
         public static CombatContentSet Load()

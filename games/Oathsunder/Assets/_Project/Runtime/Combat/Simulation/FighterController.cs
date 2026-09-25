@@ -263,6 +263,14 @@ namespace Oathsunder.Combat.Simulation
             }
         }
 
+        /// <summary>Starts a move as this frame's logic, bypassing input (tooling entry, see CombatWorld.ForceMove).</summary>
+        public void ForceStart(int index, int moveIndex)
+        {
+            ref FighterState f = ref _ctx.State.Fighters[index];
+            f.LastLogicWorldFrame = _ctx.Frame;
+            StartMove(index, ref f, moveIndex, autoFace: false);
+        }
+
         /// <summary>Starts a move on a fighter (used by neutral, cancels, counters, throws and cinematics).</summary>
         public void StartMove(int index, ref FighterState f, int moveIndex, bool autoFace, int startupPenalty = 0)
         {

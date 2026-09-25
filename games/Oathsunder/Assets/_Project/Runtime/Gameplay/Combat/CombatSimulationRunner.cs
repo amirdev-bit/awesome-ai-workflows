@@ -44,6 +44,7 @@ namespace Oathsunder.Gameplay.Combat
 
         private readonly List<ICombatEventListener> _listeners = new List<ICombatEventListener>();
         private readonly ICombatInputSource[] _sources = new ICombatInputSource[CombatWorldState.MaxFighters];
+        private readonly FighterPresenter[] _presenters = new FighterPresenter[CombatWorldState.MaxFighters];
         private InputFrame[] _inputs = new InputFrame[0];
         private FixedVector2[] _previousPositions = new FixedVector2[0];
         private double _accumulator;
@@ -87,6 +88,28 @@ namespace Oathsunder.Gameplay.Combat
         {
             _sources[fighterIndex] = source ?? NeutralInputSource.Instance;
         }
+
+        /// <summary>Registers the presenter that renders a fighter (VFX sockets, cinematics).</summary>
+        public void RegisterPresenter(FighterPresenter presenter)
+        {
+            if (presenter != null && presenter.FighterIndex >= 0 && presenter.FighterIndex < _presenters.Length)
+            {
+                _presenters[presenter.FighterIndex] = presenter;
+            }
+        }
+
+        /// <summary>Removes a presenter registration.</summary>
+        public void UnregisterPresenter(FighterPresenter presenter)
+        {
+            if (presenter != null && presenter.FighterIndex >= 0 && presenter.FighterIndex < _presenters.Length && _presenters[presenter.FighterIndex] == presenter)
+            {
+                _presenters[presenter.FighterIndex] = null;
+            }
+        }
+
+        /// <summary>The presenter rendering a fighter, or null.</summary>
+        public FighterPresenter GetPresenter(int fighterIndex) =>
+            fighterIndex >= 0 && fighterIndex < _presenters.Length ? _presenters[fighterIndex] : null;
 
         /// <summary>Registers an event listener.</summary>
         public void AddListener(ICombatEventListener listener)
